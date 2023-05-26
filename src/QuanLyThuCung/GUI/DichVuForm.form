@@ -29,13 +29,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="jPanel1" alignment="0" pref="994" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="roundJPanel25" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="roundJButton13" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Component id="BtTimKiemDV" min="-2" pref="110" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane3" alignment="0" min="-2" pref="916" max="-2" attributes="0"/>
                       </Group>
@@ -52,7 +52,7 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="roundJButton13" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="BtTimKiemDV" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="roundJPanel25" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -63,7 +63,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="QuanLyThuCung.Swing.RoundJButton1" name="roundJButton13">
+    <Component class="QuanLyThuCung.Swing.RoundJButton1" name="BtTimKiemDV">
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
         <Property name="radius" type="int" value="45"/>
@@ -123,9 +123,9 @@
                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="roundJButton21" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="BtThemDV" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="roundJButton22" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="BtSuaDV" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                       <Component id="roundJPanel1" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -157,8 +157,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="roundJPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="roundJButton21" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="roundJButton22" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="BtThemDV" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="BtSuaDV" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -287,13 +287,13 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="roundJButton21">
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtThemDV">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
             <Property name="radius" type="int" value="40"/>
           </Properties>
         </Component>
-        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="roundJButton22">
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtSuaDV">
           <Properties>
             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
             <Property name="radius" type="int" value="40"/>

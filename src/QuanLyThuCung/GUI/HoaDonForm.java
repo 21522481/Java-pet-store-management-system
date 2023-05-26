@@ -35,7 +35,7 @@ public class HoaDonForm extends javax.swing.JInternalFrame {
         roundJPanel10 = new QuanLyThuCung.Swing.RoundJPanel();
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        roundJButton21 = new QuanLyThuCung.Swing.RoundJButton2();
+        BtTimKiemHD = new QuanLyThuCung.Swing.RoundJButton2();
         jLabel8 = new javax.swing.JLabel();
         roundJPanel3 = new QuanLyThuCung.Swing.RoundJPanel();
         jTextField1 = new javax.swing.JTextField();
@@ -193,8 +193,8 @@ public class HoaDonForm extends javax.swing.JInternalFrame {
         jLabel7.setForeground(new java.awt.Color(5, 69, 89, 68));
         jLabel7.setText("Thông tin hóa đơn");
 
-        roundJButton21.setText("Tìm kiếm");
-        roundJButton21.setRadius(45);
+        BtTimKiemHD.setText("Tìm kiếm");
+        BtTimKiemHD.setRadius(45);
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -297,7 +297,7 @@ public class HoaDonForm extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(roundJButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(BtTimKiemHD, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(roundJPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
@@ -357,7 +357,7 @@ public class HoaDonForm extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel5))
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(roundJButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtTimKiemHD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -370,6 +370,7 @@ public class HoaDonForm extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private QuanLyThuCung.Swing.RoundJButton2 BtTimKiemHD;
     private QuanLyThuCung.Swing.CustomTable customTable1;
     private QuanLyThuCung.Swing.CustomTable customTable3;
     private javax.swing.JLabel jLabel1;
@@ -388,7 +389,6 @@ public class HoaDonForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private QuanLyThuCung.Swing.RoundJButton2 roundJButton21;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel10;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel2;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel3;

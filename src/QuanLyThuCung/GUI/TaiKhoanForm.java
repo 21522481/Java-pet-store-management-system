@@ -48,7 +48,7 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
         txt2 = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel6 = new QuanLyThuCung.Swing.RoundJPanel();
         txt3 = new QuanLyThuCung.Swing.PlaceholderText();
-        roundJButton21 = new QuanLyThuCung.Swing.RoundJButton2();
+        BtThemTK = new QuanLyThuCung.Swing.RoundJButton2();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbTaiKhoan = new QuanLyThuCung.Swing.CustomTable();
@@ -113,8 +113,13 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        roundJButton21.setText("Thêm");
-        roundJButton21.setRadius(45);
+        BtThemTK.setText("Thêm");
+        BtThemTK.setRadius(45);
+        BtThemTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtThemTKActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -166,7 +171,7 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(roundJPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(roundJButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(BtThemTK, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 84, Short.MAX_VALUE))
@@ -181,7 +186,7 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(roundJPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roundJButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BtThemTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -192,11 +197,15 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtThemTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemTKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtThemTKActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private QuanLyThuCung.Swing.RoundJButton2 BtThemTK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane3;
-    private QuanLyThuCung.Swing.RoundJButton2 roundJButton21;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel4;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel5;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel6;

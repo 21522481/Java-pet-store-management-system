@@ -38,7 +38,7 @@
                       <Group type="102" attributes="0">
                           <Component id="roundJPanel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="roundJButton21" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="BtThemTK" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -59,7 +59,7 @@
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="roundJPanel6" max="32767" attributes="0"/>
-                  <Component id="roundJButton21" max="32767" attributes="0"/>
+                  <Component id="BtThemTK" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
@@ -161,11 +161,14 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="QuanLyThuCung.Swing.RoundJButton2" name="roundJButton21">
+    <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtThemTK">
       <Properties>
         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
         <Property name="radius" type="int" value="45"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtThemTKActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

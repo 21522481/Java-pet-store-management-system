@@ -39,9 +39,9 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         roundJPanel1 = new QuanLyThuCung.Swing.RoundJPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btXuat = new QuanLyThuCung.Swing.RoundJButton2();
+        btXacNhanHD = new QuanLyThuCung.Swing.RoundJButton2();
         BtInHD = new QuanLyThuCung.Swing.RoundJButton2();
-        btHuy = new QuanLyThuCung.Swing.RoundJButton2();
+        btHuyHD = new QuanLyThuCung.Swing.RoundJButton2();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -112,8 +112,8 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(5, 69, 89, 68));
         jLabel1.setText("Khách hàng");
 
-        btXuat.setText("Xác nhận");
-        btXuat.setRadius(45);
+        btXacNhanHD.setText("Xác nhận");
+        btXacNhanHD.setRadius(45);
 
         BtInHD.setText("In hóa đơn");
         BtInHD.setRadius(45);
@@ -123,11 +123,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
             }
         });
 
-        btHuy.setText("Hủy");
-        btHuy.setRadius(45);
-        btHuy.addActionListener(new java.awt.event.ActionListener() {
+        btHuyHD.setText("Hủy");
+        btHuyHD.setRadius(45);
+        btHuyHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btHuyActionPerformed(evt);
+                btHuyHDActionPerformed(evt);
             }
         });
 
@@ -211,11 +211,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(BtInHD, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btXacNhanHD, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(roundJPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(236, 236, 236)
-                        .addComponent(btHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btHuyHD, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -238,9 +238,9 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtInHD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btXacNhanHD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btHuyHD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(341, Short.MAX_VALUE))
         );
 
@@ -263,16 +263,16 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtInHDActionPerformed
 
-    private void btHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHuyActionPerformed
+    private void btHuyHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHuyHDActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btHuyActionPerformed
+    }//GEN-LAST:event_btHuyHDActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private QuanLyThuCung.Swing.RoundJButton2 BtInHD;
-    private QuanLyThuCung.Swing.RoundJButton2 btHuy;
-    private QuanLyThuCung.Swing.RoundJButton2 btXuat;
+    private QuanLyThuCung.Swing.RoundJButton2 btHuyHD;
+    private QuanLyThuCung.Swing.RoundJButton2 btXacNhanHD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
