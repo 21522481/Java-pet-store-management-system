@@ -63,7 +63,7 @@ public class RoundJButton1 extends JButton {
         //  Init Color
 
         setColor(new Color(148,212,152));
-        colorOver = new Color(148,212,152); //40, 150, 150
+        colorOver = new Color(148,200,152, 200); //40, 150, 150
         colorClick = new Color(148,212,152);
         borderColor = new Color(148,212,152);
         setContentAreaFilled(false);

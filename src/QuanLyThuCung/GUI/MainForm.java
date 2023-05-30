@@ -5,7 +5,6 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -16,7 +15,7 @@ public class MainForm extends javax.swing.JFrame {
     private NhanVienForm nv;
     private KhachHangForm kh;
     private HoaDonForm hd;
-    private GuiThuForm gt;
+    private ThuCungForm gt;
     private DichVuForm dv;
     private TaiKhoanForm tk;
     
@@ -65,7 +64,6 @@ public class MainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1300, 750));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -76,7 +74,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(148, 212, 152));
+        jLabel1.setForeground(new java.awt.Color(129, 203, 156));
         jLabel1.setText("OH MY PET");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -90,7 +88,7 @@ public class MainForm extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 24, Short.MAX_VALUE)
+            .addGap(0, 34, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -105,11 +103,10 @@ public class MainForm extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         roundJButton21.setText("ĐĂNG XUẤT");
@@ -145,7 +142,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu1.setOpaque(true);
         lbMenu1.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu1.setForeground(new java.awt.Color(148, 212, 152));
+        lbMenu1.setForeground(new java.awt.Color(129, 203, 156));
         lbMenu1.setText("    Bán hàng");
         lbMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,7 +157,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu2.setOpaque(true);
         lbMenu2.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu2.setForeground(new java.awt.Color(148, 212, 152));
+        lbMenu2.setForeground(new java.awt.Color(129, 203, 156));
         lbMenu2.setText("    Sản phẩm");
         lbMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -175,7 +172,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu3.setOpaque(true);
         lbMenu3.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu3.setForeground(new java.awt.Color(148, 212, 152));
+        lbMenu3.setForeground(new java.awt.Color(129, 203, 156));
         lbMenu3.setText("    Nhân viên");
         lbMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +184,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu4.setOpaque(true);
         lbMenu4.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu4.setForeground(new java.awt.Color(148, 212, 152));
+        lbMenu4.setForeground(new java.awt.Color(129, 203, 156));
         lbMenu4.setText("    Khách hàng");
         lbMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,7 +196,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu5.setOpaque(true);
         lbMenu5.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu5.setForeground(new java.awt.Color(148, 212, 152));
+        lbMenu5.setForeground(new java.awt.Color(129, 203, 156));
         lbMenu5.setText("    Hóa đơn");
         lbMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -211,8 +208,8 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu6.setOpaque(true);
         lbMenu6.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu6.setForeground(new java.awt.Color(148, 212, 152));
-        lbMenu6.setText("    Gửi thú");
+        lbMenu6.setForeground(new java.awt.Color(129, 203, 156));
+        lbMenu6.setText("    Thú cưng");
         lbMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -223,7 +220,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu7.setOpaque(true);
         lbMenu7.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu7.setForeground(new java.awt.Color(148, 212, 152));
+        lbMenu7.setForeground(new java.awt.Color(129, 203, 156));
         lbMenu7.setText("    Dịch vụ");
         lbMenu7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -277,7 +274,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu8.setOpaque(true);
         lbMenu8.setBackground(new java.awt.Color(255, 255, 255));
         lbMenu8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lbMenu8.setForeground(new java.awt.Color(148, 212, 152));
+        lbMenu8.setForeground(new java.awt.Color(129, 203, 156));
         lbMenu8.setText("    Tài khoản");
         lbMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbMenu8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -529,7 +526,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu7.setForeground(TextPressedColor);
         lbMenu8.setForeground(TextPressedColor);
         
-        gt = new GuiThuForm();
+        gt = new ThuCungForm();
         jDesktopPane1.removeAll();
         jDesktopPane1.add(gt).setVisible(true);
     }//GEN-LAST:event_lbMenu6MousePressed

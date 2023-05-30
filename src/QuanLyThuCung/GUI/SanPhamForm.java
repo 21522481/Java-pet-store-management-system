@@ -48,23 +48,23 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         roundJPanel1 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText6 = new QuanLyThuCung.Swing.PlaceholderText();
+        txtLoaiSP = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel2 = new QuanLyThuCung.Swing.RoundJPanel();
-        txtGia = new QuanLyThuCung.Swing.PlaceholderText();
+        txtNSX = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel3 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText4 = new QuanLyThuCung.Swing.PlaceholderText();
+        txtNguonGoc = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel4 = new QuanLyThuCung.Swing.RoundJPanel();
         txtTenSP = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel5 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText7 = new QuanLyThuCung.Swing.PlaceholderText();
+        txtTrongLuong = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel6 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText8 = new QuanLyThuCung.Swing.PlaceholderText();
+        txtGia = new QuanLyThuCung.Swing.PlaceholderText();
         BtThemSP = new QuanLyThuCung.Swing.RoundJButton2();
         BtSuaSP = new QuanLyThuCung.Swing.RoundJButton2();
         roundJPanel7 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText3 = new QuanLyThuCung.Swing.PlaceholderText();
+        txtHSD = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel8 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText5 = new QuanLyThuCung.Swing.PlaceholderText();
+        txtSoLuong = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel25 = new QuanLyThuCung.Swing.RoundJPanel();
         placeholderText9 = new QuanLyThuCung.Swing.PlaceholderText();
         BtTimKiemSP = new QuanLyThuCung.Swing.RoundJButton1();
@@ -74,11 +74,11 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
         setOpaque(true);
-        setPreferredSize(new java.awt.Dimension(1000, 630));
+        setPreferredSize(new java.awt.Dimension(1100, 680));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        placeholderText6.setPlaceholder("Loại sản phẩm");
+        txtLoaiSP.setPlaceholder("Loại sản phẩm");
 
         javax.swing.GroupLayout roundJPanel1Layout = new javax.swing.GroupLayout(roundJPanel1);
         roundJPanel1.setLayout(roundJPanel1Layout);
@@ -86,18 +86,18 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundJPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText6, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addComponent(txtLoaiSP, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel1Layout.setVerticalGroup(
             roundJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        txtGia.setPlaceholder("Giá");
+        txtNSX.setPlaceholder("NSX");
 
         javax.swing.GroupLayout roundJPanel2Layout = new javax.swing.GroupLayout(roundJPanel2);
         roundJPanel2.setLayout(roundJPanel2Layout);
@@ -105,18 +105,18 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addComponent(txtNSX, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel2Layout.setVerticalGroup(
             roundJPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNSX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        placeholderText4.setPlaceholder("Hạn sử dụng");
+        txtNguonGoc.setPlaceholder("Nguồn gốc");
 
         javax.swing.GroupLayout roundJPanel3Layout = new javax.swing.GroupLayout(roundJPanel3);
         roundJPanel3.setLayout(roundJPanel3Layout);
@@ -124,14 +124,14 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNguonGoc, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         roundJPanel3Layout.setVerticalGroup(
             roundJPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNguonGoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -154,7 +154,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        placeholderText7.setPlaceholder("Số lượng");
+        txtTrongLuong.setPlaceholder("Trọng lượng");
 
         javax.swing.GroupLayout roundJPanel5Layout = new javax.swing.GroupLayout(roundJPanel5);
         roundJPanel5.setLayout(roundJPanel5Layout);
@@ -162,18 +162,18 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText7, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(txtTrongLuong, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel5Layout.setVerticalGroup(
             roundJPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTrongLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        placeholderText8.setPlaceholder("NSX");
+        txtGia.setPlaceholder("Giá");
 
         javax.swing.GroupLayout roundJPanel6Layout = new javax.swing.GroupLayout(roundJPanel6);
         roundJPanel6.setLayout(roundJPanel6Layout);
@@ -181,14 +181,14 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText8, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(txtGia, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel6Layout.setVerticalGroup(
             roundJPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -203,7 +203,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         BtSuaSP.setText("Sửa");
         BtSuaSP.setRadius(40);
 
-        placeholderText3.setPlaceholder("Ngày nhập");
+        txtHSD.setPlaceholder("HSD");
 
         javax.swing.GroupLayout roundJPanel7Layout = new javax.swing.GroupLayout(roundJPanel7);
         roundJPanel7.setLayout(roundJPanel7Layout);
@@ -211,18 +211,18 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addComponent(txtHSD, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel7Layout.setVerticalGroup(
             roundJPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtHSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        placeholderText5.setPlaceholder("Nguồn gốc");
+        txtSoLuong.setPlaceholder("Số lượng");
 
         javax.swing.GroupLayout roundJPanel8Layout = new javax.swing.GroupLayout(roundJPanel8);
         roundJPanel8.setLayout(roundJPanel8Layout);
@@ -230,14 +230,14 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSoLuong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel8Layout.setVerticalGroup(
             roundJPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -360,28 +360,28 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 994, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(BtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 90, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
@@ -402,12 +402,6 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.RoundJButton1 BtTimKiemSP;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText3;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText4;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText5;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText6;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText7;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText8;
     private QuanLyThuCung.Swing.PlaceholderText placeholderText9;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel1;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel2;
@@ -420,6 +414,12 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel8;
     private QuanLyThuCung.Swing.CustomTable tbSanPham;
     private QuanLyThuCung.Swing.PlaceholderText txtGia;
+    private QuanLyThuCung.Swing.PlaceholderText txtHSD;
+    private QuanLyThuCung.Swing.PlaceholderText txtLoaiSP;
+    private QuanLyThuCung.Swing.PlaceholderText txtNSX;
+    private QuanLyThuCung.Swing.PlaceholderText txtNguonGoc;
+    private QuanLyThuCung.Swing.PlaceholderText txtSoLuong;
     private QuanLyThuCung.Swing.PlaceholderText txtTenSP;
+    private QuanLyThuCung.Swing.PlaceholderText txtTrongLuong;
     // End of variables declaration//GEN-END:variables
 }

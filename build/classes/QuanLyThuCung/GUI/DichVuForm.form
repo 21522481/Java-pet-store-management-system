@@ -29,7 +29,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" alignment="0" pref="994" max="32767" attributes="0"/>
+                  <Component id="jPanel1" alignment="0" pref="1094" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -37,9 +37,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="BtTimKiemDV" min="-2" pref="110" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane3" alignment="0" min="-2" pref="916" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" min="-2" pref="1046" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="78" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -50,14 +50,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="BtTimKiemDV" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
                   <Component id="roundJPanel25" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane3" min="-2" pref="300" max="-2" attributes="0"/>
-              <EmptySpace pref="69" max="32767" attributes="0"/>
+              <Component id="jScrollPane3" min="-2" pref="356" max="-2" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -174,7 +174,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt2" pref="340" max="32767" attributes="0"/>
+                      <Component id="txtTenPet" pref="340" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -183,16 +183,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTenPet" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txt2">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtTenPet">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txt2.setPlaceholder(&quot;T&#xea;n pet&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTenPet.setPlaceholder(&quot;T&#xea;n pet&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -204,7 +204,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt3" pref="148" max="32767" attributes="0"/>
+                      <Component id="txtLoaiThuCung" pref="148" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -213,16 +213,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLoaiThuCung" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txt3">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtLoaiThuCung">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txt3.setPlaceholder(&quot;Lo&#x1ea1;i pet&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtLoaiThuCung.setPlaceholder(&quot;Lo&#x1ea1;i pet&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -234,7 +234,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt1" max="32767" attributes="0"/>
+                      <Component id="txtMaKH" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -243,16 +243,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt1" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="txtMaKH" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txt1">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtMaKH">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txt1.setPlaceholder(&quot;M&#xe3; kh&#xe1;ch h&#xe0;ng&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtMaKH.setPlaceholder(&quot;M&#xe3; kh&#xe1;ch h&#xe0;ng&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -264,7 +264,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt5" pref="148" max="32767" attributes="0"/>
+                      <Component id="txtNgayGui" pref="148" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -273,16 +273,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt5" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNgayGui" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txt5">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtNgayGui">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txt5.setPlaceholder(&quot;Ng&#xe0;y g&#x1eed;i&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtNgayGui.setPlaceholder(&quot;Ng&#xe0;y g&#x1eed;i&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -306,7 +306,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt4" pref="148" max="32767" attributes="0"/>
+                      <Component id="txtGioiTinh" pref="148" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -315,16 +315,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt4" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtGioiTinh" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txt4">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtGioiTinh">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txt4.setPlaceholder(&quot;Gi&#x1edb;i t&#xed;nh&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtGioiTinh.setPlaceholder(&quot;Gi&#x1edb;i t&#xed;nh&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -336,7 +336,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt6" pref="148" max="32767" attributes="0"/>
+                      <Component id="txtNgayTra" pref="148" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -345,16 +345,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt6" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNgayTra" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txt6">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtNgayTra">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txt6.setPlaceholder(&quot;Ng&#xe0;y tr&#x1ea3;&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtNgayTra.setPlaceholder(&quot;Ng&#xe0;y tr&#x1ea3;&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -366,7 +366,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt7" max="32767" attributes="0"/>
+                      <Component id="txtTienDichVu" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -375,16 +375,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt7" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTienDichVu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txt7">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtTienDichVu">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txt7.setPlaceholder(&quot;Ti&#x1ec1;n d&#x1ecb;ch v&#x1ee5;&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTienDichVu.setPlaceholder(&quot;Ti&#x1ec1;n d&#x1ecb;ch v&#x1ee5;&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>

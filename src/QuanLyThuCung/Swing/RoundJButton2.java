@@ -63,14 +63,14 @@ public class RoundJButton2 extends JButton {
         //  Init Color
 
         setColor(Color.WHITE);
-        colorOver = new Color(148,212,152);
-        colorClick = new Color(148,212,152);
-        borderColor = new Color(148,212,152);
+        colorOver = new Color(129,203,156);
+        colorClick = new Color(129,203,156);
+        borderColor = new Color(129,203,156);
         setContentAreaFilled(false);
         setFocusable(false);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setFont(new java.awt.Font("Segoe UI", 1, 14));
-        setForeground(new java.awt.Color(148,212,152));
+        setForeground(new java.awt.Color(129,203,156));
         setBorder(null);
         //  Add event mouse
         addMouseListener(new MouseAdapter() {
@@ -84,7 +84,7 @@ public class RoundJButton2 extends JButton {
             @Override
             public void mouseExited(MouseEvent me) {
                 setBackground(color);
-                setForeground(new java.awt.Color(148,212,152));
+                setForeground(new java.awt.Color(129,203,156));
                 over = false;
 
             }
@@ -121,7 +121,7 @@ public class RoundJButton2 extends JButton {
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
         g2.setColor(getBackground());
         //  Border set 2 Pix
-        g2.fillRoundRect(1, 1, getWidth() - 2, getHeight() - 2, radius, radius);
+        g2.fillRoundRect(1, 1, (int) (getWidth() - 1.8), (int) (getHeight() - 2.05), radius, radius);
         super.paintComponent(grphcs);
     }
 }

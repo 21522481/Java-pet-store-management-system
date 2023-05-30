@@ -48,7 +48,7 @@ public class CustomTable extends JTable {
     public void fixTable(JScrollPane scroll) {
         scroll.setVerticalScrollBar(new ScrollBar());
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(148, 212, 152));
+        panel.setBackground(new Color(129,203,156));//148, 212, 152
         scroll.setCorner(JScrollPane.UPPER_RIGHT_CORNER, panel);
     }
 
@@ -63,7 +63,7 @@ public class CustomTable extends JTable {
         @Override
         public Component getTableCellRendererComponent(JTable jtable, Object o, boolean bln, boolean bln1, int i, int i1) {
             Component com = super.getTableCellRendererComponent(jtable, o, bln, bln1, i, i1);
-            com.setBackground(new Color(148, 212, 152));
+            com.setBackground(new Color(129,203,156));
             com.setForeground(new Color(5, 69, 89, 200));
             com.setFont(com.getFont().deriveFont(Font.BOLD, 14));
             if (alignment.containsKey(i1)) {
@@ -90,13 +90,13 @@ public class CustomTable extends JTable {
                 if (row % 2 == 0) {
                     com.setBackground(new Color(245, 245, 245));
                 } else {
-                    com.setBackground(new Color(148, 212, 152, 100));
+                    com.setBackground(new Color(129,203,156, 100));
                 }
             } else {
                 if (row % 2 == 0) {
                     com.setBackground(new Color(255, 255, 255));
                 } else {
-                    com.setBackground(new Color(148, 212, 152, 60));
+                    com.setBackground(new Color(129,203,156, 60));
                 }
             }
             com.setFont(com.getFont().deriveFont(Font.PLAIN, 13));

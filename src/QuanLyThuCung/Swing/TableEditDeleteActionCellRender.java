@@ -14,13 +14,13 @@ public class TableEditDeleteActionCellRender extends DefaultTableCellRenderer {
             if (row % 2 == 0) {
                 action.setBackground(new Color(245, 245, 245));
             } else {
-                action.setBackground(new Color(148, 212, 152, 100));
+                action.setBackground(new Color(129,203,156, 100));
             }
         } else {
             if (row % 2 == 0) {
                 action.setBackground(new Color(255, 255, 255));
             } else {
-                action.setBackground(new Color(148, 212, 152, 60));
+                action.setBackground(new Color(129,203,156, 60));
             }
         }
         return action;
