@@ -7,14 +7,18 @@ import QuanLyThuCung.Swing.TableDeleteActionCellEditor;
 import QuanLyThuCung.Swing.TableDeleteActionCellRender;
 import QuanLyThuCung.Swing.TableEditDeleteActionCellEditor;
 import QuanLyThuCung.Swing.TableEditDeleteActionCellRender;
+import SQL.DataAccess;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 public class SanPhamForm extends javax.swing.JInternalFrame {
 
+    private DataAccess dataAccess;
 
     public SanPhamForm() {
         initComponents();
+        
+        dataAccess = new DataAccess();
         setOpaque(false);
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
@@ -326,26 +330,26 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         tbSanPham.fixTable(jScrollPane3);
         tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng"
+                "Mã sản phẩm", "Loại", "Tên", "NSX", "HSD", "Khối lượng", "Nguồn gốc", "Số lượng", "Đơn giá", "Chức năng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
