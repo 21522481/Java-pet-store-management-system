@@ -1,10 +1,10 @@
 package QuanLyThuCung.GUI;
 
 import QuanLyThuCung.Swing.TableActionEvent;
-import QuanLyThuCung.Swing.TableAddActionCellEditor;
-import QuanLyThuCung.Swing.TableAddActionCellRender;
-import QuanLyThuCung.Swing.TableDeleteActionCellEditor;
-import QuanLyThuCung.Swing.TableDeleteActionCellRender;
+//import QuanLyThuCung.Swing.TableAddActionCellEditor;
+//import QuanLyThuCung.Swing.TableAddActionCellRender;
+//import QuanLyThuCung.Swing.TableDeleteActionCellEditor;
+//import QuanLyThuCung.Swing.TableDeleteActionCellRender;
 import QuanLyThuCung.Swing.TableEditDeleteActionCellEditor;
 import QuanLyThuCung.Swing.TableEditDeleteActionCellRender;
 import SQL.DataAccess;
@@ -41,8 +41,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             }
         };
         
-        tbSanPham.getColumnModel().getColumn(3).setCellRenderer(new TableEditDeleteActionCellRender());
-        tbSanPham.getColumnModel().getColumn(3).setCellEditor(new TableEditDeleteActionCellEditor(event));
+        tbSanPham.getColumnModel().getColumn(9).setCellRenderer(new TableEditDeleteActionCellRender());
+        tbSanPham.getColumnModel().getColumn(9).setCellEditor(new TableEditDeleteActionCellEditor(event));
     }
 
  
@@ -72,7 +72,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         roundJPanel25 = new QuanLyThuCung.Swing.RoundJPanel();
         placeholderText9 = new QuanLyThuCung.Swing.PlaceholderText();
         BtTimKiemSP = new QuanLyThuCung.Swing.RoundJButton1();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tbSanPham = new QuanLyThuCung.Swing.CustomTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -327,36 +327,19 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             }
         });
 
-        tbSanPham.fixTable(jScrollPane3);
+        tbSanPham.fixTable(jScrollPane1);
         tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Loại", "Tên", "NSX", "HSD", "Khối lượng", "Nguồn gốc", "Số lượng", "Đơn giá", "Chức năng"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Chức năng"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tbSanPham);
+        ));
+        jScrollPane1.setViewportView(tbSanPham);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -371,7 +354,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                                 .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(BtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1044, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1046, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -383,9 +366,9 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         pack();
@@ -405,7 +388,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.RoundJButton2 BtThemSP;
     private QuanLyThuCung.Swing.RoundJButton1 BtTimKiemSP;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     private QuanLyThuCung.Swing.PlaceholderText placeholderText9;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel1;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel2;

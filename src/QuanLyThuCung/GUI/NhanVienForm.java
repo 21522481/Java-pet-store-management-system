@@ -32,8 +32,8 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
             }
         };
         
-        tbNhanVien.getColumnModel().getColumn(3).setCellRenderer(new TableEditDeleteActionCellRender());
-        tbNhanVien.getColumnModel().getColumn(3).setCellEditor(new TableEditDeleteActionCellEditor(event));
+        tbNhanVien.getColumnModel().getColumn(9).setCellRenderer(new TableEditDeleteActionCellRender());
+        tbNhanVien.getColumnModel().getColumn(9).setCellEditor(new TableEditDeleteActionCellEditor(event));
     }
 
     @SuppressWarnings("unchecked")
@@ -232,26 +232,26 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
         tbNhanVien.fixTable(jScrollPane3);
         tbNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Chức năng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, true, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

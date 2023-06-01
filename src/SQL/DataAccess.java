@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package SQL;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -34,12 +30,12 @@ public class DataAccess {
         }
     }
    
-    /**
-     * Phương thức readDB dùng để lấy data của một bảng bất kỳ trong CSDL
-     * 
-     * @param tableName Muốn lấy thông tin của bảng nào thì truyền tên của bảng đó
-     *                  vào 
-     */
+//    /**
+//     * Phương thức readDB dùng để lấy data của một bảng bất kỳ trong CSDL
+//     * 
+//     * @param tableName Muốn lấy thông tin của bảng nào thì truyền tên của bảng đó
+//     *                  vào 
+//     */
     public void readDB(String tableName) {
         // Tạo câu SQL để truy vấn dữ liệu từ bảng tableName được truyền vào
         String sql = "SELECT * FROM" + tableName;
@@ -84,7 +80,6 @@ public class DataAccess {
             // Nếu có lỗi xảy ra, in exception stack trace ra màn hình
             e.printStackTrace();
         }
-    public void fetchProduct(){
-        
+//    public void fetchProduct() {}
     }
 }
