@@ -2,10 +2,6 @@ package QuanLyThuCung.GUI;
 
 import QuanLyThuCung.Swing.RoundJPanel;
 import QuanLyThuCung.Swing.TableActionEvent;
-import QuanLyThuCung.Swing.TableAddActionCellEditor;
-import QuanLyThuCung.Swing.TableAddActionCellRender;
-import QuanLyThuCung.Swing.TableDeleteActionCellEditor;
-import QuanLyThuCung.Swing.TableDeleteActionCellRender;
 import SQL.DataAccess;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -41,8 +37,6 @@ public class BanHangForm extends javax.swing.JInternalFrame {
             }
         };
         
-        tbGioHang.getColumnModel().getColumn(3).setCellRenderer(new TableDeleteActionCellRender());
-        tbGioHang.getColumnModel().getColumn(3).setCellEditor(new TableDeleteActionCellEditor(event1));
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchDANHMUC(model);
@@ -64,8 +58,6 @@ public class BanHangForm extends javax.swing.JInternalFrame {
             }
         };
         
-//        tbSanPham.getColumnModel().getColumn(3).setCellRenderer(new TableAddActionCellRender());
-//        tbSanPham.getColumnModel().getColumn(3).setCellEditor(new TableAddActionCellEditor(event2));
     }
     
     @SuppressWarnings("unchecked")

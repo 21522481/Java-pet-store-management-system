@@ -1,8 +1,6 @@
 package QuanLyThuCung.GUI;
 
 import QuanLyThuCung.Swing.TableActionEvent;
-import QuanLyThuCung.Swing.TableEditDeleteActionCellEditor;
-import QuanLyThuCung.Swing.TableEditDeleteActionCellRender;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,8 +32,6 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             }
         };
         
-        tbGuiThu.getColumnModel().getColumn(3).setCellRenderer(new TableEditDeleteActionCellRender());
-        tbGuiThu.getColumnModel().getColumn(3).setCellEditor(new TableEditDeleteActionCellEditor(event));
     }
 
 

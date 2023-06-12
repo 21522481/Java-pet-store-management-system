@@ -1,8 +1,6 @@
 package QuanLyThuCung.GUI;
 
 import QuanLyThuCung.Swing.TableActionEvent;
-import QuanLyThuCung.Swing.TableDeleteActionCellEditor;
-import QuanLyThuCung.Swing.TableDeleteActionCellRender;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,8 +31,6 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
             }
         };
         
-        tbTaiKhoan.getColumnModel().getColumn(3).setCellRenderer(new TableDeleteActionCellRender());
-        tbTaiKhoan.getColumnModel().getColumn(3).setCellEditor(new TableDeleteActionCellEditor(event));
     }
 
 

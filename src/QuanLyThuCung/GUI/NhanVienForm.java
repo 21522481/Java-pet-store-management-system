@@ -1,8 +1,6 @@
 package QuanLyThuCung.GUI;
 
 import QuanLyThuCung.Swing.TableActionEvent;
-import QuanLyThuCung.Swing.TableEditDeleteActionCellEditor;
-import QuanLyThuCung.Swing.TableEditDeleteActionCellRender;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,8 +30,6 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
             }
         };
         
-        tbNhanVien.getColumnModel().getColumn(9).setCellRenderer(new TableEditDeleteActionCellRender());
-        tbNhanVien.getColumnModel().getColumn(9).setCellEditor(new TableEditDeleteActionCellEditor(event));
     }
 
     @SuppressWarnings("unchecked")
