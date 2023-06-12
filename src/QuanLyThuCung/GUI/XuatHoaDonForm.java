@@ -218,7 +218,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(5, 69, 89, 68));
-        jLabel5.setText("Mã giảm giá");
+        jLabel5.setText("Giảm giá");
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -351,11 +351,9 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField4;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel1;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel2;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel3;
-    private QuanLyThuCung.Swing.RoundJPanel roundJPanel4;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel5;
     private javax.swing.JTextField txtMaGG;
     private javax.swing.JTextField txtMaKH;

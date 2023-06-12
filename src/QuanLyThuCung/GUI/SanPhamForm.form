@@ -61,7 +61,7 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="354" max="-2" attributes="0"/>
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,7 +100,7 @@
                                       <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                                       <Component id="BtThemSP" min="-2" pref="110" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btXoa" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <Component id="BtXoaSP" min="-2" pref="110" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="BtSuaSP" min="-2" pref="110" max="-2" attributes="0"/>
                                   </Group>
@@ -117,7 +117,7 @@
                           <Component id="roundJPanel4" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="281" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -152,7 +152,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="BtThemSP" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="btXoa" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="BtXoaSP" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="BtSuaSP" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -198,9 +198,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtNSX" max="32767" attributes="0"/>
+                      <Component id="dcNSX" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -209,17 +209,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txtNSX" min="-2" max="-2" attributes="0"/>
+                      <Component id="dcNSX" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtNSX">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtNSX.setPlaceholder(&quot;NSX&quot;);"/>
-              </AuxValues>
+            <Component class="com.toedter.calendar.JDateChooser" name="dcNSX">
             </Component>
           </SubComponents>
         </Container>
@@ -363,9 +360,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtHSD" pref="150" max="32767" attributes="0"/>
+                      <Component id="dcHSD" pref="150" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -374,17 +371,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txtHSD" min="-2" max="-2" attributes="0"/>
+                      <Component id="dcHSD" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtHSD">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtHSD.setPlaceholder(&quot;HSD&quot;);"/>
-              </AuxValues>
+            <Component class="com.toedter.calendar.JDateChooser" name="dcHSD">
             </Component>
           </SubComponents>
         </Container>
@@ -418,7 +412,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="btXoa">
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtXoaSP">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
             <Property name="radius" type="int" value="40"/>

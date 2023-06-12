@@ -33,15 +33,16 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         roundJPanel4 = new QuanLyThuCung.Swing.RoundJPanel();
         txtMaKH = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel5 = new QuanLyThuCung.Swing.RoundJPanel();
-        txtNgayGui = new QuanLyThuCung.Swing.PlaceholderText();
+        dcNgayGui = new com.toedter.calendar.JDateChooser();
         BtThemDV = new QuanLyThuCung.Swing.RoundJButton2();
         BtSuaDV = new QuanLyThuCung.Swing.RoundJButton2();
         roundJPanel6 = new QuanLyThuCung.Swing.RoundJPanel();
-        txtGioiTinh = new QuanLyThuCung.Swing.PlaceholderText();
+        cbGioiTinh = new javax.swing.JComboBox<>();
         roundJPanel8 = new QuanLyThuCung.Swing.RoundJPanel();
-        txtNgayTra = new QuanLyThuCung.Swing.PlaceholderText();
+        dcNgayTra = new com.toedter.calendar.JDateChooser();
         roundJPanel3 = new QuanLyThuCung.Swing.RoundJPanel();
         txtTienDichVu = new QuanLyThuCung.Swing.PlaceholderText();
+        BtXoaDV = new QuanLyThuCung.Swing.RoundJButton2();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbDichVu = new QuanLyThuCung.Swing.CustomTable();
 
@@ -129,22 +130,20 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        txtNgayGui.setPlaceholder("Ngày gửi");
-
         javax.swing.GroupLayout roundJPanel5Layout = new javax.swing.GroupLayout(roundJPanel5);
         roundJPanel5.setLayout(roundJPanel5Layout);
         roundJPanel5Layout.setHorizontalGroup(
             roundJPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundJPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtNgayGui, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(dcNgayGui, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel5Layout.setVerticalGroup(
             roundJPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtNgayGui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dcNgayGui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -154,26 +153,29 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         BtSuaDV.setText("Sửa");
         BtSuaDV.setRadius(40);
 
-        txtGioiTinh.setPlaceholder("Giới tính");
+        cbGioiTinh.setOpaque(false);
+        cbGioiTinh.setBackground(new java.awt.Color(225, 237, 232));
+        cbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbGioiTinh.setForeground(new java.awt.Color(5, 69, 89, 68));
+        cbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn giới tính", "Nam", "Nữ" }));
+        cbGioiTinh.setBorder(null);
 
         javax.swing.GroupLayout roundJPanel6Layout = new javax.swing.GroupLayout(roundJPanel6);
         roundJPanel6.setLayout(roundJPanel6Layout);
         roundJPanel6Layout.setHorizontalGroup(
             roundJPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel6Layout.createSequentialGroup()
+            .addGroup(roundJPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtGioiTinh, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(cbGioiTinh, 0, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel6Layout.setVerticalGroup(
             roundJPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(roundJPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        txtNgayTra.setPlaceholder("Ngày trả");
 
         javax.swing.GroupLayout roundJPanel8Layout = new javax.swing.GroupLayout(roundJPanel8);
         roundJPanel8.setLayout(roundJPanel8Layout);
@@ -181,14 +183,14 @@ public class DichVuForm extends javax.swing.JInternalFrame {
             roundJPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundJPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtNgayTra, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(dcNgayTra, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel8Layout.setVerticalGroup(
             roundJPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dcNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -211,6 +213,9 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        BtXoaDV.setText("Xóa");
+        BtXoaDV.setRadius(40);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -228,7 +233,9 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(BtThemDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtXoaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtSuaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(roundJPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -255,7 +262,8 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                     .addComponent(roundJPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(BtThemDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BtSuaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BtSuaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtXoaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -328,6 +336,10 @@ public class DichVuForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.RoundJButton2 BtSuaDV;
     private QuanLyThuCung.Swing.RoundJButton2 BtThemDV;
     private QuanLyThuCung.Swing.RoundJButton1 BtTimKiemDV;
+    private QuanLyThuCung.Swing.RoundJButton2 BtXoaDV;
+    private javax.swing.JComboBox<String> cbGioiTinh;
+    private com.toedter.calendar.JDateChooser dcNgayGui;
+    private com.toedter.calendar.JDateChooser dcNgayTra;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private QuanLyThuCung.Swing.PlaceholderText placeholderText9;
@@ -340,11 +352,8 @@ public class DichVuForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel6;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel8;
     private QuanLyThuCung.Swing.CustomTable tbDichVu;
-    private QuanLyThuCung.Swing.PlaceholderText txtGioiTinh;
     private QuanLyThuCung.Swing.PlaceholderText txtLoaiThuCung;
     private QuanLyThuCung.Swing.PlaceholderText txtMaKH;
-    private QuanLyThuCung.Swing.PlaceholderText txtNgayGui;
-    private QuanLyThuCung.Swing.PlaceholderText txtNgayTra;
     private QuanLyThuCung.Swing.PlaceholderText txtTenPet;
     private QuanLyThuCung.Swing.PlaceholderText txtTienDichVu;
     // End of variables declaration//GEN-END:variables
