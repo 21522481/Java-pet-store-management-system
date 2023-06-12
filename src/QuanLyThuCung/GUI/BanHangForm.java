@@ -46,7 +46,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchDANHMUC(model);
-        
+        dataAccess.closeConnection();
         TableActionEvent event2 = new TableActionEvent() {
             @Override
             public void onAdd(int row) {}

@@ -52,6 +52,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchProduct(model);
+        
+        dataAccess.closeConnection();
     }
 
  
