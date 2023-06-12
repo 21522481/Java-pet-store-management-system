@@ -1,8 +1,6 @@
 package QuanLyThuCung.GUI;
 
-import QuanLyThuCung.Swing.TableActionEvent;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.table.DefaultTableModel;
 
 public class KhachHangForm extends javax.swing.JInternalFrame {
 
@@ -13,22 +11,6 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
         
-        TableActionEvent event = new TableActionEvent() {
-            @Override
-            public void onAdd(int row) {}
-            
-            @Override
-            public void onEdit(int row) {}
-
-            @Override
-            public void onDelete(int row) {
-                if (tbKhachHang.isEditing()) {
-                    tbKhachHang.getCellEditor().stopCellEditing();
-                }
-                DefaultTableModel model = (DefaultTableModel) tbKhachHang.getModel();
-                model.removeRow(row);
-            }
-        };
         
     }
 

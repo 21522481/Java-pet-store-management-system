@@ -1,7 +1,6 @@
 package QuanLyThuCung.GUI;
 
 import QuanLyThuCung.Swing.RoundJPanel;
-import QuanLyThuCung.Swing.TableActionEvent;
 import SQL.DataAccess;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -20,44 +19,10 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
         
-        TableActionEvent event1 = new TableActionEvent() {
-            @Override
-            public void onAdd(int row) {}
-            
-            @Override
-            public void onEdit(int row) {}
-
-            @Override
-            public void onDelete(int row) {
-                if (tbGioHang.isEditing()) {
-                    tbGioHang.getCellEditor().stopCellEditing();
-                }
-                DefaultTableModel model = (DefaultTableModel) tbGioHang.getModel();
-                model.removeRow(row);
-            }
-        };
-        
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchDANHMUC(model);
         dataAccess.closeConnection();
-        TableActionEvent event2 = new TableActionEvent() {
-            @Override
-            public void onAdd(int row) {}
-            
-            @Override
-            public void onEdit(int row) {}
-
-            @Override
-            public void onDelete(int row) {
-                if (tbSanPham.isEditing()) {
-                    tbSanPham.getCellEditor().stopCellEditing();
-                }
-                DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-                model.removeRow(row);
-            }
-        };
-        
     }
     
     @SuppressWarnings("unchecked")

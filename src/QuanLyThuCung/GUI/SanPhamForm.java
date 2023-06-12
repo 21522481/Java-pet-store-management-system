@@ -1,6 +1,5 @@
 package QuanLyThuCung.GUI;
 
-import QuanLyThuCung.Swing.TableActionEvent;
 import SQL.DataAccess;
 import com.sun.jdi.connect.spi.Connection;
 import java.sql.PreparedStatement;
@@ -22,25 +21,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         setOpaque(false);
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
-        ui.setNorthPane(null);
-        
-        TableActionEvent event = new TableActionEvent() {
-            @Override
-            public void onAdd(int row) {}
-            
-            @Override
-            public void onEdit(int row) {}
-
-            @Override
-            public void onDelete(int row) {
-                if (tbSanPham.isEditing()) {
-                    tbSanPham.getCellEditor().stopCellEditing();
-                }
-                DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-                model.removeRow(row);
-            }
-        };
-        
+        ui.setNorthPane(null);      
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchProduct(model);
