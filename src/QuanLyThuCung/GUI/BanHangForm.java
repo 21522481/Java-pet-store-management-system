@@ -6,15 +6,19 @@ import QuanLyThuCung.Swing.TableAddActionCellEditor;
 import QuanLyThuCung.Swing.TableAddActionCellRender;
 import QuanLyThuCung.Swing.TableDeleteActionCellEditor;
 import QuanLyThuCung.Swing.TableDeleteActionCellRender;
+import SQL.DataAccess;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 
 public class BanHangForm extends javax.swing.JInternalFrame {
-
+    private DataAccess dataAccess;
+    
     public BanHangForm() {
         initComponents();
         setOpaque(false);
+        
+        dataAccess = new DataAccess();
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
@@ -39,6 +43,9 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         
         tbGioHang.getColumnModel().getColumn(3).setCellRenderer(new TableDeleteActionCellRender());
         tbGioHang.getColumnModel().getColumn(3).setCellEditor(new TableDeleteActionCellEditor(event1));
+        
+        DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
+        dataAccess.fetchDANHMUC(model);
         
         TableActionEvent event2 = new TableActionEvent() {
             @Override
@@ -124,26 +131,14 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         tbSanPham.fixTable(jScrollPane3);
         tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng"
+                "Mã danh mục", "Loại", "Tên", "Ngày sản xuất", "Hạn sử dụng", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá", "Chức năng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

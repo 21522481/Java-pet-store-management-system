@@ -113,6 +113,34 @@ public class DataAccess {
         }
     
 }
+    public void fetchDANHMUC(DefaultTableModel tableModel){
+        
+        String sql = "SELECT * FROM DANHMUC";
+        try {
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();
+            String row[] = new String[10];
+            DefaultTableModel df;
+            df = (DefaultTableModel)tableModel;
+            while(rs.next()){
+                row[0] = rs.getString(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
+                row[7] = rs.getString(8);
+                row[8] = rs.getString(9);
+                row[9] = rs.getString(10);
+                
+                df.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+}
 
     public Connection getConnection() {
         return connection;
