@@ -88,7 +88,7 @@ public class DataAccess {
     private ResultSet rs;
     public void fetchProduct(DefaultTableModel tableModel){
         
-        String sql = "SELECT MADM, LOAI, TEN, NSX, HSD, KL, NG_GOC, SL, GIA FROM DANHMUC";
+        String sql = "SELECT MADM, LOAI, TEN, NSX, HSD, KL, NG_GOC, SL, GIA FROM DANHMUC WHERE GT IS NULL";
         try {
             pst = connection.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -111,5 +111,10 @@ public class DataAccess {
         } catch (SQLException ex) {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
 }
+
+    public Connection getConnection() {
+        return connection;
+    }
 }

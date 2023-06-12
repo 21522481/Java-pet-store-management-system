@@ -8,13 +8,19 @@ import QuanLyThuCung.Swing.TableActionEvent;
 import QuanLyThuCung.Swing.TableEditDeleteActionCellEditor;
 import QuanLyThuCung.Swing.TableEditDeleteActionCellRender;
 import SQL.DataAccess;
+import com.sun.jdi.connect.spi.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 public class SanPhamForm extends javax.swing.JInternalFrame {
 
     private DataAccess dataAccess;
-
+    
     public SanPhamForm() {
         initComponents();
         
@@ -382,8 +388,69 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+
+    private PreparedStatement pst;
+    private Connection con;
+    
     private void BtThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemSPActionPerformed
-        // TODO add your handling code here:
+            DataAccess data = new DataAccess();
+            // TODO add your handling code here:
+//            String row[] = new String[8];
+//            row[0] = txtTenSP.getText();
+//            row[1] = txtLoaiSP.getText();
+//            row[2] = txtNSX.getText();
+//            row[3] = txtHSD.getText();
+//            row[4] = txtTrongLuong.getText();
+//            row[5] = txtNguonGoc.getText();
+//            row[6] = txtSoLuong.getText();
+//            row[7] = txtGia.getText();
+            
+            DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
+            //model.addRow(row);
+        try {
+            String ten = txtTenSP.getText();
+            String loai = txtLoaiSP.getText();
+            String nsx = txtNSX.getText();
+            String hsd = txtHSD.getText();
+            String trongluong = txtTrongLuong.getText();
+            String nguongoc = txtNguonGoc.getText();
+            String sl = txtSoLuong.getText();
+            String gia = txtGia.getText();
+            
+            
+            pst = data.getConnection().prepareStatement("INSERT INTO DANHMUC (LOAI, TEN, NSX, HSD, KL, NG_GOC, SL, GIA) VALUES (?,?,?,?,?,?,?,?)");
+            
+            pst.setString(1, ten);
+            pst.setString(2, loai);
+            pst.setString(3, nsx);
+            pst.setString(4, hsd);
+            pst.setString(5, trongluong);
+            pst.setString(6, nguongoc);
+            pst.setString(7, sl);
+            pst.setString(8, gia);
+           
+            int k = pst.executeUpdate();
+            if(k==1){
+                JOptionPane.showMessageDialog(this, "Đã thêm mới vào cơ sở dữ liệu");
+                txtTenSP.setText("");
+                txtLoaiSP.setText("");
+                txtNSX.setText("");
+                txtHSD.setText("");
+                txtTrongLuong.setText("");
+                txtNguonGoc.setText("");
+                txtSoLuong.setText("");
+                txtGia.setText("");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Lỗi khi thêm mới");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        data.fetchProduct(model);
+            data.closeConnection();
     }//GEN-LAST:event_BtThemSPActionPerformed
 
     private void BtTimKiemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtTimKiemSPActionPerformed
