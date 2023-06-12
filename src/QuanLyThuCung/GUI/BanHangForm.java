@@ -64,8 +64,8 @@ public class BanHangForm extends javax.swing.JInternalFrame {
             }
         };
         
-        tbSanPham.getColumnModel().getColumn(3).setCellRenderer(new TableAddActionCellRender());
-        tbSanPham.getColumnModel().getColumn(3).setCellEditor(new TableAddActionCellEditor(event2));
+//        tbSanPham.getColumnModel().getColumn(3).setCellRenderer(new TableAddActionCellRender());
+//        tbSanPham.getColumnModel().getColumn(3).setCellEditor(new TableAddActionCellEditor(event2));
     }
     
     @SuppressWarnings("unchecked")
@@ -134,11 +134,11 @@ public class BanHangForm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã danh mục", "Loại", "Tên", "Ngày sản xuất", "Hạn sử dụng", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá", "Chức năng"
+                "Mã danh mục", "Loại", "Tên", "Ngày sản xuất", "Hạn sử dụng", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
