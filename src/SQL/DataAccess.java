@@ -3,6 +3,7 @@ package SQL;
 import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -95,12 +96,26 @@ public class DataAccess {
             String row[] = new String[9];
             DefaultTableModel df;
             df = (DefaultTableModel)tableModel;
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
             while(rs.next()){
                 row[0] = rs.getString(1);
                 row[1] = rs.getString(2);
                 row[2] = rs.getString(3);
-                row[3] = rs.getString(4);
-                row[4] = rs.getString(5);
+//                row[3] = rs.getString(4);
+//                row[4] = rs.getString(5);Date nsxDate = rs.getDate(4);
+                // Bỏ đi giờ, phút và giây của cột NSX
+            Date nsxDate = rs.getDate(4);
+            String nsxValue = dateFormat.format(nsxDate);
+            row[3] = nsxValue;
+
+            // Bỏ đi giờ, phút và giây của cột HSD
+            Date hsdDate = rs.getDate(5);
+            String hsdValue = dateFormat.format(hsdDate);
+            row[4] = hsdValue;
+
+                
                 row[5] = rs.getString(6);
                 row[6] = rs.getString(7);
                 row[7] = rs.getString(8);
@@ -115,6 +130,8 @@ public class DataAccess {
 }
     public void fetchDANHMUC(DefaultTableModel tableModel){
         
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
         String sql = "SELECT * FROM DANHMUC";
         try {
             pst = connection.prepareStatement(sql);
@@ -126,8 +143,14 @@ public class DataAccess {
                 row[0] = rs.getString(1);
                 row[1] = rs.getString(2);
                 row[2] = rs.getString(3);
-                row[3] = rs.getString(4);
-                row[4] = rs.getString(5);
+                Date nsxDate = rs.getDate(4);
+                String nsxValue = dateFormat.format(nsxDate);
+                row[3] = nsxValue;
+
+                // Bỏ đi giờ, phút và giây của cột HSD
+                Date hsdDate = rs.getDate(5);
+                String hsdValue = dateFormat.format(hsdDate);
+                row[4] = hsdValue;
                 row[5] = rs.getString(6);
                 row[6] = rs.getString(7);
                 row[7] = rs.getString(8);

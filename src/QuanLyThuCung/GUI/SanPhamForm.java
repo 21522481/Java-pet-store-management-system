@@ -4,6 +4,7 @@ import SQL.DataAccess;
 import com.sun.jdi.connect.spi.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -24,6 +25,9 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);      
+        
+        dcNSX.setDateFormatString("yyyy-MM-dd");
+        dcHSD.setDateFormatString("yyyy-MM-dd");
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchProduct(model);
@@ -180,6 +184,11 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
 
         BtSuaSP.setText("Sửa");
         BtSuaSP.setRadius(40);
+        BtSuaSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSuaSPActionPerformed(evt);
+            }
+        });
 
         txtSoLuong.setPlaceholder("Số lượng");
 
@@ -202,6 +211,11 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
 
         BtXoaSP.setText("Xóa");
         BtXoaSP.setRadius(40);
+        BtXoaSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtXoaSPActionPerformed(evt);
+            }
+        });
 
         txtMaSP.setPlaceholder("Mã sản phẩm");
         txtMaSP.setEditable(false);
@@ -357,6 +371,11 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbSanPhamMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbSanPham);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -399,19 +418,9 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
     
     private void BtThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemSPActionPerformed
             DataAccess data = new DataAccess();
-            // TODO add your handling code here:
-//            String row[] = new String[8];
-//            row[0] = txtTenSP.getText();
-//            row[1] = txtLoaiSP.getText();
-//            row[2] = txtNSX.getText();
-//            row[3] = txtHSD.getText();
-//            row[4] = txtTrongLuong.getText();
-//            row[5] = txtNguonGoc.getText();
-//            row[6] = txtSoLuong.getText();
-//            row[7] = txtGia.getText();
             
             DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-            //model.addRow(row);
+            
         try {
             String ten = txtTenSP.getText();
             String loai = txtLoaiSP.getText();
@@ -422,17 +431,15 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             String sl = txtSoLuong.getText();
             String gia = txtGia.getText();
             
-            SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MMM-yy");
+            SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
             String nsxString = oracleDateFormat.format(nsx);
             String hsdString = oracleDateFormat.format(hsd);
-            // Sử dụng nsxString trong truy vấn INSERT
             
-
             
             pst = data.getConnection().prepareStatement("INSERT INTO DANHMUC (LOAI, TEN, NSX, HSD, KL, NG_GOC, SL, GIA) VALUES (?,?,?,?,?,?,?,?)");
             
-            pst.setString(1, ten);
-            pst.setString(2, loai);
+            pst.setString(1, loai);
+            pst.setString(2, ten);
             pst.setString(3, nsxString);
 //            pst.setString(3, nsx);
 //            pst.setString(4, hsd);
@@ -466,7 +473,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         data.fetchProduct(model);
-            data.closeConnection();
+        data.closeConnection();
     }//GEN-LAST:event_BtThemSPActionPerformed
 
     private void BtTimKiemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtTimKiemSPActionPerformed
@@ -476,6 +483,143 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
     private void txtGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiaActionPerformed
+
+    private void BtXoaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtXoaSPActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tbSanPham.getModel();
+        int indexTB = tbSanPham.getSelectedRow();
+        
+        DataAccess a = new DataAccess();
+        
+        
+        int ret = JOptionPane.showConfirmDialog(null,"M chắc chắn xóa chưa", "Chắn chắn chưa", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION){
+            if(indexTB < model.getRowCount() && indexTB >= 0)
+                 model.removeRow(indexTB);
+            String sql = "DELETE FROM DANHMUC WHERE MADM = ?";
+            try {
+                PreparedStatement pst = a.getConnection().prepareStatement(sql);
+                pst.setString(1, txtMaSP.getText());
+                pst.executeUpdate();
+                a.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        txtMaSP.setText("");
+        txtLoaiSP.setText("");
+        txtTenSP.setText("");
+        dcNSX.setDate(null);
+        dcHSD.setDate(null);
+        txtTrongLuong.setText("");
+        txtNguonGoc.setText("");
+        txtSoLuong.setText("");
+        txtGia.setText("");
+        
+        a.closeConnection();
+    }//GEN-LAST:event_BtXoaSPActionPerformed
+
+    private void tbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSanPhamMouseClicked
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        Date now = new Date();
+        txtMaSP.setText("");
+        txtLoaiSP.setText("");
+        txtTenSP.setText("");
+        dcNSX.setDate(null);        
+        dcHSD.setDate(null);
+        txtTrongLuong.setText("");
+        txtNguonGoc.setText("");
+        txtSoLuong.setText("");
+        txtGia.setText("");
+        DefaultTableModel tblModel = (DefaultTableModel) tbSanPham.getModel();
+        
+        int indexTB = tbSanPham.getSelectedRow();
+        
+        if(indexTB < tbSanPham.getRowCount() && indexTB >=0 ){
+            txtMaSP.setText(tbSanPham.getValueAt(indexTB, 0).toString());
+            txtLoaiSP.setText(tbSanPham.getValueAt(indexTB, 1).toString());
+            txtTenSP.setText(tbSanPham.getValueAt(indexTB, 2).toString());
+        
+             // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date nsxDate = dateFormat.parse(tbSanPham.getValueAt(indexTB, 3).toString());
+                Date hsdDate = dateFormat.parse(tbSanPham.getValueAt(indexTB, 4).toString());
+
+                // Đặt giá trị ngày tháng lên JDateChooser
+                dcNSX.setDate(nsxDate);
+                dcHSD.setDate(hsdDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            
+            txtTrongLuong.setText(tbSanPham.getValueAt(indexTB, 5).toString());
+            txtNguonGoc.setText(tbSanPham.getValueAt(indexTB, 6).toString());
+            txtSoLuong.setText(tbSanPham.getValueAt(indexTB, 7).toString());
+            txtGia.setText(tbSanPham.getValueAt(indexTB, 8).toString());
+        }
+    }//GEN-LAST:event_tbSanPhamMouseClicked
+
+    private void BtSuaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSuaSPActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
+        DataAccess a = new DataAccess();
+
+        String sql = "UPDATE DANHMUC SET LOAI = ?, TEN = ?, NSX = ?, HSD = ?, KL = ?, NG_GOC = ?, SL = ?, GIA = ? WHERE MADM = ? ";
+        
+        int index = tbSanPham.getSelectedRow();
+        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
+        try {
+            PreparedStatement pst = a.getConnection().prepareStatement(sql);
+            pst.setString(1, txtLoaiSP.getText());
+            pst.setString(2, txtTenSP.getText());
+            
+            Date nsxUtilDate = dcNSX.getDate();
+            java.sql.Date nsxSqlDate = new java.sql.Date(nsxUtilDate.getTime());
+            pst.setDate(3, nsxSqlDate);
+
+            java.util.Date hsdUtilDate = dcHSD.getDate();
+            java.sql.Date hsdSqlDate = new java.sql.Date(hsdUtilDate.getTime());
+            pst.setDate(4, hsdSqlDate);
+
+            pst.setString(5, txtTrongLuong.getText());
+            pst.setString(6, txtNguonGoc.getText());
+            pst.setInt(7, Integer.parseInt(txtSoLuong.getText()));
+            pst.setInt(8, Integer.parseInt(txtGia.getText()));
+            pst.setInt(9, Integer.parseInt((txtMaSP.getText())));
+            pst.executeUpdate();
+            
+            if (index < tbSanPham.getRowCount() && index >= 0) {
+                model.setValueAt(txtLoaiSP.getText(), index, 1);
+                model.setValueAt(txtTenSP.getText(), index, 2);
+                model.setValueAt(oracleDateFormat.format(dcNSX.getDate()), index, 3);
+                model.setValueAt(oracleDateFormat.format(dcHSD.getDate()), index, 4);
+                model.setValueAt(txtTrongLuong.getText(), index, 5);
+                model.setValueAt(txtNguonGoc.getText(), index, 6);
+                model.setValueAt(txtSoLuong.getText(), index, 7);
+                model.setValueAt(txtGia.getText(), index, 8);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tbSanPham.setModel(model);
+        
+        txtMaSP.setText("");
+        txtLoaiSP.setText("");
+        txtTenSP.setText("");
+        dcNSX.setDate(null);
+        dcHSD.setDate(null);
+        txtTrongLuong.setText("");
+        txtNguonGoc.setText("");
+        txtSoLuong.setText("");
+        txtGia.setText("");
+        
+        a.closeConnection();
+    }//GEN-LAST:event_BtSuaSPActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
