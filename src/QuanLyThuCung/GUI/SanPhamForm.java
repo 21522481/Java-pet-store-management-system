@@ -478,6 +478,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
 
     private void BtTimKiemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtTimKiemSPActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_BtTimKiemSPActionPerformed
 
     private void txtGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaActionPerformed
