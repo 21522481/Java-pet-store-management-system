@@ -298,6 +298,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         new MainForm();
+        this.dispose();
     }//GEN-LAST:event_btLoginActionPerformed
 
     private void cbSavePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSavePWActionPerformed
@@ -351,7 +352,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btLoginMouseClicked
-        this.dispose();
+//        this.dispose();
     }//GEN-LAST:event_btLoginMouseClicked
 
     public static void main(String args[]) {}
