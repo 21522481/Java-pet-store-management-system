@@ -4,6 +4,8 @@ import SQL.DataAccess;
 import com.sun.jdi.connect.spi.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,8 +26,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);      
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-//        dataAccess.fetchProduct(model);
-//        dataAccess.closeConnection();
+        dataAccess.fetchProduct(model);
+        dataAccess.closeConnection();
     }
 
  
@@ -413,20 +415,28 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         try {
             String ten = txtTenSP.getText();
             String loai = txtLoaiSP.getText();
-//            String nsx = txtNSX.getText();
-//            String hsd = txtHSD.getText();
+            Date nsx = dcNSX.getDate();
+            Date hsd = dcHSD.getDate();
             String trongluong = txtTrongLuong.getText();
             String nguongoc = txtNguonGoc.getText();
             String sl = txtSoLuong.getText();
             String gia = txtGia.getText();
             
+            SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MMM-yy");
+            String nsxString = oracleDateFormat.format(nsx);
+            String hsdString = oracleDateFormat.format(hsd);
+            // Sử dụng nsxString trong truy vấn INSERT
+            
+
             
             pst = data.getConnection().prepareStatement("INSERT INTO DANHMUC (LOAI, TEN, NSX, HSD, KL, NG_GOC, SL, GIA) VALUES (?,?,?,?,?,?,?,?)");
             
             pst.setString(1, ten);
             pst.setString(2, loai);
+            pst.setString(3, nsxString);
 //            pst.setString(3, nsx);
 //            pst.setString(4, hsd);
+            pst.setString(4, nsxString);
             pst.setString(5, trongluong);
             pst.setString(6, nguongoc);
             pst.setString(7, sl);
@@ -439,6 +449,10 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                 txtLoaiSP.setText("");
 //                txtNSX.setText("");
 //                txtHSD.setText("");
+                // Sau khi thêm mới vào cơ sở dữ liệu
+                dcNSX.setDate(null);
+                dcHSD.setDate(null);
+
                 txtTrongLuong.setText("");
                 txtNguonGoc.setText("");
                 txtSoLuong.setText("");
