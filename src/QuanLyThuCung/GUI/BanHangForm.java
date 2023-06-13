@@ -2,12 +2,18 @@ package QuanLyThuCung.GUI;
 
 import QuanLyThuCung.Swing.RoundJPanel;
 import SQL.DataAccess;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultCellEditor;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.JComboBox;
+import javax.swing.table.TableColumn;
 
 public class BanHangForm extends javax.swing.JInternalFrame {
     private DataAccess dataAccess;
+    private DefaultTableModel gioHangModel;
     
     public BanHangForm() {
         initComponents();
@@ -19,12 +25,29 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
         
+        gioHangModel = (DefaultTableModel) tbGioHang.getModel();
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-//        dataAccess.fetchDANHMUC(model);
-//        dataAccess.closeConnection();
+        dataAccess.fetchDANHMUC(model);
+        dataAccess.closeConnection();
     }
-    
+    //hàm tính tổng cộng giá tiền
+    private void calculateTotal() {
+        double total = 0;
+        for (int i = 0; i < gioHangModel.getRowCount(); i++) {
+            double thanhTien = Double.parseDouble(gioHangModel.getValueAt(i, 4).toString());
+            total += thanhTien;
+        }
+        lbTongCong.setText(String.valueOf(total));
+    }
+    //Hàm xóa 1 dòng
+    private void deleteSelectedRow() {
+    int selectedRow = tbGioHang.getSelectedRow();
+    if (selectedRow >= 0) {
+        gioHangModel.removeRow(selectedRow);
+        calculateTotal();
+    }
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,7 +63,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tbGioHang = new QuanLyThuCung.Swing.CustomTable();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbTongCong = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -96,12 +119,29 @@ public class BanHangForm extends javax.swing.JInternalFrame {
                 "Mã danh mục", "Loại", "Tên", "Ngày sản xuất", "Hạn sử dụng", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false
             };
 
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbSanPhamMouseClicked(evt);
+            }
+        });
+        tbSanPham.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                tbSanPhamComponentShown(evt);
             }
         });
         jScrollPane3.setViewportView(tbSanPham);
@@ -109,39 +149,86 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         tbGioHang.fixTable(jScrollPane4);
         tbGioHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng"
+                "Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Số lượng", "Thành tiền"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, true
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        // Tạo comboBox cho cột số lượng
+        TableColumn quantityColumn = tbGioHang.getColumnModel().getColumn(3);
+        JComboBox<Integer> quantityComboBox = new JComboBox<>();
+        for (int i = 1; i <= 10; i++) {
+            quantityComboBox.addItem(i);
+        }
+        quantityComboBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Xử lý sự kiện khi số lượng được chọn
+                int selectedQuantity = (int) quantityComboBox.getSelectedItem();
+                // Thực hiện hành động của bạn ở đây
+                // Ví dụ: Cập nhật dữ liệu trong bảng theo số lượng được chọn
+                int selectedRow=tbGioHang.getSelectedRow();
+                String StrGiaban = tbGioHang.getValueAt(selectedRow, 2).toString();
+
+                int Giaban= Integer.parseInt(StrGiaban);
+
+                String ThanhTien= String.valueOf(selectedQuantity*Giaban);
+
+                DefaultTableModel gioHangModel = (DefaultTableModel) tbGioHang.getModel();
+                gioHangModel.setValueAt(ThanhTien, selectedRow, 4);
+                // Tính tổng các thành tiền sau khi cập nhật
+                calculateTotal();
+            }
+        });
+        quantityColumn.setCellEditor(new DefaultCellEditor(quantityComboBox));
+        tbGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbGioHangMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tbGioHang);
+        if (tbGioHang.getColumnModel().getColumnCount() > 0) {
+            tbGioHang.getColumnModel().getColumn(0).setHeaderValue("Mã sản phẩm");
+            tbGioHang.getColumnModel().getColumn(1).setHeaderValue("Tên sản phẩm");
+            tbGioHang.getColumnModel().getColumn(2).setHeaderValue("Đơn giá");
+            tbGioHang.getColumnModel().getColumn(3).setHeaderValue("Số lượng");
+            tbGioHang.getColumnModel().getColumn(4).setHeaderValue("Thành tiền");
+        }
+        tbGioHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbGioHangMouseClicked(evt);
+            }
+        });
+
+        tbGioHang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                int keyCode = evt.getKeyCode();
+                if (keyCode == KeyEvent.VK_DELETE || keyCode == KeyEvent.VK_BACK_SPACE) {
+                    deleteSelectedRow();
+                }
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tổng cộng:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("0");
+        lbTongCong.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbTongCong.setText("0");
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(btXuatHD, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -150,7 +237,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         jDesktopPane1.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(lbTongCong, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -163,7 +250,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbTongCong, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btXuatHD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,7 +276,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
                     .addComponent(btXuatHD, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbTongCong, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16))
         );
 
@@ -215,6 +302,50 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         new XuatHoaDonForm();
     }//GEN-LAST:event_btXuatHDActionPerformed
 
+    private void tbSanPhamComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tbSanPhamComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbSanPhamComponentShown
+    
+    private void tbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSanPhamMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = tbSanPham.getSelectedRow();
+            if (selectedRow >= 0) {
+                // Lấy thông tin từ dòng đã chọn trong bảng tbSanPham
+                String maSanPham = tbSanPham.getValueAt(selectedRow, 0).toString();
+                String tenSanPham = tbSanPham.getValueAt(selectedRow, 2).toString();
+                String StrGiaban = tbSanPham.getValueAt(selectedRow, 9).toString();
+              
+              
+                //Chuyển StrGiaBan sang số nguyên
+              //  int Giaban=Integer.parseInt(StrGiaban);
+                
+                //Tính toán thành tiền= số lượng * giá bán
+                String ThanhTien = StrGiaban;
+                
+                
+                // Thêm thông tin vào bảng tbGioHang
+                // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+            boolean exists = false;
+            for (int i = 0; i < gioHangModel.getRowCount(); i++) {
+                String maSP = gioHangModel.getValueAt(i, 0).toString();
+                if (maSP.equals(maSanPham)) {
+                    exists = true;
+                    break;
+                }
+            }
+            
+            if (!exists) {
+                gioHangModel.addRow(new Object[]{maSanPham, tenSanPham, StrGiaban, 1, ThanhTien});
+                //Cập nhật lại tổng cộng
+                calculateTotal();     
+            }
+            }
+    }//GEN-LAST:event_tbSanPhamMouseClicked
+
+    private void tbGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGioHangMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbGioHangMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private QuanLyThuCung.Swing.RoundJButton2 btXuatHD;
@@ -222,10 +353,10 @@ public class BanHangForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lbTongCong;
     private QuanLyThuCung.Swing.PlaceholderText placeholderText1;
     private QuanLyThuCung.Swing.CustomTable tbGioHang;
     private QuanLyThuCung.Swing.CustomTable tbSanPham;
