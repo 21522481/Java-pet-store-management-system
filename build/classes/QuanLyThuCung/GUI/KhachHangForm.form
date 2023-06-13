@@ -81,7 +81,11 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="roundJPanel2" alignment="1" max="32767" attributes="0"/>
                       <Component id="roundJPanel3" alignment="1" max="32767" attributes="0"/>
-                      <Component id="roundJPanel4" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="roundJPanel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="roundJPanel4" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -112,6 +116,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="roundJPanel4" alignment="0" max="32767" attributes="0"/>
                       <Component id="roundJPanel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="roundJPanel5" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -233,7 +238,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtHoTen" max="32767" attributes="0"/>
+                      <Component id="txtHoTen" pref="148" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -301,6 +306,36 @@
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh"/>
           </Properties>
         </Component>
+        <Container class="QuanLyThuCung.Swing.RoundJPanel" name="roundJPanel5">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtMaKH" pref="148" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="txtMaKH" min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtMaKH">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtMaKH.setPlaceholder(&quot;M&#xe3; kh&#xe1;ch h&#xe0;ng&quot;);"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="QuanLyThuCung.Swing.RoundJPanel" name="roundJPanel25">
