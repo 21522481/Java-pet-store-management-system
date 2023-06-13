@@ -1,17 +1,25 @@
 package QuanLyThuCung.GUI;
 
+import SQL.DataAccess;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 public class KhachHangForm extends javax.swing.JInternalFrame {
 
     public KhachHangForm() {
+        DataAccess dataAccess = new DataAccess();
         initComponents();
         setOpaque(false);
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
         
-        
+        DefaultTableModel model = (DefaultTableModel) tbKhachHang.getModel();
+        dataAccess.fetchCustomer(model);
+        dataAccess.closeConnection();
     }
 
 
@@ -129,6 +137,11 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
 
         BtThemKH.setText("Thêm");
         BtThemKH.setRadius(40);
+        BtThemKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtThemKHActionPerformed(evt);
+            }
+        });
 
         dcNgaySinh.setBorder(null);
         dcNgaySinh.setBackground(new java.awt.Color(255, 255, 255));
@@ -212,30 +225,23 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
         tbKhachHang.fixTable(jScrollPane3);
         tbKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng"
+                "Mã khách hàng", "Họ tên", "Loại", "Ngày sinh", "Địa chỉ", "SĐT", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbKhachHangMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(tbKhachHang);
@@ -272,6 +278,16 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tbKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKhachHangMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_tbKhachHangMouseClicked
+
+    private void BtThemKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemKHActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BtThemKHActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
