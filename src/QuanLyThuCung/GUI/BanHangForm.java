@@ -353,13 +353,25 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbGioHangMouseClicked
     
-    public void search(String str){
-        DefaultTableModel model = (DefaultTableModel)tbSanPham.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
-        tbSanPham.setRowSorter(trs);
-        trs.setRowFilter(RowFilter.regexFilter(str));
-    }
+//    public void search(String str){
+//        DefaultTableModel model = (DefaultTableModel)tbSanPham.getModel();
+//        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+//        tbSanPham.setRowSorter(trs);
+//        String upcaseSearchString = str.toUpperCase();
+//        trs.setRowFilter(RowFilter.regexFilter(upcaseSearchString));
+//    }
+//    
     
+    public void search(String str) {
+    DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
+    TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+    tbSanPham.setRowSorter(trs);
+    
+    // Chuyển đổi chuỗi tìm kiếm và dữ liệu trong bảng thành chữ thường
+    String lowercaseSearchString = str.toLowerCase();
+    trs.setRowFilter(RowFilter.regexFilter("(?i)" + lowercaseSearchString));
+}
+
     private void placeholderText1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeholderText1KeyReleased
         // TODO add your handling code here:
         String searchString = placeholderText1.getText();
