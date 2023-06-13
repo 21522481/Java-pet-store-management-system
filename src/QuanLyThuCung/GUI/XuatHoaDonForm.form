@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -83,7 +83,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="698" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -174,7 +174,11 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTongTienActionPerformed"/>
+              </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Kh&#xf4;ng cho ph&#xe9;p ch&#x1ec9;nh s&#x1eed;a tr&#xea;n tr&#x1b0;&#x1edd;ng v&#x103;n b&#x1ea3;n jTextField&#xa;txtTongTien.setEditable(false);&#xa;&#xa;// &#x110;&#x1eb7;t v&#x1ecb; tr&#xed; con tr&#x1ecf; v&#xe0;o v&#x1ecb; tr&#xed; kh&#xf4;ng h&#x1ee3;p l&#x1ec7; (v&#xed; d&#x1ee5;: &#x111;&#x1ea7;u v&#x103;n b&#x1ea3;n)&#xa;txtTongTien.setCaretPosition(0);"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTongTien.setOpaque(false);"/>
               </AuxValues>
             </Component>
@@ -201,7 +205,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMaKH" pref="228" max="32767" attributes="0"/>
+                      <Component id="txtSDT" pref="228" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -210,14 +214,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMaKH" max="32767" attributes="0"/>
+                      <Component id="txtSDT" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtMaKH">
+            <Component class="javax.swing.JTextField" name="txtSDT">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
@@ -229,8 +233,12 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSDTActionPerformed"/>
+              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtMaKH.setOpaque(false);"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtSDT.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        txtSDTActionPerformed(evt);&#xa;    }&#xa;});"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtSDT.setOpaque(false);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -246,7 +254,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Color(5, 69, 89, 68)" type="code"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="M&#xe3; KH"/>
+            <Property name="text" type="java.lang.String" value="S&#x110;T"/>
           </Properties>
         </Component>
         <Component class="QuanLyThuCung.Swing.RoundJButton2" name="btXacNhanHD">
@@ -414,6 +422,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtMaGG.setEditable(false);"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtMaGG.setOpaque(false);"/>
               </AuxValues>
             </Component>
@@ -482,7 +491,11 @@
                   <Border info="null"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTenKHActionPerformed"/>
+              </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="txtTenKH.setEditable(false);"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTenKH.setOpaque(false);"/>
               </AuxValues>
             </Component>

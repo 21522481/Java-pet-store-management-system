@@ -293,6 +293,12 @@ public class LoginForm extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLoginActionPerformed(evt);
+            }
+        });
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, -1, 960));
 
         pack();
@@ -317,7 +323,6 @@ public class LoginForm extends javax.swing.JFrame {
           if(!rs.next()){
               JOptionPane.showMessageDialog(null, "sai ID và Mật khẩu");
           }else{
-              JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
               this.dispose();
                 new MainForm();
           }

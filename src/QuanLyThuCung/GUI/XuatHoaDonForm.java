@@ -37,7 +37,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         txtTongTien = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         roundJPanel1 = new QuanLyThuCung.Swing.RoundJPanel();
-        txtMaKH = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btXacNhanHD = new QuanLyThuCung.Swing.RoundJButton2();
         BtInHD = new QuanLyThuCung.Swing.RoundJButton2();
@@ -67,6 +67,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         txtTongTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTongTien.setForeground(new java.awt.Color(5, 69, 89, 68));
         txtTongTien.setBorder(null);
+        txtTongTien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTongTienActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout roundJPanel2Layout = new javax.swing.GroupLayout(roundJPanel2);
         roundJPanel2.setLayout(roundJPanel2Layout);
@@ -85,15 +90,26 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        // Không cho phép chỉnh sửa trên trường văn bản jTextField
+        txtTongTien.setEditable(false);
+
+        // Đặt vị trí con trỏ vào vị trí không hợp lệ (ví dụ: đầu văn bản)
+        txtTongTien.setCaretPosition(0);
+
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(5, 69, 89, 68));
         jLabel2.setText("Tổng tiền");
 
-        txtMaKH.setOpaque(false);
-        txtMaKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtMaKH.setForeground(new java.awt.Color(5, 69, 89, 68));
-        txtMaKH.setBorder(null);
+        txtSDT.setOpaque(false);
+        txtSDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSDT.setForeground(new java.awt.Color(5, 69, 89, 68));
+        txtSDT.setBorder(null);
+        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSDTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout roundJPanel1Layout = new javax.swing.GroupLayout(roundJPanel1);
         roundJPanel1.setLayout(roundJPanel1Layout);
@@ -101,21 +117,27 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
             roundJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundJPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(txtSDT, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel1Layout.setVerticalGroup(
             roundJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtMaKH)
+                .addComponent(txtSDT)
                 .addContainerGap())
         );
+
+        txtSDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSDTActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(5, 69, 89, 68));
-        jLabel1.setText("Mã KH");
+        jLabel1.setText("SĐT");
 
         btXacNhanHD.setText("Xác nhận");
         btXacNhanHD.setRadius(45);
@@ -215,6 +237,8 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtMaGG.setEditable(false);
+
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(5, 69, 89, 68));
@@ -229,6 +253,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         txtTenKH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtTenKH.setForeground(new java.awt.Color(5, 69, 89, 68));
         txtTenKH.setBorder(null);
+        txtTenKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenKHActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout roundJPanel5Layout = new javax.swing.GroupLayout(roundJPanel5);
         roundJPanel5.setLayout(roundJPanel5Layout);
@@ -246,6 +275,8 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                 .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txtTenKH.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -280,7 +311,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                             .addComponent(roundJPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(roundJPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(roundJPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(698, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,6 +366,22 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btHuyHDActionPerformed
 
+    private void txtTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenKHActionPerformed
+        // TODO add your handling code here:
+        txtTenKH.setEditable(false);
+    }//GEN-LAST:event_txtTenKHActionPerformed
+
+    private void txtTongTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongTienActionPerformed
+        // TODO add your handling code here:
+        txtTongTien.setEditable(false);
+    }//GEN-LAST:event_txtTongTienActionPerformed
+
+    private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
+        // TODO add your handling code here:
+         String sdt = txtSDT.getText();
+         txtTenKH.setText(sdt);
+    }//GEN-LAST:event_txtSDTActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -356,7 +403,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel3;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel5;
     private javax.swing.JTextField txtMaGG;
-    private javax.swing.JTextField txtMaKH;
+    private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTongTien;
     // End of variables declaration//GEN-END:variables
