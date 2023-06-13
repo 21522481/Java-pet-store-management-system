@@ -1,11 +1,21 @@
 package QuanLyThuCung.GUI;
 
+import SQL.DataAccess;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 public class DichVuForm extends javax.swing.JInternalFrame {
 
-
+    private DataAccess dataAccess;
+    private PreparedStatement pst;
+    private Connection con;
+    
     public DichVuForm() {
         initComponents();
         setOpaque(false);
@@ -13,7 +23,18 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
         
-
+        dataAccess = new DataAccess();
+        
+        DefaultTableModel model = (DefaultTableModel) tbDichVu.getModel();
+        String tieude[] = {"Số phiếu gửi", "Tên pet", "Ngày gửi", "Ngày trả", "Loại pet", "Giới tính", "Tiền dịch vụ", "Mã khách hàng"};
+        model.setColumnIdentifiers(tieude);
+        tbDichVu.setModel(model);
+        
+        dcNgayGui.setDateFormatString("yyyy-MM-dd");
+        dcNgayTra.setDateFormatString("yyyy-MM-dd");
+        
+        dataAccess.fetchDichVu(model);
+        dataAccess.closeConnection();
         
     }
 
@@ -29,7 +50,7 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         roundJPanel1 = new QuanLyThuCung.Swing.RoundJPanel();
         txtTenPet = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel2 = new QuanLyThuCung.Swing.RoundJPanel();
-        txtLoaiThuCung = new QuanLyThuCung.Swing.PlaceholderText();
+        txtLoaiPet = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel4 = new QuanLyThuCung.Swing.RoundJPanel();
         txtMaKH = new QuanLyThuCung.Swing.PlaceholderText();
         BtThemDV = new QuanLyThuCung.Swing.RoundJButton2();
@@ -42,6 +63,8 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbGioiTinh = new javax.swing.JComboBox<>();
+        roundJPanel5 = new QuanLyThuCung.Swing.RoundJPanel();
+        txtSoPhieuGui = new QuanLyThuCung.Swing.PlaceholderText();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbDichVu = new QuanLyThuCung.Swing.CustomTable();
 
@@ -96,7 +119,7 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        txtLoaiThuCung.setPlaceholder("Loại pet");
+        txtLoaiPet.setPlaceholder("Loại pet");
 
         javax.swing.GroupLayout roundJPanel2Layout = new javax.swing.GroupLayout(roundJPanel2);
         roundJPanel2.setLayout(roundJPanel2Layout);
@@ -104,14 +127,14 @@ public class DichVuForm extends javax.swing.JInternalFrame {
             roundJPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                .addComponent(txtLoaiPet, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel2Layout.setVerticalGroup(
             roundJPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLoaiPet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -136,9 +159,19 @@ public class DichVuForm extends javax.swing.JInternalFrame {
 
         BtThemDV.setText("Thêm");
         BtThemDV.setRadius(40);
+        BtThemDV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtThemDVActionPerformed(evt);
+            }
+        });
 
         BtSuaDV.setText("Sửa");
         BtSuaDV.setRadius(40);
+        BtSuaDV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSuaDVActionPerformed(evt);
+            }
+        });
 
         txtTienDichVu.setPlaceholder("Tiền dịch vụ");
 
@@ -161,6 +194,11 @@ public class DichVuForm extends javax.swing.JInternalFrame {
 
         BtXoaDV.setText("Xóa");
         BtXoaDV.setRadius(40);
+        BtXoaDV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtXoaDVActionPerformed(evt);
+            }
+        });
 
         dcNgayGui.setForeground(new java.awt.Color(82, 109, 130));
 
@@ -181,18 +219,41 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         cbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn giới tính", "Nam", "Nữ" }));
         cbGioiTinh.setBorder(null);
 
+        txtSoPhieuGui.setPlaceholder("Số phiếu nhập");
+        txtSoPhieuGui.setEditable(false);
+
+        javax.swing.GroupLayout roundJPanel5Layout = new javax.swing.GroupLayout(roundJPanel5);
+        roundJPanel5.setLayout(roundJPanel5Layout);
+        roundJPanel5Layout.setHorizontalGroup(
+            roundJPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtSoPhieuGui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        roundJPanel5Layout.setVerticalGroup(
+            roundJPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSoPhieuGui, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(roundJPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(roundJPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(roundJPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(roundJPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(46, 46, 46)
-                        .addComponent(cbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(roundJPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbGioiTinh, javax.swing.GroupLayout.Alignment.TRAILING, 0, 150, Short.MAX_VALUE)))
                     .addComponent(roundJPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +283,8 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(roundJPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roundJPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(roundJPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roundJPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(roundJPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,30 +308,23 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         tbDichVu.fixTable(jScrollPane3);
         tbDichVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng", "Title 5"
+                "Title 1", "Title 2", "Title 3", "Chức năng", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDichVuMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(tbDichVu);
@@ -311,6 +366,183 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtTimKiemDVActionPerformed
 
+    private void BtThemDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemDVActionPerformed
+        DataAccess data = new DataAccess();
+            
+            DefaultTableModel model = (DefaultTableModel) tbDichVu.getModel();
+            
+        try {
+            String ten = txtTenPet.getText();
+            java.util.Date ngui  = dcNgayGui.getDate();
+            java.util.Date nnhan  = dcNgayTra.getDate();
+            String loai  = txtLoaiPet.getText();
+            String gioiTinh = cbGioiTinh.getSelectedItem().toString();
+            String gia = txtTienDichVu.getText();
+            String ma = txtMaKH.getText();
+            
+            SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+            String ngString = oracleDateFormat.format(ngui);
+            String nnString = oracleDateFormat.format(nnhan);
+            
+            
+            pst = data.getConnection().prepareStatement("INSERT INTO GUITHUCUNG (TEN, NGAYGUI, NGAYTRA, LOAI, GIOITINH, GIA, MAKH) VALUES (?,?,?,?,?,?,?)");
+            
+            pst.setString(1, ten);
+            pst.setString(2, ngString);
+            pst.setString(3, nnString);
+            pst.setString(4, loai);
+            pst.setString(5, gioiTinh);
+            pst.setString(6, gia);
+            pst.setString(7, ma);
+           
+            int k = pst.executeUpdate();
+            if(k==1){
+                JOptionPane.showMessageDialog(this, "Đã thêm mới vào cơ sở dữ liệu");
+                txtTenPet.setText("");
+                dcNgayGui.setDate(null);
+                dcNgayTra.setDate(null);
+
+                txtLoaiPet.setText("");
+                cbGioiTinh.setSelectedItem("Chọn giới tính");
+                txtTienDichVu.setText("");
+                txtMaKH.setText("");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Lỗi khi thêm mới");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        data.fetchDichVu(model);
+        data.closeConnection();
+    }//GEN-LAST:event_BtThemDVActionPerformed
+
+    private void tbDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDichVuMouseClicked
+//        txtTenPet.setText("");
+//        dcNgayGui.setDate(null);        
+//        dcNgayTra.setDate(null);
+//        txtLoaiPet.setText("");
+//        cbGioiTinh.setSelectedItem("Chọn giới tính");
+//        txtTienDichVu.setText("");
+//        txtMaKH.setText("");
+        
+        DefaultTableModel tblModel = (DefaultTableModel) tbDichVu.getModel();
+        
+        int indexTB = tbDichVu.getSelectedRow();
+        
+        if(indexTB < tblModel.getRowCount() && indexTB >=0 ){
+            txtSoPhieuGui.setText(tbDichVu.getValueAt(indexTB, 0).toString());
+            txtTenPet.setText(tbDichVu.getValueAt(indexTB, 1).toString());
+        
+             // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                java.util.Date ngGui = dateFormat.parse(tbDichVu.getValueAt(indexTB, 2).toString());
+                java.util.Date ngTra = dateFormat.parse(tbDichVu.getValueAt(indexTB, 3).toString());
+
+                // Đặt giá trị ngày tháng lên JDateChooser
+                dcNgayGui.setDate(ngGui);
+                dcNgayTra.setDate(ngTra);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            
+            txtLoaiPet.setText(tbDichVu.getValueAt(indexTB, 4).toString());
+            cbGioiTinh.setSelectedItem(tbDichVu.getValueAt(indexTB, 5).toString());
+            txtTienDichVu.setText(tbDichVu.getValueAt(indexTB, 6).toString());
+            txtMaKH.setText(tbDichVu.getValueAt(indexTB, 7).toString());
+        }
+    }//GEN-LAST:event_tbDichVuMouseClicked
+
+    private void BtSuaDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSuaDVActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tbDichVu.getModel();
+        DataAccess a = new DataAccess();
+
+        String sql = "UPDATE GUITHUCUNG SET TEN = ?, NGAYGUI = ?, NGAYTRA = ?, LOAI = ?, GIOITINH = ?, GIA = ? WHERE MAKH = ? ";
+        
+        int index = tbDichVu.getSelectedRow();
+        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
+        try {
+            PreparedStatement pst = a.getConnection().prepareStatement(sql);
+            pst.setString(1, txtTenPet.getText());
+            
+            java.util.Date nsxUtilDate = dcNgayGui.getDate();
+            java.sql.Date nsxSqlDate = new java.sql.Date(nsxUtilDate.getTime());
+            pst.setDate(2, nsxSqlDate);
+
+            java.util.Date hsdUtilDate = dcNgayTra.getDate();
+            java.sql.Date hsdSqlDate = new java.sql.Date(hsdUtilDate.getTime());
+            pst.setDate(3, hsdSqlDate);
+
+            pst.setString(4, txtLoaiPet.getText());
+            pst.setString(5, cbGioiTinh.getSelectedItem().toString());
+            pst.setInt(6, Integer.parseInt(txtTienDichVu.getText()));
+            pst.setString(7, txtMaKH.getText());
+            pst.executeUpdate();
+            
+            if (index < tbDichVu.getRowCount() && index >= 0) {
+                model.setValueAt(txtTenPet.getText(), index, 1);
+                model.setValueAt(oracleDateFormat.format(dcNgayGui.getDate()), index, 2);
+                model.setValueAt(oracleDateFormat.format(dcNgayTra.getDate()), index, 3);
+                model.setValueAt(txtLoaiPet.getText(), index, 4);
+                model.setValueAt(cbGioiTinh.getSelectedItem(), index, 5);
+                model.setValueAt(txtTienDichVu.getText(), index, 6);
+                model.setValueAt(txtMaKH.getText(), index, 7);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tbDichVu.setModel(model);
+        
+        txtSoPhieuGui.setText("");
+        txtTenPet.setText("");
+        dcNgayGui.setDate(null);
+        dcNgayTra.setDate(null);
+        txtLoaiPet.setText("");
+        cbGioiTinh.setSelectedItem("Chọn giới tính");
+        txtTienDichVu.setText("");
+        txtMaKH.setText("");
+        
+        a.closeConnection();
+    }//GEN-LAST:event_BtSuaDVActionPerformed
+
+    private void BtXoaDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtXoaDVActionPerformed
+        DefaultTableModel model = (DefaultTableModel)tbDichVu.getModel();
+        int indexTB = tbDichVu.getSelectedRow();
+        
+        DataAccess a = new DataAccess();
+        
+        
+        int ret = JOptionPane.showConfirmDialog(null,"M chắc chắn xóa chưa", "Chắn chắn chưa", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION){
+            if(indexTB < model.getRowCount() && indexTB >= 0)
+                 model.removeRow(indexTB);
+            String sql = "DELETE FROM GUITHUCUNG WHERE SOPHIEUGUI = ?";
+            try {
+                PreparedStatement pst = a.getConnection().prepareStatement(sql);
+                pst.setString(1, txtSoPhieuGui.getText());
+                pst.executeUpdate();
+                a.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        txtSoPhieuGui.setText("");
+        txtTenPet.setText("");
+        dcNgayGui.setDate(null);        
+        dcNgayTra.setDate(null);
+        txtLoaiPet.setText("");
+        cbGioiTinh.setSelectedItem("Chọn giới tính");
+        txtTienDichVu.setText("");
+        txtMaKH.setText("");
+        
+        a.closeConnection();
+    }//GEN-LAST:event_BtXoaDVActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private QuanLyThuCung.Swing.RoundJButton2 BtSuaDV;
@@ -330,9 +562,11 @@ public class DichVuForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel25;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel3;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel4;
+    private QuanLyThuCung.Swing.RoundJPanel roundJPanel5;
     private QuanLyThuCung.Swing.CustomTable tbDichVu;
-    private QuanLyThuCung.Swing.PlaceholderText txtLoaiThuCung;
+    private QuanLyThuCung.Swing.PlaceholderText txtLoaiPet;
     private QuanLyThuCung.Swing.PlaceholderText txtMaKH;
+    private QuanLyThuCung.Swing.PlaceholderText txtSoPhieuGui;
     private QuanLyThuCung.Swing.PlaceholderText txtTenPet;
     private QuanLyThuCung.Swing.PlaceholderText txtTienDichVu;
     // End of variables declaration//GEN-END:variables
