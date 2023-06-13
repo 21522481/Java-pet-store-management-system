@@ -7,8 +7,11 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.*;
-
 
 public class LoginForm extends javax.swing.JFrame {
 
@@ -297,8 +300,30 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
-        new MainForm();
-        this.dispose();
+        String ID = txtID.getText();
+    char[] pass = txtPassword.getPassword();
+    
+   try{
+          Class.forName("oracle.jdbc.OracleDriver");
+          String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+          String username="C##ThuCungFinal";
+          String password="userpass";
+          Connection conn= DriverManager.getConnection(url, username, password);
+          String sqlquery = "SELECT * FROM TAIKHOAN WHERE \"MANV\"=? AND \"MK\"=?";
+          PreparedStatement pst = conn.prepareStatement(sqlquery);
+          pst.setString(1,ID);
+          pst.setString(2, String.valueOf(pass));
+          ResultSet rs=pst.executeQuery();
+          if(!rs.next()){
+              JOptionPane.showMessageDialog(null, "sai ID và Mật khẩu");
+          }else{
+              JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
+              this.dispose();
+                new MainForm();
+          }
+      }catch(Exception e){
+          JOptionPane.showMessageDialog(null, e);
+      }
     }//GEN-LAST:event_btLoginActionPerformed
 
     private void cbSavePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSavePWActionPerformed

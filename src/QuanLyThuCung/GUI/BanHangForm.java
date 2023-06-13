@@ -9,7 +9,9 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
+import javax.swing.RowFilter;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableRowSorter;
 
 public class BanHangForm extends javax.swing.JInternalFrame {
     private DataAccess dataAccess;
@@ -74,6 +76,11 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(0, 680));
 
         placeholderText1.setPlaceholder("Tìm kiếm");
+        placeholderText1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                placeholderText1KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -345,7 +352,23 @@ public class BanHangForm extends javax.swing.JInternalFrame {
     private void tbGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGioHangMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tbGioHangMouseClicked
+    
+    public void search(String str){
+        DefaultTableModel model = (DefaultTableModel)tbSanPham.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tbSanPham.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(str));
+    }
+    
+    private void placeholderText1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeholderText1KeyReleased
+        // TODO add your handling code here:
+        String searchString = placeholderText1.getText();
+        search(searchString);
+    }//GEN-LAST:event_placeholderText1KeyReleased
 
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private QuanLyThuCung.Swing.RoundJButton2 btXuatHD;

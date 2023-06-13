@@ -143,14 +143,16 @@ public class DataAccess {
                 row[0] = rs.getString(1);
                 row[1] = rs.getString(2);
                 row[2] = rs.getString(3);
-                Date nsxDate = rs.getDate(4);
-                String nsxValue = dateFormat.format(nsxDate);
-                row[3] = nsxValue;
-
-                // Bỏ đi giờ, phút và giây của cột HSD
-                Date hsdDate = rs.getDate(5);
-                String hsdValue = dateFormat.format(hsdDate);
-                row[4] = hsdValue;
+//                Date nsxDate = rs.getDate(4);
+//                String nsxValue = dateFormat.format(nsxDate);
+//                row[3] = nsxValue;
+//
+//                // Bỏ đi giờ, phút và giây của cột HSD
+//                Date hsdDate = rs.getDate(5);
+//                String hsdValue = dateFormat.format(hsdDate);
+//                row[4] = hsdValue;
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
                 row[5] = rs.getString(6);
                 row[6] = rs.getString(7);
                 row[7] = rs.getString(8);

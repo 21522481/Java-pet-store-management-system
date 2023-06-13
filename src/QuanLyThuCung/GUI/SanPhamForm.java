@@ -10,8 +10,10 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class SanPhamForm extends javax.swing.JInternalFrame {
 
@@ -328,6 +330,11 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         );
 
         placeholderText9.setPlaceholder("Tìm kiếm");
+        placeholderText9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                placeholderText9KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout roundJPanel25Layout = new javax.swing.GroupLayout(roundJPanel25);
         roundJPanel25.setLayout(roundJPanel25Layout);
@@ -476,6 +483,14 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         data.closeConnection();
     }//GEN-LAST:event_BtThemSPActionPerformed
 
+    public void search(String str){
+        DefaultTableModel model = (DefaultTableModel)tbSanPham.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tbSanPham.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(str));
+    }
+    
+    
     private void BtTimKiemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtTimKiemSPActionPerformed
         // TODO add your handling code here:
         
@@ -621,6 +636,12 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         
         a.closeConnection();
     }//GEN-LAST:event_BtSuaSPActionPerformed
+
+    private void placeholderText9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeholderText9KeyReleased
+        // TODO add your handling code here:
+        String searchString = placeholderText9.getText();
+        search(searchString);
+    }//GEN-LAST:event_placeholderText9KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
