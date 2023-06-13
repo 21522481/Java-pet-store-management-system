@@ -115,6 +115,7 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btLogin.setContentAreaFilled(false);
         btLogin.setFocusable(false);
@@ -147,6 +148,7 @@ public class LoginForm extends javax.swing.JFrame {
                 btLoginActionPerformed(evt);
             }
         });
+        jPanel1.add(btLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 540, 100, 45));
 
         cbSavePW.setFocusPainted(false);
         cbSavePW.setBackground(new java.awt.Color(255, 255, 255));
@@ -158,6 +160,7 @@ public class LoginForm extends javax.swing.JFrame {
                 cbSavePWActionPerformed(evt);
             }
         });
+        jPanel1.add(cbSavePW, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 480, -1, -1));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(410, 45));
 
@@ -198,6 +201,8 @@ public class LoginForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 360, -1, -1));
+
         lbForgotPW.setForeground(new java.awt.Color(5, 69, 89, 100));
         lbForgotPW.setText("Forgot your password?");
         lbForgotPW.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -206,6 +211,7 @@ public class LoginForm extends javax.swing.JFrame {
                 lbForgotPWMouseClicked(evt);
             }
         });
+        jPanel1.add(lbForgotPW, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 490, -1, -1));
 
         jPanel5.setPreferredSize(new java.awt.Dimension(410, 45));
 
@@ -247,51 +253,11 @@ public class LoginForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 430, -1, -1));
+
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QuanLyThuCung/GUI/background.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(396, 396, 396)
-                .addComponent(lbForgotPW))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(cbSavePW))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(256, 256, 256)
-                .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1120, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(360, 360, 360)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(490, 490, 490)
-                .addComponent(lbForgotPW))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(480, 480, 480)
-                .addComponent(cbSavePW))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(540, 540, 540)
-                .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(430, 430, 430)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1120, 760));
 
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
