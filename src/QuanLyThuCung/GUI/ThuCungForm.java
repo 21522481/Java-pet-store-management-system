@@ -23,8 +23,6 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         roundJPanel1 = new QuanLyThuCung.Swing.RoundJPanel();
         txtGiong = new QuanLyThuCung.Swing.PlaceholderText();
-        roundJPanel2 = new QuanLyThuCung.Swing.RoundJPanel();
-        cbGioiTinh = new javax.swing.JComboBox<>();
         roundJPanel4 = new QuanLyThuCung.Swing.RoundJPanel();
         txtLoaiThuCung = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel5 = new QuanLyThuCung.Swing.RoundJPanel();
@@ -38,6 +36,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         roundJPanel3 = new QuanLyThuCung.Swing.RoundJPanel();
         txtGia = new QuanLyThuCung.Swing.PlaceholderText();
         BtThemGui = new QuanLyThuCung.Swing.RoundJButton2();
+        cbGioiTinh = new javax.swing.JComboBox<>();
         roundJPanel25 = new QuanLyThuCung.Swing.RoundJPanel();
         placeholderText9 = new QuanLyThuCung.Swing.PlaceholderText();
         BtTimKiemGui = new QuanLyThuCung.Swing.RoundJButton1();
@@ -69,30 +68,6 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        cbGioiTinh.setOpaque(false);
-        cbGioiTinh.setBackground(new java.awt.Color(225, 237, 232));
-        cbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbGioiTinh.setForeground(new java.awt.Color(5, 69, 89, 68));
-        cbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn giới tính", "Đực", "Cái" }));
-        cbGioiTinh.setBorder(null);
-
-        javax.swing.GroupLayout roundJPanel2Layout = new javax.swing.GroupLayout(roundJPanel2);
-        roundJPanel2.setLayout(roundJPanel2Layout);
-        roundJPanel2Layout.setHorizontalGroup(
-            roundJPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundJPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbGioiTinh, 0, 148, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        roundJPanel2Layout.setVerticalGroup(
-            roundJPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundJPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         txtLoaiThuCung.setPlaceholder("Loại thú cưng");
 
         javax.swing.GroupLayout roundJPanel4Layout = new javax.swing.GroupLayout(roundJPanel4);
@@ -101,7 +76,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             roundJPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel4Layout.setVerticalGroup(
@@ -197,17 +172,24 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         BtThemGui.setText("Thêm");
         BtThemGui.setRadius(40);
 
+        cbGioiTinh.setOpaque(false);
+        cbGioiTinh.setBackground(new java.awt.Color(225, 237, 232));
+        cbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbGioiTinh.setForeground(new java.awt.Color(5, 69, 89, 68));
+        cbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn giới tính", "Đực", "Cái" }));
+        cbGioiTinh.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(roundJPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(roundJPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addComponent(cbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                         .addComponent(roundJPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(roundJPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(91, 91, 91)
@@ -224,7 +206,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                         .addComponent(BtXoaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(BtSuaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(313, 313, 313))
+                .addGap(257, 257, 257))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,19 +216,20 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                     .addComponent(roundJPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(roundJPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(roundJPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roundJPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roundJPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roundJPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(roundJPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(roundJPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(roundJPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(roundJPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(BtXoaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(BtSuaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(BtThemGui, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGap(8, 8, 8))
         );
 
         placeholderText9.setPlaceholder("Tìm kiếm");
@@ -308,7 +291,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -329,7 +312,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                     .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -346,7 +329,6 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private QuanLyThuCung.Swing.PlaceholderText placeholderText9;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel1;
-    private QuanLyThuCung.Swing.RoundJPanel roundJPanel2;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel25;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel3;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel4;
