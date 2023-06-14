@@ -13,6 +13,7 @@ import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import java.text.ParseException;
 
 public class NhanVienForm extends javax.swing.JInternalFrame {
 
@@ -320,6 +321,11 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNhanVienMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbNhanVien);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -485,17 +491,17 @@ private PreparedStatement pst;
             int k = pst.executeUpdate();
             if(k==1){
                 JOptionPane.showMessageDialog(this, "Đã sửa thành công");
-                if (index < tbNhanVien.getRowCount() && index >= 0) {
-                model.setValueAt(txtHoTen.getText(), index, 1);
-                model.setValueAt(cbGioiTinh.getSelectedItem(), index, 3);
-                model.setValueAt(oracleDateFormat.format(dcNgaySinh.getDate()), index, 2);
-                model.setValueAt(txtDiaChi.getText(), index, 5);
-                model.setValueAt(txtSĐT.getText(), index, 4);
-                  model.setValueAt(cbGioiTinh.getSelectedItem(), index, 6);
+               // if (index < tbNhanVien.getRowCount() && index >= 0) {
+               // model.setValueAt(txtHoTen.getText(), index, 1);
+               //model.setValueAt(cbGioiTinh.getSelectedItem(), index, 3);
+               //model.setValueAt(oracleDateFormat.format(dcNgaySinh.getDate()), index, 2);
+               //model.setValueAt(txtDiaChi.getText(), index, 5);
+               //model.setValueAt(txtSĐT.getText(), index, 4);
+               // model.setValueAt(cbGioiTinh.getSelectedItem(), index, 6);
                 
-                tbNhanVien.setModel(model);
-        
-                  txtMaNV.setText("");
+                //tbNhanVien.setModel(model);
+        a.fetchStaff(model);
+          txtMaNV.setText("");
         txtHoTen.setText("");
         dcNgaySinh.setDate(null);
         txtSĐT.setText("");
@@ -503,7 +509,7 @@ private PreparedStatement pst;
         cbGioiTinh.setSelectedItem("Chọn giới tính");
         cbChucVu.setSelectedItem("Chọn chức vụ");
                 
-                }
+                
                 
                 
             }
@@ -552,6 +558,46 @@ private void clearFields() {
          String searchString = txtTimKiem.getText();
         search(searchString);
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void tbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhanVienMouseClicked
+             Date now = new Date();
+        
+            txtMaNV.setText("");
+        txtHoTen.setText("");
+        dcNgaySinh.setDate(null);
+        txtSĐT.setText("");
+        txtDiaChi.setText("");
+        cbGioiTinh.setSelectedItem("Chọn giới tính");
+        cbChucVu.setSelectedItem("Chọn chức vụ");
+        
+        DefaultTableModel tblModel = (DefaultTableModel) tbNhanVien.getModel();
+        
+        int indexTB = tbNhanVien.getSelectedRow();
+        
+        if(indexTB < tbNhanVien.getRowCount() && indexTB >=0 ){
+            txtMaNV.setText(tbNhanVien.getValueAt(indexTB, 0).toString());
+            txtHoTen.setText(tbNhanVien.getValueAt(indexTB, 1).toString());
+           
+        
+             // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
+              // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            try {
+                Date birthDate = dateFormat.parse(tbNhanVien.getValueAt(indexTB, 2).toString());
+
+                // Đặt giá trị ngày tháng lên JDateChooser
+                dcNgaySinh.setDate(birthDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            cbGioiTinh.setSelectedItem(tbNhanVien.getValueAt(indexTB, 3).toString());
+            cbChucVu.setSelectedItem(tbNhanVien.getValueAt(indexTB, 6).toString());
+            txtDiaChi.setText(tbNhanVien.getValueAt(indexTB, 5).toString());
+            txtSĐT.setText(tbNhanVien.getValueAt(indexTB, 4).toString());
+            
+           
+        }
+    }//GEN-LAST:event_tbNhanVienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
