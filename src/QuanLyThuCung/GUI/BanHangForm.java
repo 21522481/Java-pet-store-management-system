@@ -16,6 +16,7 @@ import javax.swing.table.TableRowSorter;
 public class BanHangForm extends javax.swing.JInternalFrame {
     private DataAccess dataAccess;
     private DefaultTableModel gioHangModel;
+    private double total;
     
     public BanHangForm() {
         initComponents();
@@ -35,7 +36,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
     }
     //hàm tính tổng cộng giá tiền
     private void calculateTotal() {
-        double total = 0;
+        total = 0;
         for (int i = 0; i < gioHangModel.getRowCount(); i++) {
             double thanhTien = Double.parseDouble(gioHangModel.getValueAt(i, 4).toString());
             total += thanhTien;
@@ -306,7 +307,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btXuatHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXuatHDActionPerformed
-        new XuatHoaDonForm();
+        new XuatHoaDonForm(total, gioHangModel);
     }//GEN-LAST:event_btXuatHDActionPerformed
 
     private void tbSanPhamComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tbSanPhamComponentShown
