@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/QuanLyThuCung/GUI/ThuCungForm.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/E:/Study/BT_Java/DoAn/Java/src/QuanLyThuCung/GUI/XuatHoaDonForm.java</file>
-            <file>file:/E:/Study/BT_Java/DoAn/Java/src/SQL/DataAccess.java</file>
-            <file>file:/E:/Study/BT_Java/DoAn/Java/src/QuanLyThuCung/GUI/LoginForm.java</file>
-=======
->>>>>>> 62590497a58abb10fa1664d87711671a3530cb77
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/QuanLyThuCung/GUI/BanHangForm.java</file>
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/QuanLyThuCung/GUI/KhachHangForm.java</file>
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/QuanLyThuCung/GUI/LoginForm.java</file>
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/QuanLyThuCung/GUI/DichVuForm.java</file>
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/SQL/DataAccess.java</file>
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/QuanLyThuCung/GUI/TaiKhoanForm.java</file>
-            <file>file:/D:/DOAN/Javanehehehehehehehehe/src/QuanLyThuCung/GUI/SanPhamForm.java</file>
->>>>>>> 27b07fac7782a6e57520eac76d939b57ef6fa1e9
-=======
-            <file>file:/E:/CV/src/SQL/DataAccess.java</file>
-            <file>file:/E:/CV/src/QuanLyThuCung/GUI/KhachHangForm.java</file>
-            <file>file:/E:/CV/src/QuanLyThuCung/GUI/NhanVienForm.java</file>
-            <file>file:/E:/CV/src/QuanLyThuCung/GUI/SanPhamForm.java</file>
-            <file>file:/E:/CV/src/QuanLyThuCung/GUI/LoginForm.java</file>
-            <file>file:/E:/CV/src/Main/Main.java</file>
->>>>>>> 5b4f088e24df926ced503083a50ef269b1df17c2
+            <file>file:/E:/CVVV/src/QuanLyThuCung/GUI/LoginForm.java</file>
+            <file>file:/E:/CVVV/src/QuanLyThuCung/GUI/TaiKhoanForm.java</file>
+            <file>file:/E:/CVVV/src/QuanLyThuCung/GUI/NhanVienForm.java</file>
+            <file>file:/E:/CVVV/src/QuanLyThuCung/GUI/ThuCungForm.java</file>
         </group>
     </open-files>
 </project-private>
