@@ -17,7 +17,7 @@ import java.text.ParseException;
 
 public class NhanVienForm extends javax.swing.JInternalFrame {
 
-    SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd    HH:mm:ss");
+      SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd    HH:mm:ss");
     
     public NhanVienForm() {
         DataAccess dataAccess = new DataAccess();
@@ -157,16 +157,22 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
         cbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn giới tính", "Nam", "Nữ" }));
         cbGioiTinh.setBorder(null);
+        cbGioiTinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbGioiTinhActionPerformed(evt);
+            }
+        });
 
         cbGioiTinh.setOpaque(false);
         cbChucVu.setBackground(new java.awt.Color(225, 237, 232));
         cbChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-<<<<<<< HEAD
         cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chức vụ", "Quản lí", "Nhân viên", "Bán hàng" }));
-=======
-        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chức vụ", "Quản lý", "Bán hàng", "Chăm sóc", "Kho" }));
->>>>>>> efb60f72643727a63d9ae9169986da20820ba299
         cbChucVu.setBorder(null);
+        cbChucVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChucVuActionPerformed(evt);
+            }
+        });
 
         dcNgaySinh.setBackground(new java.awt.Color(255, 255, 255));
         dcNgaySinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -308,11 +314,7 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-<<<<<<< HEAD
                 false, false, false, false, false, false, false
-=======
-                false, false, false, true, true, true, true
->>>>>>> efb60f72643727a63d9ae9169986da20820ba299
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -355,6 +357,14 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     private PreparedStatement pst;
     private Connection conn;
+    private void cbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGioiTinhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbGioiTinhActionPerformed
+
+    private void cbChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChucVuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbChucVuActionPerformed
+
     private void BtClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtClearActionPerformed
         txtMaNV.setText("");
         txtHoTen.setText("");
@@ -372,13 +382,8 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
         try {
             String hoten = txtHoTen.getText();
             Date ngsinh = dcNgaySinh.getDate();
-<<<<<<< HEAD
             String gioitinh = cbGioiTinh.getSelectedItem().toString();
             String chucvu = cbChucVu.getSelectedItem().toString();
-=======
-              String gioitinh = cbGioiTinh.getSelectedItem().toString();
-              String chucvu = cbChucVu.getSelectedItem().toString();
->>>>>>> efb60f72643727a63d9ae9169986da20820ba299
             String diachi = txtDiaChi.getText();
             String sdt = txtSĐT.getText();
            
