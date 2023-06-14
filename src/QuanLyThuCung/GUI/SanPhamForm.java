@@ -28,8 +28,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);      
         
-        dcNSX.setDateFormatString("yyyy-MM-dd");
-        dcHSD.setDateFormatString("yyyy-MM-dd");
+        dcNSX.setDateFormatString("dd-MM-yyyy");
+        dcHSD.setDateFormatString("dd-MM-yyyy");
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchProduct(model);
@@ -483,11 +483,14 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         data.closeConnection();
     }//GEN-LAST:event_BtThemSPActionPerformed
 
-    public void search(String str){
-        DefaultTableModel model = (DefaultTableModel)tbSanPham.getModel();
+    public void search(String str) {
+        DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         tbSanPham.setRowSorter(trs);
-        trs.setRowFilter(RowFilter.regexFilter(str));
+
+        // Chuyển đổi chuỗi tìm kiếm và dữ liệu trong bảng thành chữ thường
+        String lowercaseSearchString = str.toLowerCase();
+        trs.setRowFilter(RowFilter.regexFilter("(?i)" + lowercaseSearchString));
     }
     
     
@@ -554,7 +557,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             txtTenSP.setText(tbSanPham.getValueAt(indexTB, 2).toString());
         
              // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             try {
                 Date nsxDate = dateFormat.parse(tbSanPham.getValueAt(indexTB, 3).toString());
                 Date hsdDate = dateFormat.parse(tbSanPham.getValueAt(indexTB, 4).toString());
@@ -581,7 +584,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         String sql = "UPDATE DANHMUC SET LOAI = ?, TEN = ?, NSX = ?, HSD = ?, KL = ?, NG_GOC = ?, SL = ?, GIA = ? WHERE MADM = ? ";
         
         int index = tbSanPham.getSelectedRow();
-        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         
         try {
             PreparedStatement pst = a.getConnection().prepareStatement(sql);

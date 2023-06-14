@@ -15,7 +15,7 @@ public class DataAccess {
         try {  
             Class.forName("oracle.jdbc.OracleDriver");
             String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-            String username = "ThuCungFinal";
+            String username = "c##ThuCungFinal";
             String password = "userpass";
             
             connection = DriverManager.getConnection(url, username, password);
@@ -45,7 +45,7 @@ public class DataAccess {
             DefaultTableModel df;
             df = (DefaultTableModel)tableModel;
             
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             
             while(rs.next()){
                 row[0] = rs.getString(1);
@@ -148,7 +148,7 @@ public class DataAccess {
             DefaultTableModel df;
             df = (DefaultTableModel)tableModel;
             
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             
             while(rs.next()){
                 row[0] = rs.getString(1);
@@ -172,7 +172,7 @@ public class DataAccess {
     
     
     public void fetchThuCung(DefaultTableModel tableModel) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         
         String sql = "SELECT MADM, TEN, LOAI, KL, GT, NG_GOC, SL, GIA FROM DANHMUC WHERE GT IS NOT NULL";
         try {
