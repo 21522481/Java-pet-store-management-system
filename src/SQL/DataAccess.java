@@ -231,10 +231,7 @@ public class DataAccess {
         }
     }
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> 6651e0015a8aaadd7e16b5eb3cf4d5c0ba9fab62
+
     public void fetchAccount(DefaultTableModel tableModel){
         String sql = "SELECT * FROM TAIKHOAN";
         tableModel.setRowCount(0);
@@ -256,9 +253,6 @@ public class DataAccess {
         }
     }
     
-<<<<<<< HEAD
-    
-=======
 
     public void fetchStaff(DefaultTableModel tableModel) {
          tableModel.setRowCount(0);
@@ -315,7 +309,6 @@ public class DataAccess {
         }
      }
         
->>>>>>> 6651e0015a8aaadd7e16b5eb3cf4d5c0ba9fab62
     public Connection getConnection() {
         return connection;
     }
