@@ -30,8 +30,8 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
         dataAccess.fetchCustomer(model);
         dataAccess.closeConnection();
     }
-
-
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -471,26 +471,29 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
         
         int ret = JOptionPane.showConfirmDialog(null,"Bạn chắc chắn xóa chưa", "Chắn chắn chưa", JOptionPane.YES_NO_OPTION);
         if (ret == JOptionPane.YES_OPTION){
-            if(indexTB < model.getRowCount() && indexTB >= 0)
-                 model.removeRow(indexTB);
+//            if(indexTB < model.getRowCount() && indexTB >= 0)
+//                 model.removeRow(indexTB);
             String sql = "DELETE FROM KHACHHANG WHERE MAKH = ?";
             try {
                 PreparedStatement pst = a.getConnection().prepareStatement(sql);
                 pst.setString(1, txtMaKH.getText());
                 pst.executeUpdate();
+                a.fetchCustomer(model);
                 a.closeConnection();
             } catch (SQLException ex) {
                 Logger.getLogger(KhachHangForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+            txtMaKH.setText("");
+            txtLoai.setText("");
+            txtHoTen.setText("");
+            txtDiaChi.setText("");
+            txtSDT.setText("");
+            dcNgaySinh.setDate(null);
+            txtEmail.setText("");
             
         }
-        txtMaKH.setText("");
-        txtLoai.setText("");
-        txtHoTen.setText("");
-        txtDiaChi.setText("");
-        txtSDT.setText("");
-        dcNgaySinh.setDate(null);
-        txtEmail.setText("");
+        
+        
         
         a.closeConnection();
     }//GEN-LAST:event_BtXoaKHActionPerformed
@@ -523,16 +526,17 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
             int k = pst.executeUpdate();
             if(k==1){
                 JOptionPane.showMessageDialog(this, "Đã sửa thành công");
-                if (index < tbKhachHang.getRowCount() && index >= 0) {
-                model.setValueAt(txtHoTen.getText(), index, 1);
-                model.setValueAt(txtLoai.getText(), index, 2);
-                model.setValueAt(oracleDateFormat.format(dcNgaySinh.getDate()), index, 3);
-                model.setValueAt(txtDiaChi.getText(), index, 4);
-                model.setValueAt(txtSDT.getText(), index, 5);
-                model.setValueAt(txtEmail.getText(), index, 6);
+//                if (index < tbKhachHang.getRowCount() && index >= 0) {
+//                model.setValueAt(txtHoTen.getText(), index, 1);
+//                model.setValueAt(txtLoai.getText(), index, 2);
+//                model.setValueAt(oracleDateFormat.format(dcNgaySinh.getDate()), index, 3);
+//                model.setValueAt(txtDiaChi.getText(), index, 4);
+//                model.setValueAt(txtSDT.getText(), index, 5);
+//                model.setValueAt(txtEmail.getText(), index, 6);
                 
+                a.fetchCustomer(model);
+
                 tbKhachHang.setModel(model);
-        
                 txtMaKH.setText("");
                 txtLoai.setText("");
                 txtHoTen.setText("");
@@ -541,22 +545,12 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
                 dcNgaySinh.setDate(null);
                 txtEmail.setText("");
                 
-                }
                 
                 
             }
             else{
                 JOptionPane.showMessageDialog(this, "Lỗi khi thêm mới");
             }
-            
-//            if (index < tbKhachHang.getRowCount() && index >= 0) {
-//                model.setValueAt(txtHoTen.getText(), index, 1);
-//                model.setValueAt(txtLoai.getText(), index, 2);
-//                model.setValueAt(oracleDateFormat.format(dcNgaySinh.getDate()), index, 3);
-//                model.setValueAt(txtDiaChi.getText(), index, 4);
-//                model.setValueAt(txtSDT.getText(), index, 5);
-//                model.setValueAt(txtEmail.getText(), index, 6);
-//            }
             
         } catch (SQLException ex) {
             Logger.getLogger(KhachHangForm.class.getName()).log(Level.SEVERE, null, ex);

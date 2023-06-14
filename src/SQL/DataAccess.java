@@ -36,7 +36,7 @@ public class DataAccess {
     private PreparedStatement pst;
     private ResultSet rs;
     public void fetchProduct(DefaultTableModel tableModel){
-        
+        tableModel.setRowCount(0);
         String sql = "SELECT MADM, LOAI, TEN, NSX, HSD, KL, NG_GOC, SL, GIA FROM DANHMUC WHERE GT IS NULL";
         try {
             pst = connection.prepareStatement(sql);
@@ -75,9 +75,8 @@ public class DataAccess {
     
 }
     public void fetchDANHMUC(DefaultTableModel tableModel){
-        
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        
+        tableModel.setRowCount(0);
         String sql = "SELECT * FROM DANHMUC";
         try {
             pst = connection.prepareStatement(sql);
@@ -106,7 +105,7 @@ public class DataAccess {
     
     public void fetchDichVu(DefaultTableModel tableModel) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        
+        tableModel.setRowCount(0);
         String sql = "SELECT * FROM GUITHUCUNG";
         try {
             //SOPHIEUNHAP, MAKH, TEN, LOAI, GIOITINH, NGAYGUI, NGAYTRA, GIA
@@ -139,7 +138,7 @@ public class DataAccess {
     }
 
     public void fetchCustomer(DefaultTableModel tableModel){
-        
+        tableModel.setRowCount(0);
         String sql = "SELECT * FROM KHACHHANG";
         try {
             pst = connection.prepareStatement(sql);
@@ -207,7 +206,7 @@ public class DataAccess {
     
     public void fetchThuCung(DefaultTableModel tableModel) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        
+        tableModel.setRowCount(0);
         String sql = "SELECT MADM, TEN, LOAI, KL, GT, NG_GOC, SL, GIA FROM DANHMUC WHERE GT IS NOT NULL";
         try {
             pst = connection.prepareStatement(sql);
@@ -231,7 +230,33 @@ public class DataAccess {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+<<<<<<< HEAD
         
+=======
+    
+    public void fetchAccount(DefaultTableModel tableModel){
+        String sql = "SELECT * FROM TAIKHOAN";
+        tableModel.setRowCount(0);
+        try {
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();
+            String row[] = new String[3];
+            DefaultTableModel df;
+            df = (DefaultTableModel) tableModel;
+            while (rs.next()) {
+                row[0] = rs.getString(1);
+                row[1] = rs.getString(1);
+                row[2] = rs.getString(2);
+                
+                df.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+>>>>>>> eebc7691a957c446c577c2efe39a68aae9d52db7
     public Connection getConnection() {
         return connection;
     }

@@ -1,16 +1,32 @@
 package QuanLyThuCung.GUI;
 
+import SQL.DataAccess;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 
 public class TaiKhoanForm extends javax.swing.JInternalFrame {
 
 
     public TaiKhoanForm() {
+        DataAccess a = new DataAccess();
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+        
+        DefaultTableModel model = (DefaultTableModel) tbTaiKhoan.getModel();
+        
+        a.fetchAccount(model);
+        a.closeConnection();
         
     }
 
@@ -86,30 +102,23 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
         tbTaiKhoan.fixTable(jScrollPane3);
         tbTaiKhoan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng"
+                "Mã nhân viên", "Tên đăng nhập", "Mật khẩu"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tbTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTaiKhoanMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(tbTaiKhoan);
@@ -162,13 +171,85 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private PreparedStatement pst;
     private void BtThemTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemTKActionPerformed
         // TODO add your handling code here:
+        DataAccess data = new DataAccess();
+            
+            DefaultTableModel model = (DefaultTableModel) tbTaiKhoan.getModel();
+            
+        try {
+            String tenDN = txtMaNV.getText();
+            String matKhau = txtPassword.getText();
+            
+            pst = data.getConnection().prepareStatement("INSERT INTO TAIKHOAN VALUES (?,?)");
+            
+            pst.setString(1, tenDN);
+            pst.setString(2, matKhau);
+          
+           
+            int k = pst.executeUpdate();
+            if(k==1){
+                JOptionPane.showMessageDialog(this, "Đã thêm mới vào cơ sở dữ liệu");
+                txtMaNV.setText("");
+                txtPassword.setText("");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Lỗi khi thêm mới");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(TaiKhoanForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        data.fetchAccount(model);
+        data.closeConnection();
     }//GEN-LAST:event_BtThemTKActionPerformed
 
     private void BtXoaTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtXoaTKActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tbTaiKhoan.getModel();
+        int indexTB = tbTaiKhoan.getSelectedRow();
+        
+        DataAccess a = new DataAccess();
+        
+        
+        int ret = JOptionPane.showConfirmDialog(null,"M chắc chắn xóa chưa", "Chắn chắn chưa", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION){
+            if(indexTB < model.getRowCount() && indexTB >= 0)
+                 model.removeRow(indexTB);
+            String sql = "DELETE FROM TAIKHOAN WHERE MANV = ?";
+            try {
+                PreparedStatement pst = a.getConnection().prepareStatement(sql);
+                pst.setString(1, txtMaNV.getText());
+                pst.executeUpdate();
+                a.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(TaiKhoanForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        txtMaNV.setText("");
+        txtPassword.setText("");
+        
+        a.closeConnection();
+        
     }//GEN-LAST:event_BtXoaTKActionPerformed
+
+    private void tbTaiKhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTaiKhoanMouseClicked
+        // TODO add your handling code here:
+        txtMaNV.setText("");
+        txtPassword.setText("");
+        
+        DefaultTableModel tblModel = (DefaultTableModel) tbTaiKhoan.getModel();
+        
+        int indexTB = tbTaiKhoan.getSelectedRow();
+        
+        if(indexTB < tbTaiKhoan.getRowCount() && indexTB >=0 ){
+            txtMaNV.setText(tbTaiKhoan.getValueAt(indexTB, 0).toString());
+            txtPassword.setText(tbTaiKhoan.getValueAt(indexTB, 2).toString());
+        }
+    }//GEN-LAST:event_tbTaiKhoanMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

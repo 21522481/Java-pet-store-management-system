@@ -515,27 +515,30 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                 PreparedStatement pst = a.getConnection().prepareStatement(sql);
                 pst.setString(1, txtMaSP.getText());
                 pst.executeUpdate();
+                a.fetchProduct(model);
                 a.closeConnection();
             } catch (SQLException ex) {
                 Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            txtMaSP.setText("");
+            txtLoaiSP.setText("");
+            txtTenSP.setText("");
+            dcNSX.setDate(null);
+            dcHSD.setDate(null);
+            txtTrongLuong.setText("");
+            txtNguonGoc.setText("");
+            txtSoLuong.setText("");
+            txtGia.setText("");
+            
         }
-        txtMaSP.setText("");
-        txtLoaiSP.setText("");
-        txtTenSP.setText("");
-        dcNSX.setDate(null);
-        dcHSD.setDate(null);
-        txtTrongLuong.setText("");
-        txtNguonGoc.setText("");
-        txtSoLuong.setText("");
-        txtGia.setText("");
+        
         
         a.closeConnection();
     }//GEN-LAST:event_BtXoaSPActionPerformed
 
     private void tbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSanPhamMouseClicked
-        // TODO add your handling code here:
+
         // TODO add your handling code here:
         Date now = new Date();
         txtMaSP.setText("");
@@ -604,33 +607,41 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             pst.setInt(7, Integer.parseInt(txtSoLuong.getText()));
             pst.setInt(8, Integer.parseInt(txtGia.getText()));
             pst.setInt(9, Integer.parseInt((txtMaSP.getText())));
-            pst.executeUpdate();
-            
-            if (index < tbSanPham.getRowCount() && index >= 0) {
-                model.setValueAt(txtLoaiSP.getText(), index, 1);
-                model.setValueAt(txtTenSP.getText(), index, 2);
-                model.setValueAt(oracleDateFormat.format(dcNSX.getDate()), index, 3);
-                model.setValueAt(oracleDateFormat.format(dcHSD.getDate()), index, 4);
-                model.setValueAt(txtTrongLuong.getText(), index, 5);
-                model.setValueAt(txtNguonGoc.getText(), index, 6);
-                model.setValueAt(txtSoLuong.getText(), index, 7);
-                model.setValueAt(txtGia.getText(), index, 8);
+//            pst.executeUpdate();
+            int k = pst.executeUpdate();
+            if(k==1){
+                JOptionPane.showMessageDialog(this, "Đã sửa thành công");
+                
+                a.fetchProduct(model);
+                
+                tbSanPham.setModel(model);
+        
+                txtMaSP.setText("");
+                txtLoaiSP.setText("");
+                txtTenSP.setText("");
+                dcNSX.setDate(null);
+                dcHSD.setDate(null);
+                txtTrongLuong.setText("");
+                txtNguonGoc.setText("");
+                txtSoLuong.setText("");
+                txtGia.setText("");
             }
+            
+//            if (index < tbSanPham.getRowCount() && index >= 0) {
+//                model.setValueAt(txtLoaiSP.getText(), index, 1);
+//                model.setValueAt(txtTenSP.getText(), index, 2);
+//                model.setValueAt(oracleDateFormat.format(dcNSX.getDate()), index, 3);
+//                model.setValueAt(oracleDateFormat.format(dcHSD.getDate()), index, 4);
+//                model.setValueAt(txtTrongLuong.getText(), index, 5);
+//                model.setValueAt(txtNguonGoc.getText(), index, 6);
+//                model.setValueAt(txtSoLuong.getText(), index, 7);
+//                model.setValueAt(txtGia.getText(), index, 8);
+//            }
             
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        tbSanPham.setModel(model);
         
-        txtMaSP.setText("");
-        txtLoaiSP.setText("");
-        txtTenSP.setText("");
-        dcNSX.setDate(null);
-        dcHSD.setDate(null);
-        txtTrongLuong.setText("");
-        txtNguonGoc.setText("");
-        txtSoLuong.setText("");
-        txtGia.setText("");
         
         a.closeConnection();
     }//GEN-LAST:event_BtSuaSPActionPerformed
