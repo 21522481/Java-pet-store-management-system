@@ -15,6 +15,7 @@ import javax.swing.*;
 
 public class LoginForm extends javax.swing.JFrame {
 
+    private String idNV;
 
     public LoginForm() {
         initComponents();
@@ -290,7 +291,8 @@ public class LoginForm extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, "sai ID và Mật khẩu");
           }else{
               this.dispose();
-                new MainForm();
+              this.idNV = txtID.getText();
+                new MainForm(idNV);
           }
       }catch(Exception e){
           JOptionPane.showMessageDialog(null, e);
@@ -353,6 +355,8 @@ public class LoginForm extends javax.swing.JFrame {
 
     public static void main(String args[]) {}
 
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;

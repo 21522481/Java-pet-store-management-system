@@ -5,26 +5,31 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.sql.Date;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JPanel;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class XuatHoaDonForm extends javax.swing.JFrame {
     private DataAccess dataAccess;
-    private double total;
+    private int total;
     private DefaultTableModel gioHangModel;
+    private String idNV;
+    private int SOHD;
 
-    public XuatHoaDonForm(double total, DefaultTableModel gioHangModel) {
+    public XuatHoaDonForm(int total, DefaultTableModel gioHangModel, String idne) {
         initComponents();
         setTitle("Xuất hóa đơn");
         setVisible(true);
         this.total=total;
         this.gioHangModel=gioHangModel;
+        this.idNV = idne;
         txtTongTien.setText(String.valueOf(total));
         tbGioHang.setModel(gioHangModel);
         
@@ -36,7 +41,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(int total) {
         this.total = total;
     }
     
@@ -170,6 +175,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
 
         btXacNhanHD.setText("Xác nhận");
         btXacNhanHD.setRadius(45);
+        btXacNhanHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXacNhanHDActionPerformed(evt);
+            }
+        });
 
         BtInHD.setText("In hóa đơn");
         BtInHD.setRadius(45);
@@ -358,7 +368,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel3)
-                        .addContainerGap(757, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -468,11 +478,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         //Lấy loại khách hàng
         try {    
             if ("VIP".equals(dataAccess.fetchLoaiKH(sdt))){
-                txtMaGG.setText("30.000");
+                txtMaGG.setText("30000");
                 txtTongTien.setText(String.valueOf(total-30000));
             }
             else{
-                txtMaGG.setText("10.000");
+                txtMaGG.setText("10000");
                 txtTongTien.setText(String.valueOf(total-10000));
             }
            // txtMaGG.setText(dataAccess.fetchLoaiKH(sdt));
@@ -488,6 +498,87 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     private void tbGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGioHangMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tbGioHangMouseClicked
+
+    private PreparedStatement pst;
+    private ResultSet rs;
+    Connection connection;
+    
+    private void btXacNhanHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXacNhanHDActionPerformed
+
+        // TODO add your handling code here:
+        DataAccess data = new DataAccess();
+        Connection connection = data.getConnection();
+
+        try {
+            String sql = "INSERT INTO HOADON (PHUONGTHUCTT, GIAMGIA, TRIGIA, TONGCONG, MANV) VALUES (?, ?, ?, ?, ?)";
+            pst = connection.prepareStatement(sql);
+            pst.setString(1, "Tiền mặt");
+            String maGG = txtMaGG.getText().trim(); // Lấy giá trị từ trường txtMaGG và loại bỏ khoảng trắng đầu cuối
+            if (maGG.isEmpty()) {
+                pst.setInt(2, 0);
+            } else {
+                pst.setInt(2, Integer.parseInt(maGG));
+            }
+
+            
+            pst.setInt(3, total);
+
+            String tongTien = txtTongTien.getText().trim(); // Lấy giá trị từ trường txtTongTien và loại bỏ khoảng trắng đầu cuối
+            pst.setInt(4, Integer.parseInt(tongTien));
+            pst.setInt(5, Integer.parseInt(idNV));
+            pst.executeUpdate();
+            System.out.println("Thêm dòng hóa đơn thành công.");
+        } catch (SQLException ex) {
+            Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            String sql = "SELECT MAX(SOHD) FROM HOADON";
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                this.SOHD = rs.getInt(1);
+            }
+            System.out.println("Giá trị maxSoHD: " + this.SOHD);
+        } catch (SQLException ex) {
+            Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String sqlInsertCTHD = "INSERT INTO CTHD VALUES (?, ?, ?, ?)";
+        try {
+            pst = connection.prepareStatement(sqlInsertCTHD);
+
+            // Lặp qua các dòng trong DefaultTableModel
+            for (int i = 0; i < gioHangModel.getRowCount(); i++) {
+                // Lấy giá trị từ DefaultTableModel cho từng cột
+                // Lấy giá trị từ DefaultTableModel cho từng cột và chuyển đổi thành String
+                String value1 = gioHangModel.getValueAt(i, 0).toString();
+                String value2 = gioHangModel.getValueAt(i, 3).toString();
+                String value3 = gioHangModel.getValueAt(i, 4).toString();
+
+
+                // Gán giá trị vào câu lệnh INSERT
+                pst.setInt(1, this.SOHD);
+                pst.setInt(2, Integer.parseInt(value1));
+                pst.setInt(3, Integer.parseInt(value2));
+                pst.setInt(4, Integer.parseInt(value3));
+
+
+                // Thực hiện câu lệnh INSERT
+                pst.executeUpdate();
+            }
+
+            System.out.println("Thêm dữ liệu vào CTHD thành công.");
+            JOptionPane.showMessageDialog(this, "Thêm dữ liệu vào CTHD thành công", "Thành công", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            data.closeConnection();
+        }
+
+        
+    }//GEN-LAST:event_btXacNhanHDActionPerformed
 
 
 
@@ -505,7 +596,6 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel1;
