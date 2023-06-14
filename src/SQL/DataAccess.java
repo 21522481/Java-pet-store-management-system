@@ -170,11 +170,40 @@ public class DataAccess {
     
 }
     
-<<<<<<< HEAD
-    public void fetchKH(){
-        
-    }
-=======
+
+    public String fetchTenKH(String SDT) throws SQLException {
+        String sql = "SELECT HOTEN FROM KHACHHANG WHERE SDT = ?";
+        String tenKH = "";
+
+        try (PreparedStatement pst = connection.prepareStatement(sql)) {
+            pst.setString(1, SDT);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    tenKH = rs.getString("HOTEN");
+                }
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+            return tenKH;
+        }
+    public String fetchLoaiKH(String SDT) throws SQLException {
+        String sql = "SELECT Loai FROM KHACHHANG WHERE SDT = ?";
+        String loaiKH = "";
+
+        try (PreparedStatement pst = connection.prepareStatement(sql)) {
+            pst.setString(1, SDT);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    loaiKH = rs.getString("LOAI");
+                }
+            }
+        } catch (SQLException ex) {
+            throw ex;
+        }
+            return loaiKH;
+        }
+
     
     public void fetchThuCung(DefaultTableModel tableModel) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -202,9 +231,7 @@ public class DataAccess {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
->>>>>>> 27b07fac7782a6e57520eac76d939b57ef6fa1e9
-    
+        
     public Connection getConnection() {
         return connection;
     }
