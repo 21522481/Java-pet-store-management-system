@@ -480,7 +480,7 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
                 pst.executeUpdate();
                 a.closeConnection();
             } catch (SQLException ex) {
-                Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(KhachHangForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }
@@ -559,7 +559,7 @@ public class KhachHangForm extends javax.swing.JInternalFrame {
 //            }
             
         } catch (SQLException ex) {
-            Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KhachHangForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         

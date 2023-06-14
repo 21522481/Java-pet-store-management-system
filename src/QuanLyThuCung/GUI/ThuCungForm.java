@@ -11,8 +11,10 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 
 public class ThuCungForm extends javax.swing.JInternalFrame {
@@ -34,6 +36,8 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         String tieude[] = {"Mã danh mục", "Loại", "Tên", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá"};
         model.setColumnIdentifiers(tieude);
         tbThuCung.setModel(model);
+        
+        
         
         dataAccess.fetchThuCung(model);
         dataAccess.closeConnection();
@@ -134,6 +138,11 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
 
         BtXoaTC.setText("Xóa");
         BtXoaTC.setRadius(40);
+        BtXoaTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtXoaTCActionPerformed(evt);
+            }
+        });
 
         BtSuaTC.setText("Sửa");
         BtSuaTC.setRadius(40);
@@ -307,6 +316,11 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         );
 
         placeholderText9.setPlaceholder("Tìm kiếm");
+        placeholderText9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                placeholderText9KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout roundJPanel25Layout = new javax.swing.GroupLayout(roundJPanel25);
         roundJPanel25.setLayout(roundJPanel25Layout);
@@ -331,11 +345,11 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng", "Title 5", "Title 6", "Title 7", "Title 8"
+                "Mã thú cưng", "Tên thú cưng", "Loại thú cưng", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true, true, true
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -502,7 +516,62 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         txtGia.setText("");
     }//GEN-LAST:event_BtClearActionPerformed
 
+    private void BtXoaTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtXoaTCActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tbThuCung.getModel();
+        int indexTB = tbThuCung.getSelectedRow();
+        
+        DataAccess a = new DataAccess();
+        
+        
+        int ret = JOptionPane.showConfirmDialog(null,"Bạn đã chắc chắn xóa chưa", "Chắn chắn chưa", JOptionPane.YES_NO_OPTION);
+        if (ret == JOptionPane.YES_OPTION){
+            if(indexTB < model.getRowCount() && indexTB >= 0)
+                 model.removeRow(indexTB);
+            String sql = "DELETE FROM DANHMUC WHERE MADM = ?";
+            try {
+                PreparedStatement pst = a.getConnection().prepareStatement(sql);
+                pst.setString(1, txtMaTC.getText());
+                pst.executeUpdate();
+                a.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        txtMaTC.setText("");
+        txtLoaiThuCung.setText("");
+        txtTenTC.setText("");
+        
+        txtCanNang.setText("");
+        txtNguonGoc.setText("");
+        cbGioiTinh.setSelectedItem("Chọn giới tính");
+        txtSoLuong.setText("");
+        txtGia.setText("");
+        
+        a.closeConnection();
+    }//GEN-LAST:event_BtXoaTCActionPerformed
 
+    public void search(String str) {
+        DefaultTableModel model = (DefaultTableModel) tbThuCung.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tbThuCung.setRowSorter(trs);
+
+        // Chuyển đổi chuỗi tìm kiếm và dữ liệu trong bảng thành chữ thường
+        String lowercaseSearchString = str.toLowerCase();
+        trs.setRowFilter(RowFilter.regexFilter("(?i)" + lowercaseSearchString));
+    }
+    
+    private void placeholderText9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeholderText9KeyReleased
+        // TODO add your handling code here:
+        String searchString = placeholderText9.getText();
+        search(searchString);
+    }//GEN-LAST:event_placeholderText9KeyReleased
+
+    
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private QuanLyThuCung.Swing.RoundJButton2 BtClear;
     private QuanLyThuCung.Swing.RoundJButton2 BtSuaTC;
