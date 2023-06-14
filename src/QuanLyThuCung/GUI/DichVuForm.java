@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class DichVuForm extends javax.swing.JInternalFrame {
 
@@ -37,15 +38,21 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         dataAccess.closeConnection();
         
     }
+    
+    public void search(String str){
+        DefaultTableModel model = (DefaultTableModel)tbDichVu.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tbDichVu.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter(str));
+    }
 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BtTimKiemDV = new QuanLyThuCung.Swing.RoundJButton1();
         roundJPanel25 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText9 = new QuanLyThuCung.Swing.PlaceholderText();
+        txtTimKiem = new QuanLyThuCung.Swing.PlaceholderText();
         jPanel1 = new javax.swing.JPanel();
         roundJPanel1 = new QuanLyThuCung.Swing.RoundJPanel();
         txtTenPet = new QuanLyThuCung.Swing.PlaceholderText();
@@ -65,21 +72,19 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         cbGioiTinh = new javax.swing.JComboBox<>();
         roundJPanel5 = new QuanLyThuCung.Swing.RoundJPanel();
         txtSoPhieuGui = new QuanLyThuCung.Swing.PlaceholderText();
+        BtClear = new QuanLyThuCung.Swing.RoundJButton2();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbDichVu = new QuanLyThuCung.Swing.CustomTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
 
-        BtTimKiemDV.setText("Tìm kiếm");
-        BtTimKiemDV.setRadius(45);
-        BtTimKiemDV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtTimKiemDVActionPerformed(evt);
+        txtTimKiem.setPlaceholder("Tìm kiếm");
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
             }
         });
-
-        placeholderText9.setPlaceholder("Tìm kiếm");
 
         javax.swing.GroupLayout roundJPanel25Layout = new javax.swing.GroupLayout(roundJPanel25);
         roundJPanel25.setLayout(roundJPanel25Layout);
@@ -87,14 +92,14 @@ public class DichVuForm extends javax.swing.JInternalFrame {
             roundJPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText9, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel25Layout.setVerticalGroup(
             roundJPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel25Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -239,6 +244,14 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        BtClear.setText("Clear");
+        BtClear.setRadius(40);
+        BtClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -256,26 +269,29 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                             .addComponent(cbGioiTinh, javax.swing.GroupLayout.Alignment.TRAILING, 0, 150, Short.MAX_VALUE)))
                     .addComponent(roundJPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(158, 158, 158)
-                            .addComponent(BtThemDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(BtXoaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(BtSuaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dcNgayGui, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(roundJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(343, 343, 343)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dcNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(256, 256, 256))
+                        .addComponent(dcNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(158, 158, 158)
+                                .addComponent(BtThemDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtXoaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(BtSuaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(dcNgayGui, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(roundJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(163, 163, 163))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,8 +317,9 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(BtThemDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(BtSuaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BtXoaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(BtXoaDV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         tbDichVu.fixTable(jScrollPane3);
@@ -338,11 +355,8 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1094, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtTimKiemDV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1046, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1046, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -351,20 +365,14 @@ public class DichVuForm extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtTimKiemDV, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtTimKiemDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtTimKiemDVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtTimKiemDVActionPerformed
 
     private void BtThemDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemDVActionPerformed
         DataAccess data = new DataAccess();
@@ -543,11 +551,27 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         a.closeConnection();
     }//GEN-LAST:event_BtXoaDVActionPerformed
 
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        String searchString = txtTimKiem.getText();
+        search(searchString);
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void BtClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtClearActionPerformed
+        txtSoPhieuGui.setText("");
+        txtTenPet.setText("");
+        dcNgayGui.setDate(null);        
+        dcNgayTra.setDate(null);
+        txtLoaiPet.setText("");
+        cbGioiTinh.setSelectedItem("Chọn giới tính");
+        txtTienDichVu.setText("");
+        txtMaKH.setText("");
+    }//GEN-LAST:event_BtClearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private QuanLyThuCung.Swing.RoundJButton2 BtClear;
     private QuanLyThuCung.Swing.RoundJButton2 BtSuaDV;
     private QuanLyThuCung.Swing.RoundJButton2 BtThemDV;
-    private QuanLyThuCung.Swing.RoundJButton1 BtTimKiemDV;
     private QuanLyThuCung.Swing.RoundJButton2 BtXoaDV;
     private javax.swing.JComboBox<String> cbGioiTinh;
     private com.toedter.calendar.JDateChooser dcNgayGui;
@@ -556,7 +580,6 @@ public class DichVuForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText9;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel1;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel2;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel25;
@@ -569,5 +592,6 @@ public class DichVuForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.PlaceholderText txtSoPhieuGui;
     private QuanLyThuCung.Swing.PlaceholderText txtTenPet;
     private QuanLyThuCung.Swing.PlaceholderText txtTienDichVu;
+    private QuanLyThuCung.Swing.PlaceholderText txtTimKiem;
     // End of variables declaration//GEN-END:variables
 }

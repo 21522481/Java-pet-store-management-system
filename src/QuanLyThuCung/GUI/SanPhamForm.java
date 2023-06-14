@@ -28,8 +28,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);      
         
-        dcNSX.setDateFormatString("yyyy-MM-dd");
-        dcHSD.setDateFormatString("yyyy-MM-dd");
+        dcNSX.setDateFormatString("dd-MM-yyyy");
+        dcHSD.setDateFormatString("dd-MM-yyyy");
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchProduct(model);
@@ -63,9 +63,9 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         dcNSX = new com.toedter.calendar.JDateChooser();
         dcHSD = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
+        BtClear = new QuanLyThuCung.Swing.RoundJButton2();
         roundJPanel25 = new QuanLyThuCung.Swing.RoundJPanel();
-        placeholderText9 = new QuanLyThuCung.Swing.PlaceholderText();
-        BtTimKiemSP = new QuanLyThuCung.Swing.RoundJButton1();
+        txtTimKiem = new QuanLyThuCung.Swing.PlaceholderText();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbSanPham = new QuanLyThuCung.Swing.CustomTable();
 
@@ -253,6 +253,14 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(82, 109, 130));
         jLabel2.setText("HSD");
 
+        BtClear.setText("Clear");
+        BtClear.setRadius(40);
+        BtClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -292,6 +300,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                             .addComponent(roundJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(99, 99, 99)
                             .addComponent(roundJPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -315,7 +325,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtThemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtXoaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtSuaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BtSuaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -329,10 +340,10 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                         .addGap(12, 12, 12))))
         );
 
-        placeholderText9.setPlaceholder("Tìm kiếm");
-        placeholderText9.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtTimKiem.setPlaceholder("Tìm kiếm");
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                placeholderText9KeyReleased(evt);
+                txtTimKiemKeyReleased(evt);
             }
         });
 
@@ -342,24 +353,16 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             roundJPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel25Layout.setVerticalGroup(
             roundJPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel25Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(placeholderText9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        BtTimKiemSP.setText("Tìm kiếm");
-        BtTimKiemSP.setRadius(45);
-        BtTimKiemSP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtTimKiemSPActionPerformed(evt);
-            }
-        });
 
         tbSanPham.fixTable(jScrollPane1);
         tbSanPham.setModel(new javax.swing.table.DefaultTableModel(
@@ -396,8 +399,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(roundJPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(BtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(128, 128, 128))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1046, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 48, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -407,10 +409,8 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtTimKiemSP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(60, Short.MAX_VALUE))
         );
@@ -483,19 +483,17 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         data.closeConnection();
     }//GEN-LAST:event_BtThemSPActionPerformed
 
-    public void search(String str){
-        DefaultTableModel model = (DefaultTableModel)tbSanPham.getModel();
+    public void search(String str) {
+        DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         tbSanPham.setRowSorter(trs);
-        trs.setRowFilter(RowFilter.regexFilter(str));
+
+        // Chuyển đổi chuỗi tìm kiếm và dữ liệu trong bảng thành chữ thường
+        String lowercaseSearchString = str.toLowerCase();
+        trs.setRowFilter(RowFilter.regexFilter("(?i)" + lowercaseSearchString));
     }
     
     
-    private void BtTimKiemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtTimKiemSPActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_BtTimKiemSPActionPerformed
-
     private void txtGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiaActionPerformed
@@ -559,7 +557,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             txtTenSP.setText(tbSanPham.getValueAt(indexTB, 2).toString());
         
              // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             try {
                 Date nsxDate = dateFormat.parse(tbSanPham.getValueAt(indexTB, 3).toString());
                 Date hsdDate = dateFormat.parse(tbSanPham.getValueAt(indexTB, 4).toString());
@@ -586,7 +584,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         String sql = "UPDATE DANHMUC SET LOAI = ?, TEN = ?, NSX = ?, HSD = ?, KL = ?, NG_GOC = ?, SL = ?, GIA = ? WHERE MADM = ? ";
         
         int index = tbSanPham.getSelectedRow();
-        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         
         try {
             PreparedStatement pst = a.getConnection().prepareStatement(sql);
@@ -637,17 +635,29 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
         a.closeConnection();
     }//GEN-LAST:event_BtSuaSPActionPerformed
 
-    private void placeholderText9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeholderText9KeyReleased
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
-        String searchString = placeholderText9.getText();
+        String searchString = txtTimKiem.getText();
         search(searchString);
-    }//GEN-LAST:event_placeholderText9KeyReleased
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void BtClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtClearActionPerformed
+        txtMaSP.setText("");
+        txtLoaiSP.setText("");
+        txtTenSP.setText("");
+        dcNSX.setDate(null);
+        dcHSD.setDate(null);
+        txtTrongLuong.setText("");
+        txtNguonGoc.setText("");
+        txtSoLuong.setText("");
+        txtGia.setText("");
+    }//GEN-LAST:event_BtClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private QuanLyThuCung.Swing.RoundJButton2 BtClear;
     private QuanLyThuCung.Swing.RoundJButton2 BtSuaSP;
     private QuanLyThuCung.Swing.RoundJButton2 BtThemSP;
-    private QuanLyThuCung.Swing.RoundJButton1 BtTimKiemSP;
     private QuanLyThuCung.Swing.RoundJButton2 BtXoaSP;
     private com.toedter.calendar.JDateChooser dcHSD;
     private com.toedter.calendar.JDateChooser dcNSX;
@@ -655,7 +665,6 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private QuanLyThuCung.Swing.PlaceholderText placeholderText9;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel1;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel25;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel3;
@@ -671,6 +680,7 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.PlaceholderText txtNguonGoc;
     private QuanLyThuCung.Swing.PlaceholderText txtSoLuong;
     private QuanLyThuCung.Swing.PlaceholderText txtTenSP;
+    private QuanLyThuCung.Swing.PlaceholderText txtTimKiem;
     private QuanLyThuCung.Swing.PlaceholderText txtTrongLuong;
     // End of variables declaration//GEN-END:variables
 }

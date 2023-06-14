@@ -15,7 +15,7 @@ public class DataAccess {
         try {  
             Class.forName("oracle.jdbc.OracleDriver");
             String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-            String username = "ThuCungFinal";
+            String username = "c##ThuCungFinal";
             String password = "userpass";
             
             connection = DriverManager.getConnection(url, username, password);
@@ -45,7 +45,7 @@ public class DataAccess {
             DefaultTableModel df;
             df = (DefaultTableModel)tableModel;
             
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             
             while(rs.next()){
                 row[0] = rs.getString(1);
@@ -148,7 +148,7 @@ public class DataAccess {
             DefaultTableModel df;
             df = (DefaultTableModel)tableModel;
             
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             
             while(rs.next()){
                 row[0] = rs.getString(1);
@@ -170,9 +170,40 @@ public class DataAccess {
     
 }
     
+<<<<<<< HEAD
     public void fetchKH(){
         
     }
+=======
+    
+    public void fetchThuCung(DefaultTableModel tableModel) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        
+        String sql = "SELECT MADM, TEN, LOAI, KL, GT, NG_GOC, SL, GIA FROM DANHMUC WHERE GT IS NOT NULL";
+        try {
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();
+            String row[] = new String[10];
+            DefaultTableModel df;
+            df = (DefaultTableModel)tableModel;
+            while(rs.next()){
+                row[0] = rs.getString(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
+                row[7] = rs.getString(8);
+                
+                df.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+>>>>>>> 27b07fac7782a6e57520eac76d939b57ef6fa1e9
     
     public Connection getConnection() {
         return connection;
