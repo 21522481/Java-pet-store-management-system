@@ -166,7 +166,7 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
         cbGioiTinh.setOpaque(false);
         cbChucVu.setBackground(new java.awt.Color(225, 237, 232));
         cbChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chức vụ", "àdsd", "sdfsdf" }));
+        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chức vụ", "Quản lý", "Bán hàng", "Chăm sóc", "Kho" }));
         cbChucVu.setBorder(null);
         cbChucVu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
