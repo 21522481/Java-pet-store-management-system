@@ -16,9 +16,10 @@ import javax.swing.table.TableRowSorter;
 public class BanHangForm extends javax.swing.JInternalFrame {
     private DataAccess dataAccess;
     private DefaultTableModel gioHangModel;
-    private double total;
+    private int total;
+    private String idNV;
     
-    public BanHangForm() {
+    public BanHangForm(String idne) {
         initComponents();
         setOpaque(false);
         
@@ -29,6 +30,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         
         gioHangModel = (DefaultTableModel) tbGioHang.getModel();
+        this.idNV = idne;
         
         DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
         dataAccess.fetchDANHMUC(model);
@@ -38,7 +40,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
     private void calculateTotal() {
         total = 0;
         for (int i = 0; i < gioHangModel.getRowCount(); i++) {
-            double thanhTien = Double.parseDouble(gioHangModel.getValueAt(i, 4).toString());
+            int thanhTien = Integer.parseInt(gioHangModel.getValueAt(i, 4).toString());
             total += thanhTien;
         }
         lbTongCong.setText(String.valueOf(total));
@@ -307,7 +309,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btXuatHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXuatHDActionPerformed
-        new XuatHoaDonForm(total, gioHangModel);
+        new XuatHoaDonForm(total, gioHangModel, idNV);
     }//GEN-LAST:event_btXuatHDActionPerformed
 
     private void tbSanPhamComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tbSanPhamComponentShown

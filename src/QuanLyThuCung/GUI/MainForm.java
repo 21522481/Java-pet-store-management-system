@@ -19,12 +19,15 @@ public class MainForm extends javax.swing.JFrame {
     private DichVuForm dv;
     private TaiKhoanForm tk;
     
+    private String idNV;
+    
     Color DefaultColor, PressedColor, TextPressedColor;
     
-    public MainForm() {
+    public MainForm(String idne) {
         initComponents();
         setVisible(true);
         
+        this.idNV = idne;
         
         DefaultColor = new Color(255, 255, 255);
         PressedColor = new Color(58,169,169);
@@ -32,9 +35,11 @@ public class MainForm extends javax.swing.JFrame {
         
         lbMenu1.setBackground(PressedColor);
         lbMenu1.setForeground(new Color(255, 255, 255));
-        bh = new BanHangForm();
+        bh = new BanHangForm(idNV);
         jDesktopPane1.removeAll();
         jDesktopPane1.add(bh).setVisible(true);
+        
+        
     }
 
 
@@ -406,7 +411,7 @@ public class MainForm extends javax.swing.JFrame {
         lbMenu7.setForeground(TextPressedColor);
         lbMenu8.setForeground(TextPressedColor);
         
-        bh = new BanHangForm();
+        bh = new BanHangForm(idNV);
         jDesktopPane1.removeAll();
         jDesktopPane1.add(bh).setVisible(true);
     }//GEN-LAST:event_lbMenu1MousePressed
