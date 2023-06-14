@@ -490,29 +490,38 @@ public class DichVuForm extends javax.swing.JInternalFrame {
             pst.setString(7, txtMaKH.getText());
             pst.executeUpdate();
             
-            if (index < tbDichVu.getRowCount() && index >= 0) {
-                model.setValueAt(txtTenPet.getText(), index, 1);
-                model.setValueAt(oracleDateFormat.format(dcNgayGui.getDate()), index, 2);
-                model.setValueAt(oracleDateFormat.format(dcNgayTra.getDate()), index, 3);
-                model.setValueAt(txtLoaiPet.getText(), index, 4);
-                model.setValueAt(cbGioiTinh.getSelectedItem(), index, 5);
-                model.setValueAt(txtTienDichVu.getText(), index, 6);
-                model.setValueAt(txtMaKH.getText(), index, 7);
+//            if (index < tbDichVu.getRowCount() && index >= 0) {
+//                model.setValueAt(txtTenPet.getText(), index, 1);
+//                model.setValueAt(oracleDateFormat.format(dcNgayGui.getDate()), index, 2);
+//                model.setValueAt(oracleDateFormat.format(dcNgayTra.getDate()), index, 3);
+//                model.setValueAt(txtLoaiPet.getText(), index, 4);
+//                model.setValueAt(cbGioiTinh.getSelectedItem(), index, 5);
+//                model.setValueAt(txtTienDichVu.getText(), index, 6);
+//                model.setValueAt(txtMaKH.getText(), index, 7);
+//            }
+            int k = pst.executeUpdate();
+            if(k==1){
+                JOptionPane.showMessageDialog(this, "Đã sửa thành công");
+                
+                a.fetchDichVu(model);
+                
+                tbDichVu.setModel(model);
+        
+                txtSoPhieuGui.setText("");
+                txtTenPet.setText("");
+                dcNgayGui.setDate(null);
+                dcNgayTra.setDate(null);
+                txtLoaiPet.setText("");
+                cbGioiTinh.setSelectedItem("Chọn giới tính");
+                txtTienDichVu.setText("");
+                txtMaKH.setText("");
             }
+
             
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        tbDichVu.setModel(model);
         
-        txtSoPhieuGui.setText("");
-        txtTenPet.setText("");
-        dcNgayGui.setDate(null);
-        dcNgayTra.setDate(null);
-        txtLoaiPet.setText("");
-        cbGioiTinh.setSelectedItem("Chọn giới tính");
-        txtTienDichVu.setText("");
-        txtMaKH.setText("");
         
         a.closeConnection();
     }//GEN-LAST:event_BtSuaDVActionPerformed
@@ -533,20 +542,22 @@ public class DichVuForm extends javax.swing.JInternalFrame {
                 PreparedStatement pst = a.getConnection().prepareStatement(sql);
                 pst.setString(1, txtSoPhieuGui.getText());
                 pst.executeUpdate();
+                a.fetchDichVu(model);
                 a.closeConnection();
             } catch (SQLException ex) {
                 Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            txtSoPhieuGui.setText("");
+            txtTenPet.setText("");
+            dcNgayGui.setDate(null);        
+            dcNgayTra.setDate(null);
+            txtLoaiPet.setText("");
+            cbGioiTinh.setSelectedItem("Chọn giới tính");
+            txtTienDichVu.setText("");
+            txtMaKH.setText("");
         }
-        txtSoPhieuGui.setText("");
-        txtTenPet.setText("");
-        dcNgayGui.setDate(null);        
-        dcNgayTra.setDate(null);
-        txtLoaiPet.setText("");
-        cbGioiTinh.setSelectedItem("Chọn giới tính");
-        txtTienDichVu.setText("");
-        txtMaKH.setText("");
+        
         
         a.closeConnection();
     }//GEN-LAST:event_BtXoaDVActionPerformed
