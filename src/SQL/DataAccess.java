@@ -232,7 +232,7 @@ public class DataAccess {
         }
     }
 
-    
+
     public void fetchAccount(DefaultTableModel tableModel){
         String sql = "SELECT * FROM TAIKHOAN";
         tableModel.setRowCount(0);
