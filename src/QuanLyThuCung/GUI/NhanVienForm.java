@@ -17,7 +17,7 @@ import java.text.ParseException;
 
 public class NhanVienForm extends javax.swing.JInternalFrame {
 
-      SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd    HH:mm:ss");
+    SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd    HH:mm:ss");
     
     public NhanVienForm() {
         DataAccess dataAccess = new DataAccess();
@@ -46,7 +46,7 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
         roundJPanel4 = new QuanLyThuCung.Swing.RoundJPanel();
         txtMaNV = new QuanLyThuCung.Swing.PlaceholderText();
         BtThemNV = new QuanLyThuCung.Swing.RoundJButton2();
-        BtLuuNV = new QuanLyThuCung.Swing.RoundJButton2();
+        BtSuaNV = new QuanLyThuCung.Swing.RoundJButton2();
         BtXoaNV = new QuanLyThuCung.Swing.RoundJButton2();
         cbGioiTinh = new javax.swing.JComboBox<>();
         cbChucVu = new javax.swing.JComboBox<>();
@@ -136,11 +136,11 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
             }
         });
 
-        BtLuuNV.setText("Lưu");
-        BtLuuNV.setRadius(40);
-        BtLuuNV.addActionListener(new java.awt.event.ActionListener() {
+        BtSuaNV.setText("Sửa");
+        BtSuaNV.setRadius(40);
+        BtSuaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtLuuNVActionPerformed(evt);
+                BtSuaNVActionPerformed(evt);
             }
         });
 
@@ -166,7 +166,7 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
         cbGioiTinh.setOpaque(false);
         cbChucVu.setBackground(new java.awt.Color(225, 237, 232));
         cbChucVu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chức vụ", "àdsd", "sdfsdf" }));
+        cbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chức vụ", "Quản lí", "Nhân viên", "Bán hàng" }));
         cbChucVu.setBorder(null);
         cbChucVu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +246,7 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addComponent(BtXoaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtLuuNV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BtSuaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -286,7 +286,7 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtThemNV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtLuuNV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtSuaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtXoaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -295,26 +295,26 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
         tbNhanVien.fixTable(jScrollPane3);
         tbNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Chức năng"
+                "Mã nhân viên", "Họ tên", "Ngày sinh", "Giới tính", "SĐT", "Địa chỉ", "Chức vụ"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true, true, true, true, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -355,7 +355,7 @@ public class NhanVienForm extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private PreparedStatement pst;
+    private PreparedStatement pst;
     private Connection conn;
     private void cbGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGioiTinhActionPerformed
         // TODO add your handling code here:
@@ -376,47 +376,40 @@ private PreparedStatement pst;
     }//GEN-LAST:event_BtClearActionPerformed
 
     private void BtThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemNVActionPerformed
-     DataAccess data = new DataAccess();
-            
-            DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
+        DataAccess data = new DataAccess();
+        DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
             
         try {
             String hoten = txtHoTen.getText();
-            
             Date ngsinh = dcNgaySinh.getDate();
-              String gioitinh = cbGioiTinh.getSelectedItem().toString();
-              String chucvu = cbGioiTinh.getSelectedItem().toString();
+            String gioitinh = cbGioiTinh.getSelectedItem().toString();
+            String chucvu = cbChucVu.getSelectedItem().toString();
             String diachi = txtDiaChi.getText();
             String sdt = txtSĐT.getText();
            
-            
             SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
             String ngsinhString = oracleDateFormat.format(ngsinh);
-            
-            
             
             pst = data.getConnection().prepareStatement("INSERT INTO NHANVIEN (HOTEN, NGSINH, GIOITINH, SDT, DIACHI, CHUCVU) VALUES (?,?,?,?,?,?)");
             
             pst.setString(1, hoten);
             pst.setString(2, ngsinhString);
-//            pst.setString(3, nsx);
-//            pst.setString(4, hsd);
             pst.setString(3, gioitinh);
-            pst.setString(6, chucvu);
             pst.setString(5, diachi);
             pst.setString(4, sdt);
+            pst.setString(6, chucvu);
          
            
             int k = pst.executeUpdate();
             if(k==1){
                 JOptionPane.showMessageDialog(this, "Đã thêm mới vào cơ sở dữ liệu");
-        txtMaNV.setText("");
-        txtHoTen.setText("");
-        dcNgaySinh.setDate(null);
-        txtSĐT.setText("");
-        txtDiaChi.setText("");
-        cbGioiTinh.setSelectedItem("Chọn giới tính");
-        cbChucVu.setSelectedItem("Chọn chức vụ");
+                txtMaNV.setText("");
+                txtHoTen.setText("");
+                dcNgaySinh.setDate(null);
+                txtSĐT.setText("");
+                txtDiaChi.setText("");
+                cbGioiTinh.setSelectedItem("Chọn giới tính");
+                cbChucVu.setSelectedItem("Chọn chức vụ");
             }
             else{
                 JOptionPane.showMessageDialog(this, "Lỗi khi thêm mới");
@@ -430,7 +423,6 @@ private PreparedStatement pst;
     }//GEN-LAST:event_BtThemNVActionPerformed
 
     private void BtXoaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtXoaNVActionPerformed
-   // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tbNhanVien.getModel();
         int indexTB = tbNhanVien.getSelectedRow();
         
@@ -452,7 +444,7 @@ private PreparedStatement pst;
             }
             
         }
-       txtMaNV.setText("");
+        txtMaNV.setText("");
         txtHoTen.setText("");
         dcNgaySinh.setDate(null);
         txtSĐT.setText("");
@@ -463,7 +455,7 @@ private PreparedStatement pst;
         a.closeConnection();        // TODO add your handling code here:
     }//GEN-LAST:event_BtXoaNVActionPerformed
 
-    private void BtLuuNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtLuuNVActionPerformed
+    private void BtSuaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSuaNVActionPerformed
      // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
         DataAccess a = new DataAccess();
@@ -481,94 +473,65 @@ private PreparedStatement pst;
             Date nsinhUtilDate = dcNgaySinh.getDate();
             java.sql.Date ngsinhSqlDate = new java.sql.Date(nsinhUtilDate.getTime());
             pst.setDate(2, ngsinhSqlDate);
-             pst.setString(3, cbGioiTinh.getSelectedItem().toString());
+            pst.setString(3, (String) cbGioiTinh.getSelectedItem());
             pst.setString(5, txtDiaChi.getText());
             pst.setString(4, txtSĐT.getText());
-              pst.setString(6, cbChucVu.getSelectedItem().toString());
+            pst.setString(6, (String) cbChucVu.getSelectedItem());
             pst.setInt(7, Integer.parseInt(txtMaNV.getText()));
 //            pst.executeUpdate();
             
             int k = pst.executeUpdate();
             if(k==1){
                 JOptionPane.showMessageDialog(this, "Đã sửa thành công");
-               // if (index < tbNhanVien.getRowCount() && index >= 0) {
-               // model.setValueAt(txtHoTen.getText(), index, 1);
-               //model.setValueAt(cbGioiTinh.getSelectedItem(), index, 3);
-               //model.setValueAt(oracleDateFormat.format(dcNgaySinh.getDate()), index, 2);
-               //model.setValueAt(txtDiaChi.getText(), index, 5);
-               //model.setValueAt(txtSĐT.getText(), index, 4);
-               // model.setValueAt(cbGioiTinh.getSelectedItem(), index, 6);
-                
-                //tbNhanVien.setModel(model);
-        a.fetchStaff(model);
-          txtMaNV.setText("");
-        txtHoTen.setText("");
-        dcNgaySinh.setDate(null);
-        txtSĐT.setText("");
-        txtDiaChi.setText("");
-        cbGioiTinh.setSelectedItem("Chọn giới tính");
-        cbChucVu.setSelectedItem("Chọn chức vụ");
-                
-                
-                
-                
+                a.fetchStaff(model);
+                txtMaNV.setText("");
+                txtHoTen.setText("");
+                dcNgaySinh.setDate(null);
+                txtSĐT.setText("");
+                txtDiaChi.setText("");
+                cbGioiTinh.setSelectedItem("Chọn giới tính");
+                cbChucVu.setSelectedItem("Chọn chức vụ"); 
             }
             else{
                 JOptionPane.showMessageDialog(this, "Lỗi khi thêm mới");
             }
             
-//            if (index < tbKhachHang.getRowCount() && index >= 0) {
-//                model.setValueAt(txtHoTen.getText(), index, 1);
-//                model.setValueAt(txtLoai.getText(), index, 2);
-//                model.setValueAt(oracleDateFormat.format(dcNgaySinh.getDate()), index, 3);
-//                model.setValueAt(txtDiaChi.getText(), index, 4);
-//                model.setValueAt(txtSDT.getText(), index, 5);
-//                model.setValueAt(txtEmail.getText(), index, 6);
-//            }
-            
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
         a.closeConnection();
-    }//GEN-LAST:event_BtLuuNVActionPerformed
-private void clearFields() {
-    txtMaNV.setText("");
-    txtHoTen.setText("");
-    dcNgaySinh.setDate(null);
-    txtSĐT.setText("");
-    txtDiaChi.setText("");
-    cbGioiTinh.setSelectedItem("Chọn giới tính");
-    cbChucVu.setSelectedItem("Chọn chức vụ");
-}
-    public void search(String str) {
-    DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
-    TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
-    tbNhanVien.setRowSorter(trs);
-
-    // Chuyển đổi chuỗi tìm kiếm và dữ liệu trong bảng thành chữ thường
-    String lowercaseSearchString = str.toLowerCase();
-    trs.setRowFilter(RowFilter.regexFilter("(?i)" + lowercaseSearchString));
-
-    // Xóa thông tin đang hiển thị trên giao diện
-    clearFields();
-}
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-         String searchString = txtTimKiem.getText();
-        search(searchString);
-    }//GEN-LAST:event_txtTimKiemKeyReleased
-
-    private void tbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhanVienMouseClicked
-             Date now = new Date();
         
-            txtMaNV.setText("");
+    }//GEN-LAST:event_BtSuaNVActionPerformed
+    private void clearFields() {
+        txtMaNV.setText("");
         txtHoTen.setText("");
         dcNgaySinh.setDate(null);
         txtSĐT.setText("");
         txtDiaChi.setText("");
         cbGioiTinh.setSelectedItem("Chọn giới tính");
         cbChucVu.setSelectedItem("Chọn chức vụ");
+    }
+    
+    public void search(String str) {
+        DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        tbNhanVien.setRowSorter(trs);
+
+        // Chuyển đổi chuỗi tìm kiếm và dữ liệu trong bảng thành chữ thường
+        String lowercaseSearchString = str.toLowerCase();
+        trs.setRowFilter(RowFilter.regexFilter("(?i)" + lowercaseSearchString));
+
+        // Xóa thông tin đang hiển thị trên giao diện
+        clearFields();
+    }
+    
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        String searchString = txtTimKiem.getText();
+        search(searchString);
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void tbNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNhanVienMouseClicked
+        Date now = new Date();
         
         DefaultTableModel tblModel = (DefaultTableModel) tbNhanVien.getModel();
         
@@ -578,10 +541,8 @@ private void clearFields() {
             txtMaNV.setText(tbNhanVien.getValueAt(indexTB, 0).toString());
             txtHoTen.setText(tbNhanVien.getValueAt(indexTB, 1).toString());
            
-        
-             // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
-              // Chuyển đổi chuỗi ngày tháng thành đối tượng Date
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            
             try {
                 Date birthDate = dateFormat.parse(tbNhanVien.getValueAt(indexTB, 2).toString());
 
@@ -594,15 +555,13 @@ private void clearFields() {
             cbChucVu.setSelectedItem(tbNhanVien.getValueAt(indexTB, 6).toString());
             txtDiaChi.setText(tbNhanVien.getValueAt(indexTB, 5).toString());
             txtSĐT.setText(tbNhanVien.getValueAt(indexTB, 4).toString());
-            
-           
         }
     }//GEN-LAST:event_tbNhanVienMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private QuanLyThuCung.Swing.RoundJButton2 BtClear;
-    private QuanLyThuCung.Swing.RoundJButton2 BtLuuNV;
+    private QuanLyThuCung.Swing.RoundJButton2 BtSuaNV;
     private QuanLyThuCung.Swing.RoundJButton2 BtThemNV;
     private QuanLyThuCung.Swing.RoundJButton2 BtXoaNV;
     private javax.swing.JComboBox<String> cbChucVu;

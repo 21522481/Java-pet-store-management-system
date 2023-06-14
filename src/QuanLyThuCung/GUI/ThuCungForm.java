@@ -5,9 +5,7 @@ import SQL.DataAccess;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -36,13 +34,9 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         String tieude[] = {"Mã danh mục", "Loại", "Tên", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá"};
         model.setColumnIdentifiers(tieude);
         tbThuCung.setModel(model);
-        
-        
-        
         dataAccess.fetchThuCung(model);
         dataAccess.closeConnection();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -462,9 +456,6 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
 
         String sql = "UPDATE DANHMUC SET TEN = ?, LOAI = ?, KL = ?, GT = ?, NG_GOC = ?, SL = ?, GIA = ? WHERE MADM = ? ";
         
-        int index = tbThuCung.getSelectedRow();
-        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        
         try {
             PreparedStatement pst = a.getConnection().prepareStatement(sql);
             pst.setString(1, txtTenTC.getText());
@@ -481,9 +472,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Đã sửa thành công");
                 
                 a.fetchThuCung(model);
-                
                 tbThuCung.setModel(model);
-        
                 txtMaTC.setText("");
                 txtTenTC.setText("");
                 txtLoaiThuCung.setText("");
@@ -493,22 +482,13 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 txtSoLuong.setText("");
                 txtGia.setText("");
             }
-//            if (index < tbThuCung.getRowCount() && index >= 0) {
-//                model.setValueAt(txtMaTC.getText(), index, 1);
-//                model.setValueAt(txtTenTC.getText(), index, 2);
-//                model.setValueAt(txtLoaiThuCung.getText(), index, 3);
-//                model.setValueAt(txtCanNang.getText(), index, 4);
-//                model.setValueAt(cbGioiTinh.getSelectedItem(), index, 5);
-//                model.setValueAt(txtNguonGoc.getText(), index, 6);
-//                model.setValueAt(txtSoLuong.getText(), index, 7);
-//                model.setValueAt(txtGia.getText(), index, 8);
-//            }
             
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         tbThuCung.setModel(model);
         
+        a.fetchThuCung(model);
         a.closeConnection();
     }//GEN-LAST:event_BtSuaTCActionPerformed
 

@@ -320,7 +320,7 @@
           <SubComponents>
             <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtTienDichVu">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTienDichVu.setPlaceholder(&quot;Ti&#x1ec1;n d&#x1ecb;ch v&#x1ee5;&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTienDichVu.setPlaceholder(&quot;Ti&#x1ec1;n d&#x1ecb;ch v&#x1ee5;&quot;);&#xa;txtTienDichVu.setEditable(false);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -384,8 +384,8 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
                 <StringItem index="0" value="Ch&#x1ecd;n gi&#x1edb;i t&#xed;nh"/>
-                <StringItem index="1" value="Nam"/>
-                <StringItem index="2" value="N&#x1eef;"/>
+                <StringItem index="1" value="&#x110;&#x1ef1;c"/>
+                <StringItem index="2" value="C&#xe1;i"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -452,12 +452,12 @@
                 <Column editable="false" title="Title 1" type="java.lang.Object"/>
                 <Column editable="false" title="Title 2" type="java.lang.Object"/>
                 <Column editable="false" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Ch&#x1ee9;c n&#x103;ng" type="java.lang.Object"/>
-                <Column editable="true" title="Title 5" type="java.lang.Object"/>
-                <Column editable="true" title="Title 6" type="java.lang.Object"/>
-                <Column editable="true" title="Title 7" type="java.lang.Object"/>
-                <Column editable="true" title="Title 8" type="java.lang.Object"/>
-                <Column editable="true" title="Title 9" type="java.lang.Object"/>
+                <Column editable="false" title="Ch&#x1ee9;c n&#x103;ng" type="java.lang.Object"/>
+                <Column editable="false" title="Title 5" type="java.lang.Object"/>
+                <Column editable="false" title="Title 6" type="java.lang.Object"/>
+                <Column editable="false" title="Title 7" type="java.lang.Object"/>
+                <Column editable="false" title="Title 8" type="java.lang.Object"/>
+                <Column editable="false" title="Title 9" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
