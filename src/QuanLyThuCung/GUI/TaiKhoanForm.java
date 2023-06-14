@@ -3,9 +3,6 @@ package QuanLyThuCung.GUI;
 import SQL.DataAccess;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -44,6 +41,7 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tbTaiKhoan = new QuanLyThuCung.Swing.CustomTable();
         BtXoaTK = new QuanLyThuCung.Swing.RoundJButton2();
+        BtClear = new QuanLyThuCung.Swing.RoundJButton2();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -131,6 +129,14 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
             }
         });
 
+        BtClear.setText("Clear");
+        BtClear.setRadius(45);
+        BtClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,7 +151,9 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
                             .addGap(67, 67, 67)
                             .addComponent(BtThemTK, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BtXoaTK, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BtXoaTK, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(roundJPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(477, 477, 477))))
@@ -160,7 +168,8 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(roundJPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BtThemTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtXoaTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BtXoaTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -251,8 +260,14 @@ public class TaiKhoanForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tbTaiKhoanMouseClicked
 
+    private void BtClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtClearActionPerformed
+        txtMaNV.setText("");
+        txtPassword.setText("");
+    }//GEN-LAST:event_BtClearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private QuanLyThuCung.Swing.RoundJButton2 BtClear;
     private QuanLyThuCung.Swing.RoundJButton2 BtThemTK;
     private QuanLyThuCung.Swing.RoundJButton2 BtXoaTK;
     private javax.swing.JLabel jLabel1;

@@ -4,6 +4,7 @@ import SQL.DataAccess;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -43,7 +44,9 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel)tbDichVu.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         tbDichVu.setRowSorter(trs);
-        trs.setRowFilter(RowFilter.regexFilter(str));
+        
+        String lowercaseSearchString = str.toLowerCase();
+        trs.setRowFilter(RowFilter.regexFilter("(?i)" + lowercaseSearchString));
     }
 
 
@@ -179,6 +182,7 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         });
 
         txtTienDichVu.setPlaceholder("Tiền dịch vụ");
+        txtTienDichVu.setEditable(false);
 
         javax.swing.GroupLayout roundJPanel3Layout = new javax.swing.GroupLayout(roundJPanel3);
         roundJPanel3.setLayout(roundJPanel3Layout);
@@ -221,7 +225,7 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         cbGioiTinh.setBackground(new java.awt.Color(225, 237, 232));
         cbGioiTinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbGioiTinh.setForeground(new java.awt.Color(5, 69, 89, 68));
-        cbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn giới tính", "Nam", "Nữ" }));
+        cbGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn giới tính", "Đực", "Cái" }));
         cbGioiTinh.setBorder(null);
 
         txtSoPhieuGui.setPlaceholder("Số phiếu nhập");
@@ -332,7 +336,7 @@ public class DichVuForm extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true, true, true, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -385,8 +389,19 @@ public class DichVuForm extends javax.swing.JInternalFrame {
             java.util.Date nnhan  = dcNgayTra.getDate();
             String loai  = txtLoaiPet.getText();
             String gioiTinh = cbGioiTinh.getSelectedItem().toString();
-            String gia = txtTienDichVu.getText();
             String ma = txtMaKH.getText();
+            
+            Calendar startCalendar = Calendar.getInstance();
+            startCalendar.setTime(ngui);
+
+            Calendar endCalendar = Calendar.getInstance();
+            endCalendar.setTime(nnhan);
+
+            // Tính khoảng cách giữa hai ngày trong mili giây
+            long distanceInMillis = Math.abs(endCalendar.getTimeInMillis() - startCalendar.getTimeInMillis());
+            long distanceInDays = 200000 * (distanceInMillis / (24 * 60 * 60 * 1000));
+            
+            String gia = Long.toString(distanceInDays);
             
             SimpleDateFormat oracleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
             String ngString = oracleDateFormat.format(ngui);
@@ -427,14 +442,6 @@ public class DichVuForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtThemDVActionPerformed
 
     private void tbDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDichVuMouseClicked
-//        txtTenPet.setText("");
-//        dcNgayGui.setDate(null);        
-//        dcNgayTra.setDate(null);
-//        txtLoaiPet.setText("");
-//        cbGioiTinh.setSelectedItem("Chọn giới tính");
-//        txtTienDichVu.setText("");
-//        txtMaKH.setText("");
-        
         DefaultTableModel tblModel = (DefaultTableModel) tbDichVu.getModel();
         
         int indexTB = tbDichVu.getSelectedRow();
@@ -470,7 +477,20 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         String sql = "UPDATE GUITHUCUNG SET TEN = ?, NGAYGUI = ?, NGAYTRA = ?, LOAI = ?, GIOITINH = ?, GIA = ? WHERE MAKH = ? ";
         
         int index = tbDichVu.getSelectedRow();
-        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
+        java.util.Date ngui  = dcNgayGui.getDate();
+        java.util.Date nnhan  = dcNgayTra.getDate();
+        
+        Calendar startCalendar = Calendar.getInstance();
+        startCalendar.setTime(ngui);
+
+        Calendar endCalendar = Calendar.getInstance();
+        endCalendar.setTime(nnhan);
+
+        // Tính khoảng cách giữa hai ngày trong mili giây
+        long distanceInMillis = Math.abs(endCalendar.getTimeInMillis() - startCalendar.getTimeInMillis());
+        long distanceInDays = 200000 * (distanceInMillis / (24 * 60 * 60 * 1000));
+        String gia = Long.toString(distanceInDays);
         
         try {
             PreparedStatement pst = a.getConnection().prepareStatement(sql);
@@ -486,27 +506,16 @@ public class DichVuForm extends javax.swing.JInternalFrame {
 
             pst.setString(4, txtLoaiPet.getText());
             pst.setString(5, cbGioiTinh.getSelectedItem().toString());
-            pst.setInt(6, Integer.parseInt(txtTienDichVu.getText()));
+            pst.setString(6, gia);
             pst.setString(7, txtMaKH.getText());
             pst.executeUpdate();
             
-//            if (index < tbDichVu.getRowCount() && index >= 0) {
-//                model.setValueAt(txtTenPet.getText(), index, 1);
-//                model.setValueAt(oracleDateFormat.format(dcNgayGui.getDate()), index, 2);
-//                model.setValueAt(oracleDateFormat.format(dcNgayTra.getDate()), index, 3);
-//                model.setValueAt(txtLoaiPet.getText(), index, 4);
-//                model.setValueAt(cbGioiTinh.getSelectedItem(), index, 5);
-//                model.setValueAt(txtTienDichVu.getText(), index, 6);
-//                model.setValueAt(txtMaKH.getText(), index, 7);
-//            }
             int k = pst.executeUpdate();
             if(k==1){
                 JOptionPane.showMessageDialog(this, "Đã sửa thành công");
                 
                 a.fetchDichVu(model);
-                
                 tbDichVu.setModel(model);
-        
                 txtSoPhieuGui.setText("");
                 txtTenPet.setText("");
                 dcNgayGui.setDate(null);
@@ -521,8 +530,9 @@ public class DichVuForm extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
+        tbDichVu.setModel(model);
         
-        
+        a.fetchDichVu(model);
         a.closeConnection();
     }//GEN-LAST:event_BtSuaDVActionPerformed
 
