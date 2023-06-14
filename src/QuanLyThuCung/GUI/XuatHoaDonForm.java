@@ -522,7 +522,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     // Thêm bảng vào tài liệu PDF
     document.add(table);
     
-     document.add(new Paragraph("Tong: " + total));
+    // Thêm tổng vào tài liệu PDF
+    Paragraph totalParagraph = new Paragraph("Tổng: " + total);
+    totalParagraph.setAlignment(Element.ALIGN_RIGHT);
+    totalParagraph.setIndentationRight(50);
+    document.add(totalParagraph);
     // Thêm ngày hiện tại vào tài liệu PDF
     Date currentDate = new Date();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
