@@ -230,9 +230,7 @@ public class DataAccess {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-<<<<<<< HEAD
-        
-=======
+
     
     public void fetchAccount(DefaultTableModel tableModel){
         String sql = "SELECT * FROM TAIKHOAN";
@@ -255,8 +253,36 @@ public class DataAccess {
         }
     }
     
-    
->>>>>>> eebc7691a957c446c577c2efe39a68aae9d52db7
+        public void fetchStaff(DefaultTableModel tableModel) {
+         tableModel.setRowCount(0);
+             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        
+        String sql = "SELECT * FROM NHANVIEN";
+        try {
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();
+            String row[] = new String[7];
+            DefaultTableModel df;
+            df = (DefaultTableModel)tableModel;
+            while(rs.next()){
+                row[0] = rs.getString(1);
+                row[1] = rs.getString(2);
+                 Date birthDate = rs.getDate(3);
+                String birthValue = dateFormat.format(birthDate);
+                row[2] = birthValue.toString();
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
+              
+                
+                df.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
+
     public Connection getConnection() {
         return connection;
     }

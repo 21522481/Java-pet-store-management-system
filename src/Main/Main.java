@@ -1,6 +1,6 @@
 package Main;
 
-import QuanLyThuCung.GUI.LoginForm;
+
 import QuanLyThuCung.GUI.LoginForm;
 
 public class Main {
