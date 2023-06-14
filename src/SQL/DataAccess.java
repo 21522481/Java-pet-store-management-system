@@ -231,6 +231,10 @@ public class DataAccess {
         }
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6651e0015a8aaadd7e16b5eb3cf4d5c0ba9fab62
     public void fetchAccount(DefaultTableModel tableModel){
         String sql = "SELECT * FROM TAIKHOAN";
         tableModel.setRowCount(0);
@@ -252,7 +256,66 @@ public class DataAccess {
         }
     }
     
+<<<<<<< HEAD
     
+=======
+
+    public void fetchStaff(DefaultTableModel tableModel) {
+         tableModel.setRowCount(0);
+             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        
+        String sql = "SELECT * FROM NHANVIEN";
+        try {
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();
+            String row[] = new String[7];
+            DefaultTableModel df;
+            df = (DefaultTableModel)tableModel;
+            while(rs.next()){
+                row[0] = rs.getString(1);
+                row[1] = rs.getString(2);
+                 Date birthDate = rs.getDate(3);
+                String birthValue = dateFormat.format(birthDate);
+                row[2] = birthValue.toString();
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
+              
+                
+                df.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+
+}
+    public void fetchBill(DefaultTableModel tableModel){
+        String sql = "SELECT * FROM HOADON";
+        tableModel.setRowCount(0);
+        try {
+            pst = connection.prepareStatement(sql);
+            rs = pst.executeQuery();
+            String row[] = new String[7];
+            DefaultTableModel df;
+            df = (DefaultTableModel) tableModel;
+            while (rs.next()) {
+                row[0] = rs.getString(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
+                df.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
+        
+>>>>>>> 6651e0015a8aaadd7e16b5eb3cf4d5c0ba9fab62
     public Connection getConnection() {
         return connection;
     }

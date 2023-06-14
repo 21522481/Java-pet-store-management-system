@@ -95,6 +95,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -271,7 +272,7 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
-        String ID = txtID.getText();
+       String ID = txtID.getText();
     char[] pass = txtPassword.getPassword();
     
    try{
