@@ -18,6 +18,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
     private DefaultTableModel gioHangModel;
     private int total;
     private String idNV;
+    private int soluong=1;
     
     public BanHangForm(String idne) {
         initComponents();
@@ -324,7 +325,7 @@ public class BanHangForm extends javax.swing.JInternalFrame {
                 String maSanPham = tbSanPham.getValueAt(selectedRow, 0).toString();
                 String tenSanPham = tbSanPham.getValueAt(selectedRow, 2).toString();
                 String StrGiaban = tbSanPham.getValueAt(selectedRow, 9).toString();
-              
+              //  soluong=(int) tbSanPham.getValueAt(selectedRow, 8);
               
                 //Chuyển StrGiaBan sang số nguyên
               //  int Giaban=Integer.parseInt(StrGiaban);

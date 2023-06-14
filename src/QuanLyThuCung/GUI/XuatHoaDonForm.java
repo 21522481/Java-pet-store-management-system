@@ -21,9 +21,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Desktop;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.text.SimpleDateFormat;
@@ -518,6 +522,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     // Thêm bảng vào tài liệu PDF
     document.add(table);
     
+     document.add(new Paragraph("Tong: " + total));
     // Thêm ngày hiện tại vào tài liệu PDF
     Date currentDate = new Date();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -531,10 +536,10 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     File file = new File(filePath);
     Desktop.getDesktop().open(file);
 
-} catch (Exception e) {
-    e.printStackTrace();
-    JOptionPane.showMessageDialog(this, "Lỗi khi xuất hóa đơn.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-}
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Lỗi khi xuất hóa đơn.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
 
 
     }//GEN-LAST:event_BtInHDActionPerformed
