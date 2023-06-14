@@ -1,11 +1,25 @@
 package QuanLyThuCung.GUI;
 
 
+import SQL.DataAccess;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 
 public class ThuCungForm extends javax.swing.JInternalFrame {
 
+    private DataAccess dataAccess;
+    private PreparedStatement pst;
+    private Connection con;
 
     public ThuCungForm() {
         initComponents();
@@ -13,6 +27,16 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+        
+        dataAccess = new DataAccess();
+        
+        DefaultTableModel model = (DefaultTableModel) tbThuCung.getModel();
+        String tieude[] = {"Mã danh mục", "Loại", "Tên", "Khối lượng", "Giới tính", "Nguồn gốc", "Số lượng", "Giá"};
+        model.setColumnIdentifiers(tieude);
+        tbThuCung.setModel(model);
+        
+        dataAccess.fetchThuCung(model);
+        dataAccess.closeConnection();
     }
 
 
@@ -22,28 +46,28 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         roundJPanel1 = new QuanLyThuCung.Swing.RoundJPanel();
-        txtGiong = new QuanLyThuCung.Swing.PlaceholderText();
-        roundJPanel4 = new QuanLyThuCung.Swing.RoundJPanel();
         txtLoaiThuCung = new QuanLyThuCung.Swing.PlaceholderText();
+        roundJPanel4 = new QuanLyThuCung.Swing.RoundJPanel();
+        txtTenTC = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel5 = new QuanLyThuCung.Swing.RoundJPanel();
         txtNguonGoc = new QuanLyThuCung.Swing.PlaceholderText();
-        BtXoaGui = new QuanLyThuCung.Swing.RoundJButton2();
-        BtSuaGui = new QuanLyThuCung.Swing.RoundJButton2();
+        BtXoaTC = new QuanLyThuCung.Swing.RoundJButton2();
+        BtSuaTC = new QuanLyThuCung.Swing.RoundJButton2();
         roundJPanel6 = new QuanLyThuCung.Swing.RoundJPanel();
         txtCanNang = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel8 = new QuanLyThuCung.Swing.RoundJPanel();
         txtSoLuong = new QuanLyThuCung.Swing.PlaceholderText();
         roundJPanel3 = new QuanLyThuCung.Swing.RoundJPanel();
         txtGia = new QuanLyThuCung.Swing.PlaceholderText();
-        BtThemGui = new QuanLyThuCung.Swing.RoundJButton2();
+        BtThemTC = new QuanLyThuCung.Swing.RoundJButton2();
         cbGioiTinh = new javax.swing.JComboBox<>();
         roundJPanel7 = new QuanLyThuCung.Swing.RoundJPanel();
         txtMaTC = new QuanLyThuCung.Swing.PlaceholderText();
+        BtClear = new QuanLyThuCung.Swing.RoundJButton2();
         roundJPanel25 = new QuanLyThuCung.Swing.RoundJPanel();
         placeholderText9 = new QuanLyThuCung.Swing.PlaceholderText();
-        BtTimKiemGui = new QuanLyThuCung.Swing.RoundJButton1();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tbGuiThu = new QuanLyThuCung.Swing.CustomTable();
+        tbThuCung = new QuanLyThuCung.Swing.CustomTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(null);
@@ -51,7 +75,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtGiong.setPlaceholder("Giống loài");
+        txtLoaiThuCung.setPlaceholder("Loại thú cưng");
 
         javax.swing.GroupLayout roundJPanel1Layout = new javax.swing.GroupLayout(roundJPanel1);
         roundJPanel1.setLayout(roundJPanel1Layout);
@@ -59,18 +83,18 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             roundJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundJPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtGiong, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel1Layout.setVerticalGroup(
             roundJPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtGiong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        txtLoaiThuCung.setPlaceholder("Loại thú cưng");
+        txtTenTC.setPlaceholder("Tên thú cưng");
 
         javax.swing.GroupLayout roundJPanel4Layout = new javax.swing.GroupLayout(roundJPanel4);
         roundJPanel4.setLayout(roundJPanel4Layout);
@@ -78,14 +102,14 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             roundJPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTenTC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel4Layout.setVerticalGroup(
             roundJPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtLoaiThuCung, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTenTC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -108,11 +132,16 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        BtXoaGui.setText("Xóa");
-        BtXoaGui.setRadius(40);
+        BtXoaTC.setText("Xóa");
+        BtXoaTC.setRadius(40);
 
-        BtSuaGui.setText("Sửa");
-        BtSuaGui.setRadius(40);
+        BtSuaTC.setText("Sửa");
+        BtSuaTC.setRadius(40);
+        BtSuaTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSuaTCActionPerformed(evt);
+            }
+        });
 
         txtCanNang.setPlaceholder("Cân nặng");
 
@@ -171,8 +200,13 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        BtThemGui.setText("Thêm");
-        BtThemGui.setRadius(40);
+        BtThemTC.setText("Thêm");
+        BtThemTC.setRadius(40);
+        BtThemTC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtThemTCActionPerformed(evt);
+            }
+        });
 
         cbGioiTinh.setOpaque(false);
         cbGioiTinh.setBackground(new java.awt.Color(225, 237, 232));
@@ -200,6 +234,14 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        BtClear.setText("Clear");
+        BtClear.setRadius(40);
+        BtClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtClearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -225,12 +267,14 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(roundJPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BtThemGui, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtThemTC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtXoaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtXoaTC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(BtSuaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(257, 257, 257))
+                        .addComponent(BtSuaTC, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,9 +299,10 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(roundJPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BtXoaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BtSuaGui, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BtThemGui, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BtXoaTC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtSuaTC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtThemTC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtClear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8))
         );
 
@@ -269,7 +314,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             roundJPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundJPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(placeholderText9, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+                .addComponent(placeholderText9, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundJPanel25Layout.setVerticalGroup(
@@ -280,39 +325,29 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        BtTimKiemGui.setText("Tìm kiếm");
-        BtTimKiemGui.setRadius(45);
-
-        tbGuiThu.fixTable(jScrollPane3);
-        tbGuiThu.setModel(new javax.swing.table.DefaultTableModel(
+        tbThuCung.fixTable(jScrollPane3);
+        tbThuCung.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Chức năng"
+                "Title 1", "Title 2", "Title 3", "Chức năng", "Title 5", "Title 6", "Title 7", "Title 8"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tbGuiThu);
+        tbThuCung.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbThuCungMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbThuCung);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -323,12 +358,9 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(BtTimKiemGui, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1045, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 49, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1045, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -336,10 +368,8 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtTimKiemGui, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(roundJPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
@@ -347,12 +377,137 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbThuCungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbThuCungMouseClicked
+        DefaultTableModel tblModel = (DefaultTableModel) tbThuCung.getModel();
+        
+        int indexTB = tbThuCung.getSelectedRow();
+        
+        if(indexTB < tbThuCung.getRowCount() && indexTB >=0 ){
+            txtMaTC.setText(tbThuCung.getValueAt(indexTB, 0).toString());
+            txtTenTC.setText(tbThuCung.getValueAt(indexTB, 1).toString());
+            txtLoaiThuCung.setText(tbThuCung.getValueAt(indexTB, 2).toString());
+            txtCanNang.setText(tbThuCung.getValueAt(indexTB, 3).toString());
+            cbGioiTinh.setSelectedItem(tbThuCung.getValueAt(indexTB, 4).toString());
+            txtNguonGoc.setText(tbThuCung.getValueAt(indexTB, 5).toString());
+            txtSoLuong.setText(tbThuCung.getValueAt(indexTB, 6).toString());
+            txtGia.setText(tbThuCung.getValueAt(indexTB, 6).toString());
+        }
+    }//GEN-LAST:event_tbThuCungMouseClicked
+
+    private void BtThemTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtThemTCActionPerformed
+        DataAccess data = new DataAccess();
+        DefaultTableModel model = (DefaultTableModel) tbThuCung.getModel();
+            
+        try {
+            String ma = txtMaTC.getText();
+            String ten  = txtTenTC.getText();
+            String loai = txtLoaiThuCung.getText();
+            String kl = txtCanNang.getText();
+            String gioiTinh = cbGioiTinh.getSelectedItem().toString();
+            String ng = txtNguonGoc.getText();
+            String sl = txtSoLuong.getText();
+            String gia = txtGia.getText();
+                    
+            pst = data.getConnection().prepareStatement("INSERT INTO DANHMUC (MADM, TEN, LOAI, KL, GT, NG_GOC, SL, GIA) VALUES (?,?,?,?,?,?,?,?)");
+            
+            pst.setString(1, ma);
+            pst.setString(2, ten);
+            pst.setString(3, loai);
+            pst.setString(4, kl);
+            pst.setString(5, gioiTinh);
+            pst.setString(6, ng);
+            pst.setString(7, sl);
+            pst.setString(8, gia);
+           
+            int k = pst.executeUpdate();
+            if(k==1){
+                JOptionPane.showMessageDialog(this, "Đã thêm mới vào cơ sở dữ liệu");
+                txtMaTC.setText("");
+                txtTenTC.setText("");
+                txtLoaiThuCung.setText("");
+                txtCanNang.setText("");
+                cbGioiTinh.setSelectedItem("Chọn giới tính");
+                txtNguonGoc.setText("");
+                txtSoLuong.setText("");
+                txtGia.setText("");
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Lỗi khi thêm mới");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        data.fetchDichVu(model);
+        data.closeConnection();
+    }//GEN-LAST:event_BtThemTCActionPerformed
+
+    private void BtSuaTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSuaTCActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tbThuCung.getModel();
+        DataAccess a = new DataAccess();
+
+        String sql = "UPDATE GUITHUCUNG SET TEN = ?, LOAI = ?, KL = ?, GIOITINH = ?, NG_GOC = ?, SL = ?, GIA = ? WHERE MADM = ? ";
+        
+        int index = tbThuCung.getSelectedRow();
+        SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
+        try {
+            PreparedStatement pst = a.getConnection().prepareStatement(sql);
+            pst.setString(1, txtTenTC.getText());
+            pst.setString(2, txtLoaiThuCung.getText());
+            pst.setString(3, txtCanNang.getText());
+            pst.setString(4, cbGioiTinh.getSelectedItem().toString());
+            pst.setString(5, txtNguonGoc.getText());
+            pst.setString(6, txtSoLuong.getText());
+            pst.setInt(7, Integer.parseInt(txtGia.getText()));
+            pst.setString(8, txtMaTC.getText());
+            pst.executeUpdate();
+            
+            if (index < tbThuCung.getRowCount() && index >= 0) {
+                model.setValueAt(txtMaTC.getText(), index, 1);
+                model.setValueAt(txtTenTC.getText(), index, 2);
+                model.setValueAt(txtLoaiThuCung.getText(), index, 3);
+                model.setValueAt(txtCanNang.getText(), index, 4);
+                model.setValueAt(cbGioiTinh.getSelectedItem(), index, 5);
+                model.setValueAt(txtNguonGoc.getText(), index, 6);
+                model.setValueAt(txtSoLuong.getText(), index, 7);
+                model.setValueAt(txtGia.getText(), index, 8);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tbThuCung.setModel(model);
+        
+        txtMaTC.setText("");
+        txtTenTC.setText("");
+        txtLoaiThuCung.setText("");
+        txtCanNang.setText("");
+        cbGioiTinh.setSelectedItem("Chọn giới tính");
+        txtNguonGoc.setText("");
+        txtSoLuong.setText("");
+        txtGia.setText("");
+        
+        a.closeConnection();
+    }//GEN-LAST:event_BtSuaTCActionPerformed
+
+    private void BtClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtClearActionPerformed
+        txtMaTC.setText("");
+        txtTenTC.setText("");
+        txtLoaiThuCung.setText("");
+        txtCanNang.setText("");
+        cbGioiTinh.setSelectedItem("Chọn giới tính");
+        txtNguonGoc.setText("");
+        txtSoLuong.setText("");
+        txtGia.setText("");
+    }//GEN-LAST:event_BtClearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private QuanLyThuCung.Swing.RoundJButton2 BtSuaGui;
-    private QuanLyThuCung.Swing.RoundJButton2 BtThemGui;
-    private QuanLyThuCung.Swing.RoundJButton1 BtTimKiemGui;
-    private QuanLyThuCung.Swing.RoundJButton2 BtXoaGui;
+    private QuanLyThuCung.Swing.RoundJButton2 BtClear;
+    private QuanLyThuCung.Swing.RoundJButton2 BtSuaTC;
+    private QuanLyThuCung.Swing.RoundJButton2 BtThemTC;
+    private QuanLyThuCung.Swing.RoundJButton2 BtXoaTC;
     private javax.swing.JComboBox<String> cbGioiTinh;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -365,13 +520,13 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel6;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel7;
     private QuanLyThuCung.Swing.RoundJPanel roundJPanel8;
-    private QuanLyThuCung.Swing.CustomTable tbGuiThu;
+    private QuanLyThuCung.Swing.CustomTable tbThuCung;
     private QuanLyThuCung.Swing.PlaceholderText txtCanNang;
     private QuanLyThuCung.Swing.PlaceholderText txtGia;
-    private QuanLyThuCung.Swing.PlaceholderText txtGiong;
     private QuanLyThuCung.Swing.PlaceholderText txtLoaiThuCung;
     private QuanLyThuCung.Swing.PlaceholderText txtMaTC;
     private QuanLyThuCung.Swing.PlaceholderText txtNguonGoc;
     private QuanLyThuCung.Swing.PlaceholderText txtSoLuong;
+    private QuanLyThuCung.Swing.PlaceholderText txtTenTC;
     // End of variables declaration//GEN-END:variables
 }

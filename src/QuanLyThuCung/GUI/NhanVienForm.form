@@ -35,14 +35,10 @@
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="roundJPanel25" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="BtTimKiemNV" min="-2" pref="110" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane3" alignment="0" min="-2" pref="1044" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" pref="1044" max="-2" attributes="0"/>
+                          <Component id="roundJPanel25" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -54,11 +50,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="BtTimKiemNV" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="roundJPanel25" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="roundJPanel25" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jScrollPane3" min="-2" pref="351" max="-2" attributes="0"/>
               <EmptySpace pref="62" max="32767" attributes="0"/>
           </Group>
@@ -66,12 +59,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="QuanLyThuCung.Swing.RoundJButton1" name="BtTimKiemNV">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-        <Property name="radius" type="int" value="45"/>
-      </Properties>
-    </Component>
     <Container class="QuanLyThuCung.Swing.RoundJPanel" name="roundJPanel25">
 
       <Layout>
@@ -79,7 +66,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtTimKiem" pref="673" max="32767" attributes="0"/>
+                  <Component id="txtTimKiem" pref="895" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -117,7 +104,7 @@
                       <Component id="cbChucVu" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="roundJPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                           <Component id="roundJPanel5" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="roundJPanel2" max="32767" attributes="0"/>
@@ -142,7 +129,9 @@
                           <Component id="cbGioiTinh" min="-2" pref="144" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="313" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="BtClear" min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -181,6 +170,7 @@
                               <Component id="BtThemNV" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="BtLuuNV" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                               <Component id="BtXoaNV" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="BtClear" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -403,6 +393,15 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtClear">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clear"/>
+            <Property name="radius" type="int" value="40"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtClearActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">

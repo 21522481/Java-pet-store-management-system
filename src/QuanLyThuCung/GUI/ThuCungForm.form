@@ -35,14 +35,10 @@
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="roundJPanel25" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="BtTimKiemGui" min="-2" pref="110" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane3" alignment="0" min="-2" pref="1045" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" min="-2" pref="1045" max="-2" attributes="0"/>
+                          <Component id="roundJPanel25" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="49" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -54,11 +50,8 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="BtTimKiemGui" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="roundJPanel25" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="roundJPanel25" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jScrollPane3" min="-2" pref="355" max="-2" attributes="0"/>
               <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
@@ -103,14 +96,16 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="BtThemGui" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="BtThemTC" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="BtXoaGui" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="BtXoaTC" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="BtSuaGui" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="BtSuaTC" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="BtClear" min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -143,9 +138,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="roundJPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtXoaGui" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="BtSuaGui" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="BtThemGui" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="BtXoaTC" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="BtSuaTC" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="BtThemTC" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="BtClear" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -161,7 +157,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtGiong" pref="340" max="32767" attributes="0"/>
+                      <Component id="txtLoaiThuCung" pref="340" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -170,16 +166,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txtGiong" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLoaiThuCung" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtGiong">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtLoaiThuCung">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtGiong.setPlaceholder(&quot;Gi&#x1ed1;ng lo&#xe0;i&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtLoaiThuCung.setPlaceholder(&quot;Lo&#x1ea1;i th&#xfa; c&#x1b0;ng&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -191,7 +187,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtLoaiThuCung" max="32767" attributes="0"/>
+                      <Component id="txtTenTC" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -200,16 +196,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txtLoaiThuCung" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="txtTenTC" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtLoaiThuCung">
+            <Component class="QuanLyThuCung.Swing.PlaceholderText" name="txtTenTC">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtLoaiThuCung.setPlaceholder(&quot;Lo&#x1ea1;i th&#xfa; c&#x1b0;ng&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtTenTC.setPlaceholder(&quot;T&#xea;n th&#xfa; c&#x1b0;ng&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -244,17 +240,20 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtXoaGui">
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtXoaTC">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
             <Property name="radius" type="int" value="40"/>
           </Properties>
         </Component>
-        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtSuaGui">
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtSuaTC">
           <Properties>
             <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
             <Property name="radius" type="int" value="40"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtSuaTCActionPerformed"/>
+          </Events>
         </Component>
         <Container class="QuanLyThuCung.Swing.RoundJPanel" name="roundJPanel6">
 
@@ -346,11 +345,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtThemGui">
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtThemTC">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
             <Property name="radius" type="int" value="40"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtThemTCActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbGioiTinh">
           <Properties>
@@ -409,6 +411,15 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="QuanLyThuCung.Swing.RoundJButton2" name="BtClear">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clear"/>
+            <Property name="radius" type="int" value="40"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtClearActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="QuanLyThuCung.Swing.RoundJPanel" name="roundJPanel25">
@@ -418,7 +429,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="placeholderText9" pref="673" max="32767" attributes="0"/>
+                  <Component id="placeholderText9" pref="944" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -441,12 +452,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="QuanLyThuCung.Swing.RoundJButton1" name="BtTimKiemGui">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-        <Property name="radius" type="int" value="45"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -454,18 +459,42 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="QuanLyThuCung.Swing.CustomTable" name="tbGuiThu">
+        <Component class="QuanLyThuCung.Swing.CustomTable" name="tbThuCung">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="13">
+              <Table columnCount="8" rowCount="0">
                 <Column editable="false" title="Title 1" type="java.lang.Object"/>
                 <Column editable="false" title="Title 2" type="java.lang.Object"/>
                 <Column editable="false" title="Title 3" type="java.lang.Object"/>
                 <Column editable="true" title="Ch&#x1ee9;c n&#x103;ng" type="java.lang.Object"/>
+                <Column editable="true" title="Title 5" type="java.lang.Object"/>
+                <Column editable="true" title="Title 6" type="java.lang.Object"/>
+                <Column editable="true" title="Title 7" type="java.lang.Object"/>
+                <Column editable="true" title="Title 8" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -492,8 +521,11 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbThuCungMouseClicked"/>
+          </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tbGuiThu.fixTable(jScrollPane3);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tbThuCung.fixTable(jScrollPane3);"/>
           </AuxValues>
         </Component>
       </SubComponents>
