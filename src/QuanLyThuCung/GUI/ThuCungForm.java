@@ -432,7 +432,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             pst.setString(6, ng);
             pst.setString(7, sl);
             pst.setString(8, gia);
-           
+            //pst.executeUpdate();
             int k = pst.executeUpdate();
             if(k==1){
                 JOptionPane.showMessageDialog(this, "Đã thêm mới vào cơ sở dữ liệu");
@@ -452,7 +452,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        data.fetchDichVu(model);
+        data.fetchThuCung(model);
         data.closeConnection();
     }//GEN-LAST:event_BtThemTCActionPerformed
 
@@ -460,7 +460,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) tbThuCung.getModel();
         DataAccess a = new DataAccess();
 
-        String sql = "UPDATE GUITHUCUNG SET TEN = ?, LOAI = ?, KL = ?, GIOITINH = ?, NG_GOC = ?, SL = ?, GIA = ? WHERE MADM = ? ";
+        String sql = "UPDATE DANHMUC SET TEN = ?, LOAI = ?, KL = ?, GT = ?, NG_GOC = ?, SL = ?, GIA = ? WHERE MADM = ? ";
         
         int index = tbThuCung.getSelectedRow();
         SimpleDateFormat oracleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -480,7 +480,7 @@ public class ThuCungForm extends javax.swing.JInternalFrame {
             if(k==1){
                 JOptionPane.showMessageDialog(this, "Đã sửa thành công");
                 
-                a.fetchProduct(model);
+                a.fetchThuCung(model);
                 
                 tbThuCung.setModel(model);
         
