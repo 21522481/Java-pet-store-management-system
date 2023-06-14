@@ -230,10 +230,7 @@ public class DataAccess {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-<<<<<<< HEAD
-        
-=======
-    
+
     public void fetchAccount(DefaultTableModel tableModel){
         String sql = "SELECT * FROM TAIKHOAN";
         tableModel.setRowCount(0);
@@ -256,7 +253,6 @@ public class DataAccess {
     }
     
     
->>>>>>> eebc7691a957c446c577c2efe39a68aae9d52db7
     public Connection getConnection() {
         return connection;
     }
