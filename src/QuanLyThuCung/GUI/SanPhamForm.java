@@ -448,8 +448,6 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
             pst.setString(1, loai);
             pst.setString(2, ten);
             pst.setString(3, nsxString);
-//            pst.setString(3, nsx);
-//            pst.setString(4, hsd);
             pst.setString(4, nsxString);
             pst.setString(5, trongluong);
             pst.setString(6, nguongoc);
@@ -461,9 +459,6 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Đã thêm mới vào cơ sở dữ liệu");
                 txtTenSP.setText("");
                 txtLoaiSP.setText("");
-//                txtNSX.setText("");
-//                txtHSD.setText("");
-                // Sau khi thêm mới vào cơ sở dữ liệu
                 dcNSX.setDate(null);
                 dcHSD.setDate(null);
 
@@ -626,17 +621,6 @@ public class SanPhamForm extends javax.swing.JInternalFrame {
                 txtSoLuong.setText("");
                 txtGia.setText("");
             }
-            
-//            if (index < tbSanPham.getRowCount() && index >= 0) {
-//                model.setValueAt(txtLoaiSP.getText(), index, 1);
-//                model.setValueAt(txtTenSP.getText(), index, 2);
-//                model.setValueAt(oracleDateFormat.format(dcNSX.getDate()), index, 3);
-//                model.setValueAt(oracleDateFormat.format(dcHSD.getDate()), index, 4);
-//                model.setValueAt(txtTrongLuong.getText(), index, 5);
-//                model.setValueAt(txtNguonGoc.getText(), index, 6);
-//                model.setValueAt(txtSoLuong.getText(), index, 7);
-//                model.setValueAt(txtGia.getText(), index, 8);
-//            }
             
         } catch (SQLException ex) {
             Logger.getLogger(SanPhamForm.class.getName()).log(Level.SEVERE, null, ex);
