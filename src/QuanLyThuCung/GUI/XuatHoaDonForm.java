@@ -1,10 +1,17 @@
 package QuanLyThuCung.GUI;
 
+import SQL.DataAccess;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.sql.Date;
 import javax.swing.JPanel;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class XuatHoaDonForm extends javax.swing.JFrame {
 
@@ -375,11 +382,13 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtTongTien.setEditable(false);
     }//GEN-LAST:event_txtTongTienActionPerformed
-
+    
     private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
         // TODO add your handling code here:
-         String sdt = txtSDT.getText();
-         txtTenKH.setText(sdt);
+        String sdt = txtSDT.getText();
+        
+       
+         
     }//GEN-LAST:event_txtSDTActionPerformed
 
 
