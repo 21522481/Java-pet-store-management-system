@@ -41,6 +41,11 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     private DefaultTableModel gioHangModel;
     private String idNV;
     private int SOHD;
+    private String tenNV;
+    
+    private PreparedStatement pst;
+    private ResultSet rs;
+    Connection connection;
 
     public XuatHoaDonForm(int total, DefaultTableModel gioHangModel, String idne) {
         initComponents();
@@ -467,12 +472,13 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
 
     private void BtInHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtInHDActionPerformed
         // TODO add your handling code here:
+        
         try {
     // Tạo một đối tượng Document
     Document document = new Document();
 
     // Xác định vị trí lưu file PDF hóa đơn
-    String filePath = "E:\\Study\\BT_Java\\DoAn\\Java/hoadon.pdf";
+    String filePath = "D:\\HoaDon/hoadon.pdf";
 
     // Tạo một đối tượng PdfWriter để ghi dữ liệu vào file PDF
     PdfWriter.getInstance(document, new FileOutputStream(filePath));
@@ -484,11 +490,30 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     Paragraph paragraph = new Paragraph("Hoa Don");
     paragraph.setAlignment(Paragraph.ALIGN_CENTER);
     document.add(paragraph);
+    
+    
+        DataAccess data = new DataAccess();
+        Connection connection = data.getConnection();
+    try {
+            
+            String sql = "SELECT HOTEN FROM NHANVIEN WHERE MANV = ?";
+            pst = connection.prepareStatement(sql);
+            pst.setInt(1, Integer.parseInt(idNV));
+            rs = pst.executeQuery();
 
+            if (rs.next()) {
+                tenNV = rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
     // Thêm các thông tin khác vào hóa đơn, ví dụ:
     document.add(new Paragraph("So hoa don: " + SOHD));
     document.add(new Paragraph("Ten khach hang: " + txtTenKH.getText()));
     document.add(new Paragraph("So dien thoai: " + txtSDT.getText()));
+    document.add(new Paragraph("Ten Nhan vien: " + tenNV));
     document.add(new Paragraph("-------------------\n"));
     document.add(new Paragraph("Chi tiet hoa don: "));
     document.add(new Paragraph("\n"));
@@ -497,7 +522,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     table.setWidthPercentage(100); // Chiều rộng bảng chiếm 100% của trang
 
     // Thêm tiêu đề cho từng cột của bảng
-    table.addCell("Mã sản phẩm");
+    table.addCell("Ma san pham");
     table.addCell("Ten san pham");
     table.addCell("Don gia");
     table.addCell("So luong");
@@ -597,9 +622,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbGioHangMouseClicked
 
-    private PreparedStatement pst;
-    private ResultSet rs;
-    Connection connection;
+    
     
     private void btXacNhanHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXacNhanHDActionPerformed
 
