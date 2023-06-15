@@ -582,10 +582,20 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                 totalTT.setIndentationRight(50);
                 document.add(totalTT); 
             }
-            else{
+            else if ("Thành viên".equals(data.fetchLoaiKH(txtSDT.getText()))){
                 total-=10000;
                 
                 giamgia = new Paragraph("Giảm giá: -10000", font);
+                giamgia.setAlignment(Element.ALIGN_RIGHT);
+                giamgia.setIndentationRight(50);
+                document.add(giamgia);
+                
+                totalTT = new Paragraph("Tổng phải trả: " + total, font);
+                totalTT.setAlignment(Element.ALIGN_RIGHT);
+                totalTT.setIndentationRight(50);
+                document.add(totalTT);   
+            } else {
+                giamgia = new Paragraph("Giảm giá:0", font);
                 giamgia.setAlignment(Element.ALIGN_RIGHT);
                 giamgia.setIndentationRight(50);
                 document.add(giamgia);
