@@ -478,7 +478,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     Document document = new Document();
 
     // Xác định vị trí lưu file PDF hóa đơn
-    String filePath = "E:\\Study\\BT_Java\\DoAn\\Java/hoadon.pdf";
+    String filePath = "src/HoaDon/hoadon.pdf";
     
     // Tạo một đối tượng PdfWriter để ghi dữ liệu vào file PDF
     PdfWriter.getInstance(document, new FileOutputStream(filePath));
