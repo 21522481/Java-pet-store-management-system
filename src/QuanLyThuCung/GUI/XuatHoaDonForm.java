@@ -523,7 +523,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     document.add(table);
     
     // Thêm tổng vào tài liệu PDF
-    Paragraph totalParagraph = new Paragraph("Tổng: " + total);
+    Paragraph totalParagraph = new Paragraph("Tong: " + total);
     totalParagraph.setAlignment(Element.ALIGN_RIGHT);
     totalParagraph.setIndentationRight(50);
     document.add(totalParagraph);
