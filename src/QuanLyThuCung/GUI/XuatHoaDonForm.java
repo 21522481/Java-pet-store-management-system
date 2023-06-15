@@ -478,7 +478,7 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
     Document document = new Document();
 
     // Xác định vị trí lưu file PDF hóa đơn
-    String filePath = "E:\\Study\\BT_Java\\DoAn\\Java/hoadon.pdf";
+    String filePath = "src/HoaDon/hoadon.pdf";
     
     // Tạo một đối tượng PdfWriter để ghi dữ liệu vào file PDF
     PdfWriter.getInstance(document, new FileOutputStream(filePath));
@@ -582,10 +582,20 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
                 totalTT.setIndentationRight(50);
                 document.add(totalTT); 
             }
-            else{
+            else if ("Thành viên".equals(data.fetchLoaiKH(txtSDT.getText()))){
                 total-=10000;
                 
                 giamgia = new Paragraph("Giảm giá: -10000", font);
+                giamgia.setAlignment(Element.ALIGN_RIGHT);
+                giamgia.setIndentationRight(50);
+                document.add(giamgia);
+                
+                totalTT = new Paragraph("Tổng phải trả: " + total, font);
+                totalTT.setAlignment(Element.ALIGN_RIGHT);
+                totalTT.setIndentationRight(50);
+                document.add(totalTT);   
+            } else {
+                giamgia = new Paragraph("Giảm giá:0", font);
                 giamgia.setAlignment(Element.ALIGN_RIGHT);
                 giamgia.setIndentationRight(50);
                 document.add(giamgia);
