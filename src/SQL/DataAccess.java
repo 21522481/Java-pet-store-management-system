@@ -16,7 +16,7 @@ public class DataAccess {
             Class.forName("oracle.jdbc.OracleDriver");
             String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 //            String username = "c##ThuCungFinal";
-            String username = "ThuCungFinal";
+            String username = "c##ThuCungFinal";
             String password = "userpass";
             
             connection = DriverManager.getConnection(url, username, password);
