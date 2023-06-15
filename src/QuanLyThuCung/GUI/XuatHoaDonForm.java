@@ -1,10 +1,13 @@
 package QuanLyThuCung.GUI;
 
 import SQL.DataAccess;
+import com.itextpdf.text.Paragraph;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +18,22 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Desktop;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 
 public class XuatHoaDonForm extends javax.swing.JFrame {
     private DataAccess dataAccess;
@@ -448,6 +467,85 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
 
     private void BtInHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtInHDActionPerformed
         // TODO add your handling code here:
+        try {
+    // Tạo một đối tượng Document
+    Document document = new Document();
+
+    // Xác định vị trí lưu file PDF hóa đơn
+    String filePath = "E:\\Study\\BT_Java\\DoAn\\Java/hoadon.pdf";
+
+    // Tạo một đối tượng PdfWriter để ghi dữ liệu vào file PDF
+    PdfWriter.getInstance(document, new FileOutputStream(filePath));
+
+    // Mở tài liệu để bắt đầu ghi
+    document.open();
+
+    // Thêm nội dung vào tài liệu PDF
+    Paragraph paragraph = new Paragraph("Hoa Don");
+    paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+    document.add(paragraph);
+
+    // Thêm các thông tin khác vào hóa đơn, ví dụ:
+    document.add(new Paragraph("So hoa don: " + SOHD));
+    document.add(new Paragraph("Ten khach hang: " + txtTenKH.getText()));
+    document.add(new Paragraph("So dien thoai: " + txtSDT.getText()));
+    document.add(new Paragraph("-------------------\n"));
+    document.add(new Paragraph("Chi tiet hoa don: "));
+    document.add(new Paragraph("\n"));
+    // Tạo bảng và định dạng cho bảng
+    PdfPTable table = new PdfPTable(5); // Số cột của bảng là 5
+    table.setWidthPercentage(100); // Chiều rộng bảng chiếm 100% của trang
+
+    // Thêm tiêu đề cho từng cột của bảng
+    table.addCell("Mã sản phẩm");
+    table.addCell("Ten san pham");
+    table.addCell("Don gia");
+    table.addCell("So luong");
+    table.addCell("Thanh tien");
+
+    // Thêm thông tin từ bảng tbGioHang vào bảng trong tài liệu PDF
+    for (int i = 0; i < tbGioHang.getRowCount(); i++) {
+        String productCode = tbGioHang.getValueAt(i, 0).toString();
+        String productName = tbGioHang.getValueAt(i, 1).toString();
+        String unitPrice = tbGioHang.getValueAt(i, 2).toString();
+        String quantity = tbGioHang.getValueAt(i, 3).toString();
+        String totalPrice = tbGioHang.getValueAt(i, 4).toString();
+
+        // Thêm dòng vào bảng
+        table.addCell(productCode);
+        table.addCell(productName);
+        table.addCell(unitPrice);
+        table.addCell(quantity);
+        table.addCell(totalPrice);
+    }
+
+    // Thêm bảng vào tài liệu PDF
+    document.add(table);
+    
+    // Thêm tổng vào tài liệu PDF
+    Paragraph totalParagraph = new Paragraph("Tổng: " + total);
+    totalParagraph.setAlignment(Element.ALIGN_RIGHT);
+    totalParagraph.setIndentationRight(50);
+    document.add(totalParagraph);
+    // Thêm ngày hiện tại vào tài liệu PDF
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    String formattedDate = dateFormat.format(currentDate);
+    document.add(new Paragraph("Ngày: " + formattedDate));
+
+    // Đóng tài liệu
+    document.close();
+
+    // Mở file PDF hóa đơn bằng ứng dụng mặc định trên máy tính
+    File file = new File(filePath);
+    Desktop.getDesktop().open(file);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Lỗi khi xuất hóa đơn.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
+
+
     }//GEN-LAST:event_BtInHDActionPerformed
 
     private void btHuyHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHuyHDActionPerformed

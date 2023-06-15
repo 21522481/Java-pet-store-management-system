@@ -279,8 +279,9 @@ public class LoginForm extends javax.swing.JFrame {
    try{
           Class.forName("oracle.jdbc.OracleDriver");
           String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-//          String username="c##ThuCungFinal";
-          String username = "c##ThuCungFinal";
+
+          String username="c##ThuCungFinal";
+        //  String username = "ThuCungFinal";
           String password="userpass";
           Connection conn= DriverManager.getConnection(url, username, password);
           String sqlquery = "SELECT * FROM TAIKHOAN WHERE \"MANV\"=? AND \"MK\"=?";
