@@ -644,36 +644,44 @@ public class XuatHoaDonForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtTongTien.setEditable(false);
     }//GEN-LAST:event_txtTongTienActionPerformed
-    
     private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
         // TODO add your handling code here:
         dataAccess = new DataAccess();
-        String sdt = txtSDT.getText();
-        //Lấy tên khách hàng
-        try {
-            txtTenKH.setText(dataAccess.fetchTenKH(sdt));
-        } catch (SQLException ex) {
-            Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //Lấy loại khách hàng
-        try {    
-            if ("VIP".equals(dataAccess.fetchLoaiKH(sdt))){
-                txtMaGG.setText("30000");
-                txtTongTien.setText(String.valueOf(total-30000));
+    String sdt = txtSDT.getText();
+    
+    // Lấy tên khách hàng
+    try {
+        txtTenKH.setText(dataAccess.fetchTenKH(sdt));
+    } catch (SQLException ex) {
+        Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    // Lấy loại khách hàng
+    try {
+        String loaiKH = dataAccess.fetchLoaiKH(sdt);
+        if (null == loaiKH) {
+            //JOptionPane.showMessageDialog(null, "Số điện thoại không tồn tại");
+        } else {
+            switch (loaiKH) {
+                case "VIP":
+                    txtMaGG.setText("30000");
+                    txtTongTien.setText(String.valueOf(total - 30000));
+                    break;
+                case "Thành viên":
+                    txtMaGG.setText("10000");
+                    txtTongTien.setText(String.valueOf(total - 10000));
+                    break;
+                default:
+                    txtMaGG.setText(null);
+                    JOptionPane.showMessageDialog(null, "Số điện thoại không tồn tại");
+                    break;
             }
-            else{
-                txtMaGG.setText("10000");
-                txtTongTien.setText(String.valueOf(total-10000));
-            }
-           // txtMaGG.setText(dataAccess.fetchLoaiKH(sdt));
-        } catch (SQLException ex) {
-            Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        dataAccess.closeConnection();
-        
+    } catch (SQLException ex) {
+        Logger.getLogger(XuatHoaDonForm.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    dataAccess.closeConnection();
     }//GEN-LAST:event_txtSDTActionPerformed
 
     private void tbGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGioHangMouseClicked
